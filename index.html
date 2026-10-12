@@ -12,7 +12,7 @@ const canvas=document.querySelector('canvas'),c=canvas.getContext('2d'),N=10;
 const furniture={shelf:['パン棚','🥖',2,1,250,'#e6ac67'],oven:['オーブン','🔥',2,2,650,'#c97957'],register:['レジ','💰',2,1,350,'#9bbbab'],prep:['調理台','🥣',2,2,480,'#d0b57f'],table:['テーブル','☕',2,2,220,'#c79c75'],plant:['植木','🌱',1,1,80,'#8abc81']};
 let state={coins:5000,objects:[],type:'shelf',rot:0,zoom:1,mode:'idle',selection:null};
 try{const old=JSON.parse(localStorage.getItem('bakery_web_v1'));if(old&&Array.isArray(old.objects))Object.assign(state,old,{selection:null,mode:'idle'});}catch{}
-let g={},hover=null,pointer=null;const furnitureImages={};for(const type of Object.keys(furniture)){const im=new Image();im.onload=()=>{furnitureImages[type]=im;render()};im.src='assets/'+type+'.webp'}let sim={open:false,minute:540,bake:0,ready:0,stock:0,sales:0,sold:0,customers:0,customerTick:0,day:1};let actor={x:3,y:7,tx:3,ty:7},visitor={x:5,y:9,tx:5,ty:9,active:false};
+let g={},hover=null,pointer=null;const furnitureImages={};for(const type of Object.keys(furniture)){const im=new Image();im.onload=()=>{furnitureImages[type]=im;render()};im.src='assets/'+type+'.webp'}const furnitureViews={},furnitureGeometry={"imageSize":[512,512],"anchorPixels":[256.0002136230469,389.38427734375],"tileXAxisPixels":[86.19967651367188,46.54780578613281]};for(const type of Object.keys(furniture)){furnitureViews[type]=[];for(let rot=0;rot<4;rot++){const im=new Image();im.onload=()=>{furnitureViews[type][rot]=im;render()};im.src='assets/'+type+'_r'+rot+'.webp'}};let sim={open:false,minute:540,bake:0,ready:0,stock:0,sales:0,sold:0,customers:0,customerTick:0,day:1};let actor={x:3,y:7,tx:3,ty:7},visitor={x:5,y:9,tx:5,ty:9,active:false};
 const store=()=>localStorage.setItem('bakery_web_v1',JSON.stringify({...state,selection:null,mode:'place'}));
 const dims=o=>{const t=furniture[o.type];return o.rot%2?[t[3],t[2]]:[t[2],t[3]]};
 const occupied=(objs=state.objects)=>{const m=new Map();for(const o of objs){const [w,h]=dims(o);for(let x=o.x;x<o.x+w;x++)for(let y=o.y;y<o.y+h;y++)m.set(x+','+y,o.id)}return m};
@@ -31,11 +31,11 @@ scene.sort((a,b)=>a.depth-b.depth);
 for(const item of scene){if(item.kind==='person'){const p=point(item.who.x+.5,item.who.y+.5);c.font=Math.max(17,g.tx*.95)+'px sans-serif';c.textAlign='center';c.textBaseline='bottom';c.fillText(item.emoji,p.x,p.y+2);continue}
 const o=item.o,[ww,hh]=dims(o),t=furniture[o.type],p=point(o.x+ww/2,o.y+hh/2),foot=[point(o.x,o.y),point(o.x+ww,o.y),point(o.x+ww,o.y+hh),point(o.x,o.y+hh)],selected=state.selection===o.id;
 c.save();c.globalAlpha=.15;poly(foot,'#634830');c.restore();
-const pic=furnitureImages[o.type];if(pic){
-// Anchor at the front of the occupied diamond; preserve image proportions.
+const directional=furnitureViews[o.type]?.[o.rot%4],pic=directional||furnitureImages[o.type];if(pic){if(directional){const scale=g.tx/furnitureGeometry.tileXAxisPixels[0],anchor=furnitureGeometry.anchorPixels;c.drawImage(pic,p.x-anchor[0]*scale,p.y-anchor[1]*scale,pic.naturalWidth*scale,pic.naturalHeight*scale)}else{
+// Legacy single-view fallback while directional sprites load.
 const maxW=g.tx*(ww+hh)*.9,maxH=g.ty*(ww+hh)*2.6,scale=Math.min(maxW/pic.naturalWidth,maxH/pic.naturalHeight),iw=pic.naturalWidth*scale,ih=pic.naturalHeight*scale;
 const bottom=p.y+g.ty*(ww+hh)*.42;
-c.save();c.translate(p.x,bottom);if(o.rot===1||o.rot===2)c.scale(-1,1);c.drawImage(pic,-iw/2,-ih,iw,ih);c.restore();
+c.save();c.translate(p.x,bottom);if(o.rot===1||o.rot===2)c.scale(-1,1);c.drawImage(pic,-iw/2,-ih,iw,ih);c.restore();}
 }else{c.font=Math.max(14,g.tx*.86)+'px sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText(t[1],p.x,p.y-g.ty*.9)}
 if(selected){c.beginPath();foot.forEach((v,i)=>i?c.lineTo(v.x,v.y):c.moveTo(v.x,v.y));c.closePath();c.strokeStyle='#ffda44';c.lineWidth=3;c.stroke();const direction=[[0,1],[1,0],[0,-1],[-1,0]][o.rot%4],tip=point(o.x+ww/2+direction[0]*.45,o.y+hh/2+direction[1]*.45);c.beginPath();c.moveTo(p.x,p.y);c.lineTo(tip.x,tip.y);c.stroke();c.beginPath();c.arc(tip.x,tip.y,3,0,Math.PI*2);c.fillStyle='#ffda44';c.fill();c.textAlign='center';c.textBaseline='top';c.font='bold '+Math.max(10,g.tx*.37)+'px sans-serif';c.fillStyle='#523a2c';c.fillText('✓ '+t[0]+' · '+(o.rot%4)*90+'°',p.x,foot[2].y+3)}
 }

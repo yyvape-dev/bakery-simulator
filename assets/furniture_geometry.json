@@ -1,0 +1,218 @@
+{
+  "version": 1,
+  "renderMethod": "Blender orthographic, model rotates about vertical Z axis",
+  "furniture": {
+    "shelf": {
+      "tileFootprint": [
+        2,
+        1
+      ],
+      "cameraElevationDegrees": 32.68363884625795,
+      "screenFloorAngleDegrees": 28.369046293278583,
+      "orthographicScale": 4.199999809265137,
+      "imageSize": [
+        512,
+        512
+      ],
+      "anchorPixels": [
+        256.0002136230469,
+        389.38427734375
+      ],
+      "tileXAxisPixels": [
+        86.19967651367188,
+        46.54780578613281
+      ],
+      "directions": {
+        "0": "front +gameY / world -Y",
+        "1": "front +gameX / world +X",
+        "2": "front -gameY / world +Y",
+        "3": "front -gameX / world -X"
+      },
+      "files": [
+        "assets/shelf_r0.webp",
+        "assets/shelf_r1.webp",
+        "assets/shelf_r2.webp",
+        "assets/shelf_r3.webp"
+      ]
+    },
+    "oven": {
+      "tileFootprint": [
+        2,
+        2
+      ],
+      "cameraElevationDegrees": 32.68363884625795,
+      "screenFloorAngleDegrees": 28.369046293278583,
+      "orthographicScale": 4.199999809265137,
+      "imageSize": [
+        512,
+        512
+      ],
+      "anchorPixels": [
+        256.0002136230469,
+        389.38427734375
+      ],
+      "tileXAxisPixels": [
+        86.19967651367188,
+        46.54780578613281
+      ],
+      "directions": {
+        "0": "front +gameY / world -Y",
+        "1": "front +gameX / world +X",
+        "2": "front -gameY / world +Y",
+        "3": "front -gameX / world -X"
+      },
+      "files": [
+        "assets/oven_r0.webp",
+        "assets/oven_r1.webp",
+        "assets/oven_r2.webp",
+        "assets/oven_r3.webp"
+      ]
+    },
+    "register": {
+      "tileFootprint": [
+        2,
+        1
+      ],
+      "cameraElevationDegrees": 32.68363884625795,
+      "screenFloorAngleDegrees": 28.369046293278583,
+      "orthographicScale": 4.199999809265137,
+      "imageSize": [
+        512,
+        512
+      ],
+      "anchorPixels": [
+        256.0002136230469,
+        389.38427734375
+      ],
+      "tileXAxisPixels": [
+        86.19967651367188,
+        46.54780578613281
+      ],
+      "directions": {
+        "0": "front +gameY / world -Y",
+        "1": "front +gameX / world +X",
+        "2": "front -gameY / world +Y",
+        "3": "front -gameX / world -X"
+      },
+      "files": [
+        "assets/register_r0.webp",
+        "assets/register_r1.webp",
+        "assets/register_r2.webp",
+        "assets/register_r3.webp"
+      ]
+    },
+    "prep": {
+      "tileFootprint": [
+        2,
+        2
+      ],
+      "cameraElevationDegrees": 32.68363884625795,
+      "screenFloorAngleDegrees": 28.369046293278583,
+      "orthographicScale": 4.199999809265137,
+      "imageSize": [
+        512,
+        512
+      ],
+      "anchorPixels": [
+        256.0002136230469,
+        389.38427734375
+      ],
+      "tileXAxisPixels": [
+        86.19967651367188,
+        46.54780578613281
+      ],
+      "directions": {
+        "0": "front +gameY / world -Y",
+        "1": "front +gameX / world +X",
+        "2": "front -gameY / world +Y",
+        "3": "front -gameX / world -X"
+      },
+      "files": [
+        "assets/prep_r0.webp",
+        "assets/prep_r1.webp",
+        "assets/prep_r2.webp",
+        "assets/prep_r3.webp"
+      ]
+    },
+    "table": {
+      "tileFootprint": [
+        2,
+        2
+      ],
+      "cameraElevationDegrees": 32.68363884625795,
+      "screenFloorAngleDegrees": 28.369046293278583,
+      "orthographicScale": 4.199999809265137,
+      "imageSize": [
+        512,
+        512
+      ],
+      "anchorPixels": [
+        256.0002136230469,
+        389.38427734375
+      ],
+      "tileXAxisPixels": [
+        86.19967651367188,
+        46.54780578613281
+      ],
+      "directions": {
+        "0": "front +gameY / world -Y",
+        "1": "front +gameX / world +X",
+        "2": "front -gameY / world +Y",
+        "3": "front -gameX / world -X"
+      },
+      "files": [
+        "assets/table_r0.webp",
+        "assets/table_r1.webp",
+        "assets/table_r2.webp",
+        "assets/table_r3.webp"
+      ]
+    },
+    "plant": {
+      "tileFootprint": [
+        1,
+        1
+      ],
+      "cameraElevationDegrees": 32.68363884625795,
+      "screenFloorAngleDegrees": 28.369046293278583,
+      "orthographicScale": 4.199999809265137,
+      "imageSize": [
+        512,
+        512
+      ],
+      "anchorPixels": [
+        256.0002136230469,
+        389.38427734375
+      ],
+      "tileXAxisPixels": [
+        86.19967651367188,
+        46.54780578613281
+      ],
+      "directions": {
+        "0": "front +gameY / world -Y",
+        "1": "front +gameX / world +X",
+        "2": "front -gameY / world +Y",
+        "3": "front -gameX / world -X"
+      },
+      "files": [
+        "assets/plant_r0.webp",
+        "assets/plant_r1.webp",
+        "assets/plant_r2.webp",
+        "assets/plant_r3.webp"
+      ]
+    }
+  },
+  "geometry": {
+    "imageSize": [
+      512,
+      512
+    ],
+    "anchorPixels": [
+      256.0002136230469,
+      389.38427734375
+    ],
+    "tileXAxisPixels": [
+      86.19967651367188,
+      46.54780578613281
+    ]
+  }
+}
