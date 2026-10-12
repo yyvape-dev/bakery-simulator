@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#f4dbb4"><title>こもれびベーカリー</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6e8cc;color:#5a3c26;font-family:system-ui,-apple-system,sans-serif;height:100dvh;display:flex;flex-direction:column}header{padding:calc(env(safe-area-inset-top) + 8px) 12px 9px;background:#fff8e9;display:flex;align-items:center;justify-content:space-between;font-weight:bold;gap:8px}header span{background:#efddb9;padding:5px 9px;border-radius:14px;font-size:12px}h1{font-size:16px;margin:0}canvas{min-height:0;flex:1;width:100%;touch-action:none;background:linear-gradient(#d4eac7,#fff0d2)}footer{background:#fff8e9;padding:9px 7px calc(env(safe-area-inset-bottom) + 9px)}.items,.actions{display:flex;gap:5px;overflow-x:auto;padding-bottom:7px}button{flex-shrink:0;border:2px solid #cfa977;background:#fff7e8;border-radius:10px;padding:9px 10px;font-weight:bold;color:#5a3c26;font-size:12px}button.active{background:#d6aa6f}.actions button{flex:1;padding:10px 2px}small{display:block;text-align:center;min-height:15px}#toast{position:fixed;top:13%;left:50%;transform:translateX(-50%);background:white;padding:8px;border-radius:12px;border:1px solid #b58b61;display:none;z-index:3}
+</style>
+<header><h1>🥐 こもれびベーカリー</h1><span id="coins">🪙 5000</span><span id="count">設備 0</span></header>
+<canvas id="game"></canvas><div id="toast"></div>
+<footer><div id="items" class="items"></div><div class="actions"><button id="rotate">↻ 回転</button><button id="move">移動</button><button id="erase">撤去</button><button id="minus">－</button><button id="plus">＋</button><button id="reset">初期化</button></div><small id="hint">家具を選び、床をタップして設置</small></footer>
+<script>
+(()=>{'use strict';
+const canvas=document.querySelector('canvas'),c=canvas.getContext('2d'),N=10;
+const furniture={shelf:['パン棚','🥖',2,1,250,'#e6ac67'],oven:['オーブン','🔥',2,2,650,'#c97957'],register:['レジ','💰',2,1,350,'#9bbbab'],prep:['調理台','🥣',2,2,480,'#d0b57f'],table:['テーブル','☕',2,2,220,'#c79c75'],plant:['植木','🌱',1,1,80,'#8abc81']};
+let state={coins:5000,objects:[],type:'shelf',rot:0,zoom:1,mode:'place',selection:null};
+try{const old=JSON.parse(localStorage.getItem('bakery_web_v1'));if(old&&Array.isArray(old.objects))Object.assign(state,old,{selection:null,mode:'place'});}catch{}
+let g={},hover=null,pointer=null;
+const store=()=>localStorage.setItem('bakery_web_v1',JSON.stringify({...state,selection:null,mode:'place'}));
+const dims=o=>{const t=furniture[o.type];return o.rot%2?[t[3],t[2]]:[t[2],t[3]]};
+const occupied=(objs=state.objects)=>{const m=new Map();for(const o of objs){const [w,h]=dims(o);for(let x=o.x;x<o.x+w;x++)for(let y=o.y;y<o.y+h;y++)m.set(x+','+y,o.id)}return m};
+function accessible(objs){const busy=occupied(objs),q=[],seen=new Set();for(let x=0;x<N;x++){const k=x+',9';if(!busy.has(k)){q.push([x,9]);seen.add(k);break}}if(!q.length)return false;for(let i=0;i<q.length;i++){const [x,y]=q[i];for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const a=x+dx,b=y+dy,k=a+','+b;if(a>=0&&b>=0&&a<N&&b<N&&!busy.has(k)&&!seen.has(k)){seen.add(k);q.push([a,b])}}}return seen.size===N*N-busy.size}
+function error(o,ignore){const [w,h]=dims(o);if(o.x<0||o.y<0||o.x+w>N||o.y+h>N)return '店舗の外です';const occ=occupied();for(let x=o.x;x<o.x+w;x++)for(let y=o.y;y<o.y+h;y++){let id=occ.get(x+','+y);if(id!==undefined&&id!==ignore)return 'ほかの設備と重なります'}if(!accessible([...state.objects.filter(p=>p.id!==ignore),o]))return '通路が分断されます';return ''}
+const point=(x,y)=>({x:g.cx+(x-y)*g.tx,y:g.cy+(x+y)*g.ty});
+const tile=(x,y)=>{const a=(x-g.cx)/g.tx,b=(y-g.cy)/g.ty,i=Math.floor((a+b)/2),j=Math.floor((b-a)/2);return i>=0&&j>=0&&i<N&&j<N?{x:i,y:j}:null};
+function poly(v,fill,stroke){c.beginPath();v.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();c.fillStyle=fill;c.fill();if(stroke){c.strokeStyle=stroke;c.lineWidth=1;c.stroke()}}
+function render(){const box=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2),w=box.width,h=box.height;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);c.setTransform(dpr,0,0,dpr,0,0);g={tx:Math.min(w/21,h/13.4)*state.zoom,ty:0,cx:w/2,cy:Math.max(35,h*.13)};g.ty=g.tx*.54;
+for(let k=0;k<2*N-1;k++)for(let x=0;x<N;x++){const y=k-x;if(y<0||y>=N)continue;poly([point(x,y),point(x+1,y),point(x+1,y+1),point(x,y+1)],(x+y)%2?'#f4dcb6':'#f9e5c2','#dfc095')}
+for(const o of [...state.objects].sort((a,b)=>a.x+a.y-b.x-b.y)){const [w1,h1]=dims(o),t=furniture[o.type],a=point(o.x,o.y),b=point(o.x+w1,o.y),d=point(o.x+w1,o.y+h1),e=point(o.x,o.y+h1),z=g.ty*.9;
+poly([e,d,{x:d.x,y:d.y-z},{x:e.x,y:e.y-z}],'#aa7e5c');poly([b,d,{x:d.x,y:d.y-z},{x:b.x,y:b.y-z}],'#916a50');poly([{x:a.x,y:a.y-z},{x:b.x,y:b.y-z},{x:d.x,y:d.y-z},{x:e.x,y:e.y-z}],t[5],state.selection===o.id?'#ce6939':'#936f4d');const p=point(o.x+w1/2,o.y+h1/2);c.textAlign='center';c.textBaseline='middle';c.font=Math.max(14,g.tx*.86)+'px sans-serif';c.fillText(t[1],p.x,p.y-z);c.font='bold '+Math.max(9,g.tx*.37)+'px sans-serif';c.fillStyle='#523a2c';c.fillText(t[0],p.x,p.y+g.ty*.4)}
+if(hover&&(state.mode==='place'||state.mode==='move')){const old=state.objects.find(o=>o.id===state.selection),test={...(state.mode==='move'&&old?old:{type:state.type,rot:state.rot}),...hover};const [ww,hh]=dims(test);c.globalAlpha=.37;poly([point(test.x,test.y),point(test.x+ww,test.y),point(test.x+ww,test.y+hh),point(test.x,test.y+hh)],error(test,state.mode==='move'?state.selection:null)?'#ed5b60':'#4aa981');c.globalAlpha=1}
+c.textAlign='center';c.font='bold 12px sans-serif';c.fillStyle='#704e38';c.fillText('↓ 入口',w/2,Math.min(h-10,g.cy+20*g.ty+23))}
+function flash(msg){const e=document.querySelector('#toast');e.textContent=msg;e.style.display='block';clearTimeout(flash.t);flash.t=setTimeout(()=>e.style.display='none',1800)}
+function update(){document.querySelector('#coins').textContent='🪙 '+state.coins.toLocaleString();document.querySelector('#count').textContent='設備 '+state.objects.length;document.querySelector('#hint').textContent=state.mode==='move'?'移動先をタップ':state.mode==='erase'?'撤去する家具をタップ':state.selection!==null?'選択中：回転・移動・撤去':'家具を選び、床をタップして設置';document.querySelectorAll('[data-type]').forEach(b=>b.classList.toggle('active',b.dataset.type===state.type&&state.mode==='place'));render()}
+function selectCell(p){if(!p)return;const id=occupied().get(p.x+','+p.y);if(state.mode==='erase'){if(id===undefined)return;const o=state.objects.find(x=>x.id===id);state.coins+=Math.floor(furniture[o.type][4]/2);state.objects=state.objects.filter(x=>x.id!==id);state.selection=null;store();return update()}
+if(state.mode==='move'){const o=state.objects.find(x=>x.id===state.selection);if(!o)return;const next={...o,...p},err=error(next,o.id);if(err)return flash(err);Object.assign(o,next);state.mode='place';state.selection=null;store();return update()}
+if(id!==undefined){state.selection=id;state.rot=state.objects.find(x=>x.id===id).rot;return update()}
+const t=furniture[state.type],o={id:Math.max(0,...state.objects.map(x=>x.id))+1,type:state.type,...p,rot:state.rot};if(state.coins<t[4])return flash('資金不足');const err=error(o);if(err)return flash(err);state.coins-=t[4];state.objects.push(o);state.selection=o.id;store();update()}
+for(const [id,t] of Object.entries(furniture)){const b=document.createElement('button');b.dataset.type=id;b.textContent=t[1]+' '+t[0]+' '+t[4];b.onclick=()=>{state.type=id;state.rot=0;state.selection=null;state.mode='place';update()};document.querySelector('#items').append(b)}
+document.querySelector('#rotate').onclick=()=>{if(state.selection!==null){const o=state.objects.find(x=>x.id===state.selection),next={...o,rot:(o.rot+1)%4},err=error(next,o.id);if(err)flash(err);else{Object.assign(o,next);store()}}else state.rot=(state.rot+1)%4;update()};
+document.querySelector('#move').onclick=()=>{if(state.selection===null)return flash('先に家具を選んでください');state.mode='move';update()};
+document.querySelector('#erase').onclick=()=>{state.mode='erase';state.selection=null;update()};
+document.querySelector('#plus').onclick=()=>{state.zoom=Math.min(1.55,state.zoom+.12);update()};
+document.querySelector('#minus').onclick=()=>{state.zoom=Math.max(.65,state.zoom-.12);update()};
+document.querySelector('#reset').onclick=()=>{if(confirm('店舗を初期化しますか？')){state.objects=[];state.coins=5000;state.selection=null;state.mode='place';state.zoom=1;store();update()}};
+function loc(e){const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);pointer=loc(e)});canvas.addEventListener('pointermove',e=>{const p=loc(e);hover=tile(p.x,p.y);render()});canvas.addEventListener('pointerup',e=>{const p=loc(e);if(pointer&&Math.hypot(p.x-pointer.x,p.y-pointer.y)<15)selectCell(tile(p.x,p.y));pointer=null;hover=null;render()});canvas.addEventListener('pointercancel',()=>{pointer=null;hover=null});window.addEventListener('resize',render);update();
+})();
+</script></html>
