@@ -40,4 +40,17 @@ python tools/art/export_sprites.py
 以後は幾何・カメラを固定したまま、UV上の手描きテクスチャや輪郭表現を仕上げられます。
 
 家具の占有判定、設置・移動・回転・撤去、通路判定、セーブ形式は既存のタイル管理を使用します。
-キャラクターの経路移動や方向別歩行アニメーションは、この家具更新には含まれません。
+キャラクターは以下の制作元から出力し、ゲーム内の経路移動・仕事と連動します。
+
+## 店主・ノアの基礎モデル
+
+`models/characters/owner.blend` と `models/characters/noah.blend` が編集用のモデルです。足元はZ=0、占有は1×1マス、家具と同じカメラ・縮尺です。独自の基礎形状で、厚塗りの最終仕上げは今後の工程です。
+
+```sh
+blender -b -t 2 --python tools/art/build_characters.py
+python tools/art/pack_characters.py
+```
+
+`build/characters/` にモデルと4方向×3フレームを出力し、`assets/characters/{owner,noah}.webp` に透過スプライトシートをまとめます。1フレーム256×256、横3フレーム（待機・歩行左・歩行右）、縦4方向（+gameY、+gameX、-gameY、-gameX）。`geometry.json` が接地アンカーと1マスの投影サイズを記録します。
+
+形状の高さ・太さ・奥行きは `build_characters.py` の `CHARACTER_SIZES` で変更できます。ゲーム内では高さ・太さ・全体サイズを別に変更できます。接地点を固定するため、これらは占有マスや移動速度を変えません。ゲームの `characterGeometry` はこの固定カメラの256px投影値を使います。カメラを変える場合は素材と描画側を一緒に更新してください。

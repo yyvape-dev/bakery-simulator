@@ -1,0 +1,64 @@
+{
+  "owner": {
+    "footprint": [
+      1,
+      1
+    ],
+    "frameSize": [
+      256,
+      256
+    ],
+    "anchorPixels": [
+      128.00010681152344,
+      194.692138671875
+    ],
+    "tileXAxisPixels": [
+      43.09983825683594,
+      23.273902893066406
+    ],
+    "columns": 3,
+    "rows": 4,
+    "frames": [
+      "idle",
+      "walkLeft",
+      "walkRight"
+    ],
+    "modelSize": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "file": "assets/characters/owner.webp"
+  },
+  "noah": {
+    "footprint": [
+      1,
+      1
+    ],
+    "frameSize": [
+      256,
+      256
+    ],
+    "anchorPixels": [
+      128.00010681152344,
+      194.692138671875
+    ],
+    "tileXAxisPixels": [
+      43.09983825683594,
+      23.273902893066406
+    ],
+    "columns": 3,
+    "rows": 4,
+    "frames": [
+      "idle",
+      "walkLeft",
+      "walkRight"
+    ],
+    "modelSize": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "file": "assets/characters/noah.webp"
+  }
+}
