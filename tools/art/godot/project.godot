@@ -1,0 +1,13 @@
+config_version=5
+
+[application]
+config/name="Noah design lab"
+run/main_scene="res://lab.tscn"
+
+[display]
+window/size/viewport_width=1100
+window/size/viewport_height=800
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.93,0.89,0.81,1)

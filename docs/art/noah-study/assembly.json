@@ -1,0 +1,195 @@
+{
+  "sourceScale": 0.34,
+  "anchor": [
+    128.00010681152344,
+    194.692138671875
+  ],
+  "cells": [
+    {
+      "dir": 0,
+      "frame": 0,
+      "source": "source-atlas.png",
+      "rect": [
+        0,
+        0,
+        362,
+        388
+      ],
+      "contact": [
+        185,
+        354
+      ]
+    },
+    {
+      "dir": 0,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        0,
+        362,
+        388
+      ],
+      "contact": [
+        555,
+        354
+      ]
+    },
+    {
+      "dir": 0,
+      "frame": 2,
+      "source": "source-opposite.png",
+      "rect": [
+        370,
+        0,
+        350,
+        379
+      ],
+      "contact": [
+        544,
+        347
+      ],
+      "sourceScale": 0.292
+    },
+    {
+      "dir": 1,
+      "frame": 0,
+      "source": "source-atlas.png",
+      "rect": [
+        0,
+        388,
+        362,
+        349
+      ],
+      "contact": [
+        190,
+        684
+      ]
+    },
+    {
+      "dir": 1,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        388,
+        362,
+        349
+      ],
+      "contact": [
+        553,
+        684
+      ]
+    },
+    {
+      "dir": 1,
+      "frame": 2,
+      "source": "source-opposite.png",
+      "rect": [
+        370,
+        379,
+        350,
+        343
+      ],
+      "contact": [
+        544,
+        692
+      ],
+      "sourceScale": 0.29
+    },
+    {
+      "dir": 2,
+      "frame": 0,
+      "source": "source-atlas.png",
+      "rect": [
+        0,
+        737,
+        362,
+        343
+      ],
+      "contact": [
+        193,
+        1042
+      ]
+    },
+    {
+      "dir": 2,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        737,
+        362,
+        343
+      ],
+      "contact": [
+        555,
+        1042
+      ]
+    },
+    {
+      "dir": 2,
+      "frame": 2,
+      "source": "source-opposite.png",
+      "rect": [
+        370,
+        722,
+        350,
+        340
+      ],
+      "contact": [
+        546,
+        1030
+      ],
+      "sourceScale": 0.303,
+      "sourceScaleX": 0.27
+    },
+    {
+      "dir": 3,
+      "frame": 0,
+      "source": "source-atlas.png",
+      "rect": [
+        0,
+        1080,
+        362,
+        368
+      ],
+      "contact": [
+        188,
+        1364
+      ]
+    },
+    {
+      "dir": 3,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        1080,
+        362,
+        368
+      ],
+      "contact": [
+        550,
+        1364
+      ]
+    },
+    {
+      "dir": 3,
+      "frame": 2,
+      "source": "source-opposite.png",
+      "rect": [
+        370,
+        1062,
+        350,
+        386
+      ],
+      "contact": [
+        548,
+        1370
+      ],
+      "sourceScale": 0.296,
+      "sourceScaleX": 0.27
+    }
+  ]
+}
