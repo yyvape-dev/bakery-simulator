@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-14",
+  "character": "Noah",
+  "approved_design": "noah-approved-v3.png",
+  "user_decision": "一旦これでいこう",
+  "game_integrated": false,
+  "frames_created": [
+    "single design-study standing pose"
+  ],
+  "next": [
+    "four-direction idle poses",
+    "two walking frames for each direction",
+    "in-game scale and foot-anchor validation"
+  ],
+  "preserve": [
+    "black-white Border Collie",
+    "sideways folded feathered ears",
+    "long upper eyelashes",
+    "white forehead blaze and muzzle",
+    "blue apron and cream pocket",
+    "one-tile footprint"
+  ]
+}
