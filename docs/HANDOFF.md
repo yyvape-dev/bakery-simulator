@@ -6,7 +6,7 @@
 
 - 採用第3案と実装・モデル・投影を読み、毛の写実性と尾の張り出しを簡略化した4方向×3コマの比較候補を制作。
 - `docs/art/noah-study/noah.webp` と制作元・組立仕様・確認画像・Godot動画を保存。最終採用は未確定。詳しくは `docs/art/noah-study/README.md`。
-- Web比較URL：`https://yyvape-dev.github.io/bakery-simulator/?noah=study`。通常URLは基礎モデル。URLで画像だけを切り替え、セーブ・経路・配置・UIは共通。
+- Web比較URL（main反映後）：`https://yyvape-dev.github.io/bakery-simulator/?noah=study`。現在は `art/noah-design-lab` の比較候補で、mainへの公開反映は承認待ち。通常URLは基礎モデル。URLで画像だけを切り替え、セーブ・経路・配置・UIは共通。
 - `tools/art/godot/project.godot` はデザイン検証用。旧素材切替、歩行、輪郭、明暗の簡略化、高さ／幅／全体70〜130%、棚周りの移動と前後関係を確認できる。Webからの移行は行っていない。
 - 3画面サイズで108通りの方向／コマ／体型と接地原点・人物選択、候補使用のworkflow20ケース・3日営業を確認。Godot 4.6.3で実描画。スマホ実機は未確認。
 - 次はGodotの輪郭・明暗比較を使い、折れ耳の三角形の読み取り、顔と胴の比率、まつ毛、小さい表示での塗りを詰める。生成元が異なる歩行コマの輪郭にも微細な差がある。現候補を最適・最終完成として扱わない。

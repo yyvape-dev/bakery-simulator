@@ -4,7 +4,7 @@
 
 ## 見る・動かす
 
-- Web比較：https://yyvape-dev.github.io/bakery-simulator/?noah=study
+- Web比較（main反映後）：https://yyvape-dev.github.io/bakery-simulator/?noah=study
 - 通常表示：https://yyvape-dev.github.io/bakery-simulator/
 - Godot：リポジトリの `tools/art/godot/project.godot` をGodot 4.6で開き、実行。
 - `godot-idle.png`：4方向の待機、ゲーム相当サイズ、12コマ。
@@ -15,6 +15,7 @@
 - `web-320x568.png` / `web-390x844.png` / `web-844x390.png`：Chromiumでの表示。
 
 Godotはデザインの検証用。Web版の経営・配置・経路・保存は引き続き既存実装を使う。
+現在は開発ブランチ `art/noah-design-lab` の比較候補。mainへの公開反映は承認待ちで、公開URLにはまだ本候補を配信していない。
 候補表示はURLの `noah=study` で切替。体型調整は既存スタッフ画面を使う。
 Godotには旧ノアとの切替、待機／歩行、接地点、輪郭表示、明暗の簡略化、高さ・幅・全体70〜130%の操作を用意した。
 
