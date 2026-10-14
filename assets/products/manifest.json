@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "art": "soft 2D thick paint",
+  "assets": {
+    "butter": {
+      "src": "assets/products/butter.webp",
+      "rect": [
+        12.659,
+        20.358,
+        134.497,
+        100.873
+      ]
+    },
+    "flour": {
+      "src": "assets/products/flour.webp",
+      "rect": [
+        6.097,
+        8.737,
+        146.806,
+        110.105
+      ]
+    },
+    "water": {
+      "src": "assets/products/water.webp",
+      "rect": [
+        6.313,
+        10.616,
+        147.272,
+        110.454
+      ]
+    },
+    "milk": {
+      "src": "assets/products/milk.webp",
+      "rect": [
+        5.065,
+        3.363,
+        149.766,
+        112.325
+      ]
+    },
+    "choco": {
+      "src": "assets/products/choco.webp",
+      "rect": [
+        9.708,
+        9.481,
+        138.329,
+        103.747
+      ]
+    },
+    "cheese": {
+      "src": "assets/products/cheese.webp",
+      "rect": [
+        3.151,
+        10.245,
+        154.604,
+        115.953
+      ]
+    },
+    "decor-plate": {
+      "src": "assets/products/decor-plate.webp",
+      "rect": [
+        -0.899,
+        1.755,
+        161.574,
+        121.181
+      ]
+    },
+    "decor-cloth": {
+      "src": "assets/products/decor-cloth.webp",
+      "rect": [
+        0.543,
+        1.542,
+        156.751,
+        117.563
+      ]
+    },
+    "decor-flower": {
+      "src": "assets/products/decor-flower.webp",
+      "rect": [
+        5.599,
+        10.536,
+        148.289,
+        111.217
+      ]
+    },
+    "bread-water-none": {
+      "src": "assets/products/bread-water-none.webp",
+      "rect": [
+        -3.269,
+        5.484,
+        165.038,
+        123.779
+      ]
+    },
+    "bread-water-butter": {
+      "src": "assets/products/bread-water-butter.webp",
+      "rect": [
+        2.055,
+        5.535,
+        153.542,
+        115.156
+      ]
+    },
+    "bread-water-choco": {
+      "src": "assets/products/bread-water-choco.webp",
+      "rect": [
+        -2.367,
+        5.259,
+        162.337,
+        121.753
+      ]
+    },
+    "bread-water-cheese": {
+      "src": "assets/products/bread-water-cheese.webp",
+      "rect": [
+        -4.384,
+        4.494,
+        164.764,
+        123.573
+      ]
+    },
+    "bread-milk-none": {
+      "src": "assets/products/bread-milk-none.webp",
+      "rect": [
+        0.158,
+        6.321,
+        155.711,
+        116.783
+      ]
+    },
+    "bread-milk-butter": {
+      "src": "assets/products/bread-milk-butter.webp",
+      "rect": [
+        -3.74,
+        1.945,
+        165.866,
+        124.4
+      ]
+    },
+    "bread-milk-choco": {
+      "src": "assets/products/bread-milk-choco.webp",
+      "rect": [
+        -3.063,
+        4.94,
+        163.947,
+        122.96
+      ]
+    },
+    "bread-milk-cheese": {
+      "src": "assets/products/bread-milk-cheese.webp",
+      "rect": [
+        -4.588,
+        2.705,
+        166.983,
+        125.237
+      ]
+    }
+  }
+}
