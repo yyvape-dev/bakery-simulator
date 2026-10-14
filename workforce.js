@@ -36,7 +36,7 @@ function createBakeryCrew(api,saved){
  function can(a,type){const sim=s(),v=api.customer();if(staff.some(b=>b!==a&&b.job?.type===type))return false;
   if(type==='supply')return sim.materials<6&&world().coins>=30;
   if(type==='collect')return sim.ovenReady>0&&api.service('oven');
-  if(type==='produce')return sim.materials>0&&!sim.bake&&!sim.ovenReady&&breadTotal()+5<=(sim.phase==='prep'?15:20)&&(sim.phase!=='trading'||sim.minute+34<=1080)&&api.service('prep')&&api.service('oven');
+  if(type==='produce')return (!api.canProduce||api.canProduce())&&sim.materials>0&&!sim.bake&&!sim.ovenReady&&breadTotal()+5<=(sim.phase==='prep'?15:20)&&(sim.phase!=='trading'||sim.minute+34<=1080)&&api.service('prep')&&api.service('oven');
   if(type==='stock')return sim.ready>0&&sim.stock<12&&api.service('oven')&&api.service('shelf');
   if(type==='checkout')return v.active&&v.reserved&&!v.paid&&['checkout','waiting'].includes(v.stage)&&api.service('register');
   return false;

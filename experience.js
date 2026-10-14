@@ -14,7 +14,7 @@
  $('openMenu').onclick=openMenu;$('closeMenu').onclick=()=>{$('menuDialog').close();api.update()};
  menuLaunch('build',building);menuLaunch('team',()=>{screen='normal';api.showStaff()});
  menuLaunch('menuReport',()=>{screen='normal';api.showReport()});
- menuLaunch('products',()=>{screen='normal';$('productDialog').showModal()});menuLaunch('settings',()=>{screen='normal';$('settingsDialog').showModal()});
+ menuLaunch('products',()=>{screen='normal';api.products().open()});menuLaunch('settings',()=>{screen='normal';$('settingsDialog').showModal()});
  for(const id of ['start','close']){const existing=$(id).onclick;$(id).onclick=()=>{$('menuDialog').close();screen='normal';existing()}};
  for(const [button,dialog] of [['closeProducts','productDialog'],['closeSettings','settingsDialog']])$(button).onclick=()=>{$(dialog).close();api.update()};
  for(const id of dialogs)$(id).addEventListener('close',()=>{api.update();$('openMenu').focus({preventScroll:true})});
@@ -38,7 +38,7 @@
  $('equipmentCommand').onclick=()=>{const o=state().objects.find(o=>o.id===state().selection);if(!o||sim().phase==='ended')return;const task=o.type==='shelf'?'stock':o.type==='register'?'checkout':'produce',a=worker(o.type);api.crew().command(a.id,task);api.flash(a.name+'に'+api.crew().labels[task]+'を指示しました');api.update()};
  const oldErase=$('erase').onclick;$('erase').onclick=()=>{const o=state().objects.find(o=>o.id===state().selection);if(!o)return oldErase();if(confirm(api.furniture[o.type][0]+'を撤去しますか？ '+Math.floor(api.furniture[o.type][4]/2)+'円返金します。'))api.removeFurniture(o)};
  function text(id,value){if($(id).textContent!==value)$(id).textContent=value}
- function paintProduct(){const s=sim(),a=api.crew().staff.find(a=>a.id===api.crew().selected);text('productStaff','指示するスタッフ：'+a.name+'（スタッフ画面で変更できます）');const values=[['単価','120円'],['棚全体の在庫',s.stock+' / 12個'],['焼き上がり',s.ready+s.ovenReady+'個'],['今日の販売',s.sold+'個'],['今日の売上',s.sales.toLocaleString()+'円']];$('productInfo').replaceChildren(...values.map(([title,value])=>{const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=title;dd.textContent=value;row.append(dt,dd);return row}))}
+ function paintProduct(){api.products().paint()}
  function paint(){const s=sim(),o=state().objects.find(o=>o.id===state().selection),tool=api.interiorMode();
   for(const b of document.querySelectorAll('[data-job]'))b.disabled=s.phase==='ended';text('customerCount',s.customers+'人');text('businessStatus','Day '+s.day+' · '+(s.phase==='prep'?'開店前':s.phase==='ended'?'営業終了':s.open?'営業中':'営業停止中'));text('baking',s.bake?'焼き上がりまで '+s.bake+'分':'焼き上がり '+(s.ready+s.ovenReady)+'個');text('stock','棚在庫 '+s.stock+' / 12');
   if($('productDialog').open)paintProduct();
