@@ -5,6 +5,8 @@ const ANCHOR = Vector2(128.00010681152344, 194.692138671875)
 const TILE_X = 43.09983825683594
 var atlas: Texture2D
 var baseline: Texture2D
+var companion: Texture2D
+var character := "noah"
 var shelf: Texture2D
 var elapsed := 0.0
 var walking := true
@@ -30,28 +32,31 @@ func texture(relative: String) -> Texture2D:
 	return ImageTexture.create_from_image(im)
 
 func _ready() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg == "--owner": character = "owner"
 	preview_material = ShaderMaterial.new()
 	preview_material.shader = load("res://flat_preview.gdshader")
 	material = preview_material
-	baseline = texture("assets/characters/noah.webp")
-	atlas = texture("docs/art/noah-study/noah.webp")
+	select_character(character)
+	companion = texture("docs/art/noah-study/noah.webp")
 	shelf = texture("assets/shelf_r0.webp")
 	var panel := VBoxContainer.new()
 	panel.position = Vector2(24, 16)
 	panel.size.x = 1050
 	add_child(panel)
 	var heading := Label.new()
-	heading.text = "NOAH / 4 directions / idle + two contact poses / WEB projection"
+	heading.text = "CHARACTER / 4 directions / idle + two contact poses / WEB projection"
 	heading.add_theme_color_override("font_color", Color("40352d"))
 	panel.add_child(heading)
 	var actions := HBoxContainer.new()
 	panel.add_child(actions)
-	for text in ["Candidate / baseline", "Walk / idle", "Ground guides", "Silhouette / paint", "Flat shading"]:
+	for text in ["Owner / Noah", "Candidate / baseline", "Walk / idle", "Ground guides", "Silhouette / paint", "Flat shading"]:
 		var button := Button.new()
 		button.text = text
 		actions.add_child(button)
 		button.pressed.connect(func():
 			match text:
+				"Owner / Noah": select_character("owner" if character == "noah" else "noah")
 				"Candidate / baseline": use_candidate = not use_candidate
 				"Walk / idle": walking = not walking
 				"Ground guides": show_guides = not show_guides
@@ -100,9 +105,15 @@ func tile(p: Vector2, tx: float) -> void:
 	points.append(points[0])
 	draw_polyline(points, Color("b3a083"), 1.0)
 
-func actor(p: Vector2, dir: int, frame: int, tx: float, source: Texture2D) -> void:
+func select_character(id: String) -> void:
+	character = id
+	baseline = texture("assets/characters/" + id + ".webp")
+	atlas = texture("docs/art/" + id + "-study/" + id + ".webp")
+
+func actor(p: Vector2, dir: int, frame: int, tx: float, source: Texture2D, adjustable := true) -> void:
 	if source == null: return
 	var scale := Vector2(width_scale, height_scale)*overall_scale*tx/TILE_X
+	if not adjustable: scale = Vector2.ONE*tx/TILE_X
 	draw_set_transform(p, 0, scale)
 	draw_texture_rect_region(source, Rect2(-ANCHOR, Vector2(256,256)), Rect2(frame*256,dir*256,256,256), Color.BLACK if silhouette else Color.WHITE)
 	draw_set_transform(Vector2.ZERO)
@@ -122,8 +133,14 @@ func _draw() -> void:
 	# Large inspection row: all four true directions on independent footprints.
 	for dir in range(4):
 		var p := Vector2(180+dir*245,385)
-		tile(p,50)
-		actor(p,dir,frame,50,source)
+		if character == "owner":
+			tile(p-Vector2(60,0),40)
+			actor(p-Vector2(60,0),dir,frame,40,companion,false)
+			tile(p+Vector2(40,0),40)
+			actor(p+Vector2(40,0),dir,frame,40,source)
+		else:
+			tile(p,50)
+			actor(p,dir,frame,50,source)
 	# Small/game-scale row: walk around a 2x1 shelf with game-space depth sorting.
 	for dir in range(4):
 		var origin := Vector2(150+dir*245,530)
@@ -149,7 +166,7 @@ func _draw() -> void:
 func _process(delta: float) -> void:
 	elapsed += delta
 	preview_material.set_shader_parameter("strength", 0.85 if flat_shading else 0.0)
-	status.text = "%s | width %.0f%%  height %.0f%%  scale %.0f%% | %s | red cross = fixed ground anchor" % ["CANDIDATE" if use_candidate else "BASELINE",width_scale*100,height_scale*100,overall_scale*100,"5-value shading" if flat_shading else "paint",]
+	status.text = "%s %s | width %.0f%%  height %.0f%%  scale %.0f%% | %s | red cross = fixed ground anchor" % [character.to_upper(),"CANDIDATE" if use_candidate else "BASELINE",width_scale*100,height_scale*100,overall_scale*100,"5-value shading" if flat_shading else "paint",]
 	queue_redraw()
 	count += 1
 	if capture_path != "" and count == 8:

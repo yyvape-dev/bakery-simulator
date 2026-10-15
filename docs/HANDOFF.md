@@ -2,6 +2,15 @@
 
 更新：2026-10-14。新しいチャットではこの文書を最初に読み、現行の main とコードを確認する。過去の検討を再開せず、直近で採用されたノア第3案から継続する。
 
+## 2026-10-15：主人公の第1案を基準に4方向・歩行を制作
+
+- ユーザー写真の1枚目右の成人女性、2枚目左の同女性の背面をモチーフに制作。笑顔・前髪・低いお団子・クリームのシュシュ、クリーム袖・茶色のパンツ・緑エプロン。元写真はリポジトリに含めていない。
+- ユーザーが「おお、いいんじゃない」と評価した4方向を `docs/art/owner-study/approved-v1.png` に保存。待機にはこの画像そのものを使い、歩行2コマを追加して `owner.webp` に組立。
+- 比較URL（main反映後）：`https://yyvape-dev.github.io/bakery-simulator/?owner=study&noah=study`。通常URLは旧素材。人物ごとに独立した画像切替で、保存・経路・占有・UIは共通。
+- Godotは `godot --path tools/art/godot -- --owner`。主人公とノアを同縮尺で並べ、旧素材・輪郭・体型・歩行・接地・棚前後を確認できる。
+- 主人公の108通りの方向／コマ／体型・人物選択・保存復元、主人公とノアの候補を併用したworkflow20項目・3日営業に成功。Godotで実描画。制作元・組立仕様・確認画像・動画と注意点は `docs/art/owner-study/README.md`。
+- 再構築：`node tools/art/pack_noah_study.cjs docs/art/owner-study/assembly.json`。ノアの既定組立結果はバイト一致。主人公確認：`node tools/tests/noah-art.cjs --owner-study`、営業確認：`node tools/tests/workflow.cjs --owner-study --noah-study`。
+
 ## 2026-10-14：ノアの比較試作とGodot検証を追加
 
 - 採用第3案と実装・モデル・投影を読み、毛の写実性と尾の張り出しを簡略化した4方向×3コマの比較候補を制作。

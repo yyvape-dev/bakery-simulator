@@ -1,0 +1,200 @@
+{
+  "character": "owner",
+  "sourceScale": 0.35,
+  "anchor": [
+    128.00010681152344,
+    194.692138671875
+  ],
+  "cells": [
+    {
+      "dir": 0,
+      "frame": 0,
+      "source": "approved-v1.png",
+      "rect": [
+        165,
+        0,
+        390,
+        650
+      ],
+      "contact": [
+        370,
+        620
+      ],
+      "sourceScale": 0.18
+    },
+    {
+      "dir": 0,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        0,
+        362,
+        375
+      ],
+      "contact": [
+        538,
+        352
+      ]
+    },
+    {
+      "dir": 0,
+      "frame": 2,
+      "source": "source-grounded.png",
+      "rect": [
+        215,
+        0,
+        310,
+        535
+      ],
+      "contact": [
+        370,
+        500
+      ],
+      "sourceScale": 0.22
+    },
+    {
+      "dir": 1,
+      "frame": 0,
+      "source": "approved-v1.png",
+      "rect": [
+        680,
+        0,
+        390,
+        650
+      ],
+      "contact": [
+        865,
+        620
+      ],
+      "sourceScale": 0.18
+    },
+    {
+      "dir": 1,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        375,
+        362,
+        340
+      ],
+      "contact": [
+        544,
+        685
+      ]
+    },
+    {
+      "dir": 1,
+      "frame": 2,
+      "source": "source-grounded.png",
+      "rect": [
+        215,
+        535,
+        310,
+        523
+      ],
+      "contact": [
+        377,
+        1018
+      ],
+      "sourceScale": 0.22
+    },
+    {
+      "dir": 2,
+      "frame": 0,
+      "source": "approved-v1.png",
+      "rect": [
+        190,
+        650,
+        390,
+        632
+      ],
+      "contact": [
+        370,
+        1224
+      ],
+      "sourceScale": 0.18
+    },
+    {
+      "dir": 2,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        715,
+        362,
+        350
+      ],
+      "contact": [
+        546,
+        1042
+      ],
+      "sourceScale": 0.33
+    },
+    {
+      "dir": 2,
+      "frame": 2,
+      "source": "source-atlas.png",
+      "rect": [
+        724,
+        715,
+        362,
+        350
+      ],
+      "contact": [
+        908,
+        1042
+      ],
+      "sourceScale": 0.33
+    },
+    {
+      "dir": 3,
+      "frame": 0,
+      "source": "approved-v1.png",
+      "rect": [
+        680,
+        650,
+        390,
+        632
+      ],
+      "contact": [
+        865,
+        1224
+      ],
+      "sourceScale": 0.18
+    },
+    {
+      "dir": 3,
+      "frame": 1,
+      "source": "source-atlas.png",
+      "rect": [
+        362,
+        1065,
+        362,
+        383
+      ],
+      "contact": [
+        545,
+        1380
+      ],
+      "sourceScale": 0.33
+    },
+    {
+      "dir": 3,
+      "frame": 2,
+      "source": "source-atlas.png",
+      "rect": [
+        724,
+        1065,
+        362,
+        383
+      ],
+      "contact": [
+        907,
+        1380
+      ],
+      "sourceScale": 0.33
+    }
+  ]
+}
