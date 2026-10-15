@@ -1,9 +1,9 @@
 // Real game projection, rendering and picking of hands on every side of the prep bench.
 const {execFileSync}=require('child_process');
 const {chromium}=require('playwright'),fs=require('fs'),path=require('path'),assert=require('assert');
-const ROOT=path.resolve(__dirname,'../..'),BEFORE='255432a79fc31f3374b757e0aa47f65e7aad2294';
+const ROOT=path.resolve(__dirname,'../..'),BEFORE='afad7a2660c473cb00bf1f59b53bee22dfa7fe89';
 assert.equal(require('../../character-motion.js').prepHeight,JSON.parse(fs.readFileSync(path.join(ROOT,'assets/furniture_geometry.json'))).furniture.prep.workSurfaceHeightTiles);
-const OUT=path.join(ROOT,'docs/art/work-motions/contact-planar');
+const OUT=path.join(ROOT,'docs/art/work-motions/contact-reach');
 const HOOK='window.__contact={state,crew,workImages,furnitureViews,characterSprite,hitCharacter,masks,characterMotion,point,render,get g(){return g}};';
 (async()=>{
  const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
@@ -25,7 +25,7 @@ const HOOK='window.__contact={state,crew,workImages,furnitureViews,characterSpri
     const group=await page.evaluate(zoom=>{
      const t=__contact,M=BakeryCharacterMotion,o=t.state.objects.find(o=>o.type==='prep'),results=[];
      const positions=[[1,3],[2,3],[0,4],[0,5],[1,6],[2,6],[3,4],[3,5]];
-     const looks=[{name:'small',height:.7,width:.7,scale:.7},{name:'default',height:1,width:1,scale:1},{name:'large',height:1.3,width:1.3,scale:1.3},{name:'short-wide',height:.7,width:1.3,scale:1},{name:'tall-thin',height:1.3,width:.7,scale:1}];
+     const looks=[];for(const height of [.7,1,1.3])for(const width of [.7,1,1.3])for(const scale of [.7,1,1.3])looks.push({name:height===1&&width===1&&scale===1?'default':`${height}-${width}-${scale}`,height,width,scale});
      t.state.zoom=zoom;t.render();
      for(const a of t.crew.staff)for(let rot=0;rot<4;rot++)for(let station=0;station<8;station++)for(const look of looks){
       for(const other of t.crew.staff)if(other!==a){other.x=8;other.y=8;other.job=null}
@@ -41,13 +41,13 @@ const HOOK='window.__contact={state,crew,workImages,furnitureViews,characterSpri
         if(Math.abs(source-y)>1e-8||Math.abs((128+shift)-M.contactShift(source,fit)-128)>1e-8)throw Error('Hit-test inverse mismatch');
         if(y&&dy<=M.contactY(y-2,fit))throw Error('Folded sprite');
        }
-       if(look.name==='default'&&(Math.abs(fit.residual)>2||Math.abs(fit.residualX)>1e-8))throw Error('Default hands off board '+a.id+' '+station+' '+fit.residual+' '+fit.residualX);
-       // The board's four floor-space corners remain on the top, clear of central tools.
+       if(Math.abs(fit.residual)>1.1||Math.abs(fit.residualX)>1e-8)throw Error('Hands off board '+a.id+' '+station+' '+fit.residual+' '+fit.residualX);
+       // Board corners stay on the bench or in this worker's cell, clear of tools.
        for(const dx of [-.14,.14])for(const dy of [-.14,.14]){
-        const x=fit.world.x+dx,y=fit.world.y+dy;if(x<=o.x||x>=o.x+2||y<=o.y||y>=o.y+2)throw Error('Board hangs off bench');
+        const x=fit.world.x+dx,y=fit.world.y+dy;if((x<=o.x||x>=o.x+2||y<=o.y||y>=o.y+2)&&!(x>=a.x&&x<=a.x+1&&y>=a.y&&y<=a.y+1))throw Error('Board extends beyond worker cell');
         if(Math.abs(x-(o.x+1))<.44&&Math.abs(y-(o.y+1))<.44)throw Error('Board intersects tool area');
        }
-       if(look.name==='default'){
+       if(fit.overTop||a.x+a.y+1>o.x+o.y+2){
         let hit=false;const alpha=t.masks(sp.im).alpha;
         for(let y=-6;y<=6&&!hit;y++)for(let x=-10;x<=10&&!hit;x++){
          const px=fit.hand[0]+x,py=fit.hand[1]+y;if(alpha[(sp.dir*256+py)*sp.im.naturalWidth+sp.frame*256+px]<128)continue;
@@ -56,7 +56,7 @@ const HOOK='window.__contact={state,crew,workImages,furnitureViews,characterSpri
         }
         if(!hit)throw Error('Visible hands cannot select worker');
        }
-       results.push({id:a.id,rot,station,look:look.name,frame,residual:fit.residual,residualX:fit.residualX});
+       results.push({id:a.id,rot,station,look:look.name,frame,residual:fit.residual,residualX:fit.residualX,height:fit.height,overTop:fit.overTop});
       }
      }
      o.rot=0;for(const a of t.crew.staff){
@@ -72,19 +72,19 @@ const HOOK='window.__contact={state,crew,workImages,furnitureViews,characterSpri
   fs.mkdirSync(OUT,{recursive:true});await page.setViewportSize({width:390,height:844});
   for(const version of ['after','before']){
    if(version==='before'){baseline=true;await page.reload();await ready()}
-   for(const id of ['owner','noah'])for(let dir=0;dir<4;dir++)for(let frame=0;frame<2;frame++){
-    const clip=await page.evaluate(({id,dir,frame})=>{
+   for(const size of [.7,1,1.3])for(const id of ['owner','noah'])for(let dir=0;dir<4;dir++)for(let frame=0;frame<2;frame++){
+    const clip=await page.evaluate(({id,dir,frame,size})=>{
      const t=__contact;t.state.zoom=1.55;for(const a of t.crew.staff){a.job=null;a.x=8;a.y=8;a.look={height:1,width:1,scale:1}}
-     const a=t.crew.staff.find(a=>a.id===id);[a.x,a.y]=[[1,3],[0,4],[1,6],[3,4]][dir];t.characterMotion.update([a],0);a.job={type:'produce',stage:'knead',targetId:4};t.characterMotion.update([a],0);if(frame)t.characterMotion.update([a],225);t.render();
+     const a=t.crew.staff.find(a=>a.id===id);a.look={height:size,width:size,scale:size};[a.x,a.y]=[[1,3],[0,4],[1,6],[3,4]][dir];t.characterMotion.update([a],0);a.job={type:'produce',stage:'knead',targetId:4};t.characterMotion.update([a],0);if(frame)t.characterMotion.update([a],225);t.render();
      const rect=document.querySelector('canvas').getBoundingClientRect(),p=t.point(2,5);return{x:Math.max(0,Math.round(rect.x+p.x-110)),y:Math.max(0,Math.round(rect.y+p.y-130)),width:220,height:230};
-    },{id,dir,frame});
-    await page.screenshot({path:path.join(OUT,`${id}-${dir}-${frame}-${version}.png`),clip});
+    },{id,dir,frame,size});
+    await page.screenshot({path:path.join(OUT,`${id}-${size}-${dir}-${frame}-${version}.png`),clip});
    }
   }
   assert.deepEqual(errors,[]);
   const max=(rows,key)=>Math.max(...rows.map(r=>Math.abs(r[key]))),defaults=results.filter(r=>r.look==='default');
-  const report={cases:results.length,baseline:BEFORE,maxDefaultResidual:max(defaults,'residual'),maxDefaultResidualX:max(defaults,'residualX'),maxLimitedResidual:max(results,'residual'),maxLimitedResidualX:max(results,'residualX'),groups:[]};
-  for(const viewport of ['390x844','320x568','844x390'])for(const id of ['owner','noah'])for(const look of ['small','default','large','short-wide','tall-thin']){
+  const report={cases:results.length,baseline:BEFORE,maxDefaultResidual:max(defaults,'residual'),maxDefaultResidualX:max(defaults,'residualX'),maxLimitedResidual:max(results,'residual'),maxLimitedResidualX:max(results,'residualX'),minBoardHeight:Math.min(...results.map(r=>r.height)),maxBoardHeight:Math.max(...results.map(r=>r.height)),groups:[]};
+  for(const viewport of ['390x844','320x568','844x390'])for(const id of ['owner','noah'])for(const look of [...new Set(results.map(r=>r.look))]){
    const rows=results.filter(r=>r.viewport===viewport&&r.id===id&&r.look===look);report.groups.push({viewport,id,look,cases:rows.length,maxResidual:max(rows,'residual'),maxResidualX:max(rows,'residualX')});
   }
   fs.writeFileSync(path.join(OUT,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({...report,groups:undefined}));

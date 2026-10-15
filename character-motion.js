@@ -30,18 +30,34 @@ function contact(a,sp,o,project,tx){
  const ax=a.x+.5,ay=a.y+.5;
  // Work only from an adjacent cell; stale jobs must not stretch across the shop.
  const edgeX=Math.max(o.x,Math.min(o.x+o.width,ax)),edgeY=Math.max(o.y,Math.min(o.y+o.height,ay));
- const inset=.18,x=Math.max(o.x+inset,Math.min(o.x+o.width-inset,ax)),y=Math.max(o.y+inset,Math.min(o.y+o.height-inset,ay));
  if(Math.abs(ax-edgeX)+Math.abs(ay-edgeY)>.501)return null;
  const hand=kneadHands[a.id]?.[sp.dir]?.[sp.frame];if(!hand)return null;
- const surface=project(x,y),sx=sp.w/256,sy=sp.h/256;
- // Height projection from the fixed Blender camera: Z pixels / X-floor pixels.
- surface.y-=prepHeight*tx*Math.sqrt(2)*Math.sqrt(1-.54*.54);
+ const sx=sp.w/256,sy=sp.h/256,zScale=tx*Math.sqrt(2)*Math.sqrt(1-.54*.54);
  const top=sp.dir<2?(a.id==='noah'?151:132):(a.id==='noah'?125:115),bottom=184;
- // Keep the head, boots and ground anchor fixed. Limit compression for tiny looks.
- const desired=(surface.y-sp.y)/sy-hand[1],limit=(hand[1]-top)*.45;
- const dy=Math.max(-limit,Math.min((bottom-hand[1])*.45,desired));
- const desiredX=(surface.x-sp.x)/sx-hand[0],dx=Math.max(-18,Math.min(18,desiredX));
- return{hand,top,bottom,dx,dy,surface,targetId:o.id,world:{x,y},residual:(desired-dy)*sy,residualX:(desiredX-dx)*sx};
+ const normal={x:ax<o.x?-1:ax>o.x+o.width?1:0,y:ay<o.y?-1:ay>o.y+o.height?1:0};
+ const clamp=(v,l,h)=>Math.max(l,Math.min(h,v));
+ // Match the lateral reach before choosing a height; keep a clear central tool area.
+ let inset=clamp(.68*a.look.width*a.look.scale-.5,-.17,.30);
+ let x,y;
+ const place=()=>{x=clamp(ax,o.x+inset,o.x+o.width-inset);y=clamp(ay,o.y+inset,o.y+o.height-inset)};
+ const fitAtBench=()=>{
+  const surface=project(x,y);surface.y-=prepHeight*zScale;
+  const desired=(surface.y-sp.y)/sy-hand[1],dy=clamp(desired,-(hand[1]-top)*.45,(bottom-hand[1])*.45);
+  return{surface,desired,dy,height:prepHeight+(desired-dy)*sy/zScale};
+ };
+ place();
+ // A low pull-out board crosses the edge rather than passing through the solid top.
+ if(fitAtBench().height<prepHeight-.03){inset=Math.min(inset,-.06);place()}
+ let screen=project(x,y),desiredX=(screen.x-sp.x)/sx-hand[0],dx=clamp(desiredX,-18,18);
+ const correction=(desiredX-dx)*sx/tx;
+ if(normal.y)x=clamp(x-correction,ax-.35,ax+.35);
+ else y=clamp(y+correction,ay-.35,ay+.35);
+ const fit=fitAtBench();
+ const height=Math.abs(fit.height-prepHeight)>.03?clamp(fit.height,.15,1.8):prepHeight;
+ const surface=project(x,y);surface.y-=height*zScale;
+ const desired=(surface.y-sp.y)/sy-hand[1],dy=clamp(desired,-(hand[1]-top)*.45,(bottom-hand[1])*.45);
+ desiredX=(surface.x-sp.x)/sx-hand[0];dx=clamp(desiredX,-18,18);
+ return{hand,top,bottom,dx,dy,height,normal,overTop:height>=prepHeight-.03,surface,targetId:o.id,world:{x,y},mount:{x:clamp(x,o.x,o.x+o.width),y:clamp(y,o.y,o.y+o.height)},residual:(desired-dy)*sy,residualX:(desiredX-dx)*sx};
 }
 function contactWeight(y,fit){
  if(!fit||y<=fit.top||y>=fit.bottom)return 0;
