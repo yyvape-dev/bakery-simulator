@@ -1,0 +1,1844 @@
+{
+  "frameSize": [
+    256,
+    256
+  ],
+  "anchor": [
+    128.00010681152344,
+    194.692138671875
+  ],
+  "sheets": [
+    {
+      "id": "owner",
+      "kind": "knead",
+      "columns": 2,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 512,
+            "height": 389
+          },
+          "box": [
+            247,
+            21,
+            424,
+            389
+          ],
+          "contact": [
+            359.84837758112093,
+            379.8
+          ],
+          "scale": 0.3012211668928087
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 512,
+            "top": 0,
+            "width": 512,
+            "height": 389
+          },
+          "box": [
+            610,
+            20,
+            784,
+            389
+          ],
+          "contact": [
+            720.1086572438163,
+            379.775
+          ],
+          "scale": 0.3012211668928087
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 389,
+            "width": 512,
+            "height": 379
+          },
+          "box": [
+            242,
+            397,
+            427,
+            763
+          ],
+          "contact": [
+            307.0137073637233,
+            753.85
+          ],
+          "scale": 0.30327868852459017
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 512,
+            "top": 389,
+            "width": 512,
+            "height": 379
+          },
+          "box": [
+            615,
+            397,
+            792,
+            763
+          ],
+          "contact": [
+            682.0759294265911,
+            753.85
+          ],
+          "scale": 0.30327868852459017
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 768,
+            "width": 512,
+            "height": 368
+          },
+          "box": [
+            249,
+            774,
+            455,
+            1129
+          ],
+          "contact": [
+            341.43453510436433,
+            1120.125
+          ],
+          "scale": 0.29295774647887324
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 512,
+            "top": 768,
+            "width": 512,
+            "height": 368
+          },
+          "box": [
+            616,
+            774,
+            808,
+            1129
+          ],
+          "contact": [
+            710.7456556082149,
+            1120.125
+          ],
+          "scale": 0.29295774647887324
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 1136,
+            "width": 512,
+            "height": 400
+          },
+          "box": [
+            221,
+            1137,
+            433,
+            1511
+          ],
+          "contact": [
+            327.2662356744049,
+            1501.65
+          ],
+          "scale": 0.2807486631016043
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/owner-knead.png",
+          "rect": {
+            "left": 512,
+            "top": 1136,
+            "width": 512,
+            "height": 400
+          },
+          "box": [
+            603,
+            1137,
+            796,
+            1511
+          ],
+          "contact": [
+            691.038256227758,
+            1501.65
+          ],
+          "scale": 0.2807486631016043
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "kind": "carry",
+      "columns": 3,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 362,
+            "height": 362
+          },
+          "box": [
+            137,
+            10,
+            314,
+            359
+          ],
+          "contact": [
+            248.61791237113403,
+            350.275
+          ],
+          "scale": 0.3192713326941515,
+          "propPoint": [
+            207,
+            217
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 0,
+            "width": 362,
+            "height": 362
+          },
+          "box": [
+            440,
+            10,
+            618,
+            358
+          ],
+          "contact": [
+            521.6340316374519,
+            349.3
+          ],
+          "scale": 0.3192713326941515,
+          "propPoint": [
+            520,
+            217
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 2,
+          "source": "sources/owner-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 887,
+            "height": 446
+          },
+          "box": [
+            307,
+            8,
+            550,
+            446
+          ],
+          "contact": [
+            487.5992332645237,
+            435.05
+          ],
+          "scale": 0.25439656417867323,
+          "propPoint": [
+            401.70186963112684,
+            251.92180394138452
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 362,
+            "width": 362,
+            "height": 358
+          },
+          "box": [
+            160,
+            366,
+            337,
+            713
+          ],
+          "contact": [
+            221.0310391363023,
+            704.325
+          ],
+          "scale": 0.31988472622478387,
+          "propPoint": [
+            253,
+            568
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 362,
+            "width": 362,
+            "height": 358
+          },
+          "box": [
+            464,
+            366,
+            644,
+            711
+          ],
+          "contact": [
+            564.126827340972,
+            702.375
+          ],
+          "scale": 0.31988472622478387,
+          "propPoint": [
+            560,
+            568
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 2,
+          "source": "sources/owner-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 446,
+            "width": 887,
+            "height": 441
+          },
+          "box": [
+            337,
+            448,
+            574,
+            883
+          ],
+          "contact": [
+            407.770734284205,
+            872.125
+          ],
+          "scale": 0.25517241379310346,
+          "propPoint": [
+            474.0710131619223,
+            689.9903581267217
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 720,
+            "width": 362,
+            "height": 340
+          },
+          "box": [
+            153,
+            725,
+            340,
+            1050
+          ],
+          "contact": [
+            242.3305581251927,
+            1041.875
+          ],
+          "scale": 0.31643002028397565,
+          "propPoint": [
+            315,
+            862
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 720,
+            "width": 362,
+            "height": 340
+          },
+          "box": [
+            464,
+            721,
+            653,
+            1054
+          ],
+          "contact": [
+            514.0863309352518,
+            1045.675
+          ],
+          "scale": 0.31643002028397565,
+          "propPoint": [
+            633,
+            853
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 2,
+          "source": "sources/owner-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 887,
+            "width": 887,
+            "height": 429
+          },
+          "box": [
+            344,
+            888,
+            601,
+            1304
+          ],
+          "contact": [
+            461.8539032711218,
+            1293.6
+          ],
+          "scale": 0.247210953346856,
+          "propPoint": [
+            547.0548258138207,
+            1047.3520845231296
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 1060,
+            "width": 362,
+            "height": 388
+          },
+          "box": [
+            136,
+            1061,
+            318,
+            1399
+          ],
+          "contact": [
+            219.827868852459,
+            1390.55
+          ],
+          "scale": 0.3076171875,
+          "propPoint": [
+            155,
+            1192
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/owner-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 1060,
+            "width": 362,
+            "height": 388
+          },
+          "box": [
+            437,
+            1062,
+            618,
+            1407
+          ],
+          "contact": [
+            564.0081652257445,
+            1398.375
+          ],
+          "scale": 0.3076171875,
+          "propPoint": [
+            470,
+            1192
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 2,
+          "source": "sources/owner-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 1316,
+            "width": 887,
+            "height": 458
+          },
+          "box": [
+            288,
+            1317,
+            559,
+            1753
+          ],
+          "contact": [
+            413.6774924471299,
+            1742.1
+          ],
+          "scale": 0.23847387471330275,
+          "propPoint": [
+            332.0098002261591,
+            1489.3294383716548
+          ]
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "kind": "reach",
+      "columns": 2,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 486,
+            "height": 404
+          },
+          "box": [
+            221,
+            27,
+            383,
+            399
+          ],
+          "contact": [
+            318.54326494201604,
+            389.7
+          ],
+          "scale": 0.29838709677419356
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 486,
+            "top": 0,
+            "width": 486,
+            "height": 404
+          },
+          "box": [
+            565,
+            29,
+            768,
+            401
+          ],
+          "contact": [
+            704.7687424425635,
+            391.7
+          ],
+          "scale": 0.29838709677419356
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 404,
+            "width": 486,
+            "height": 401
+          },
+          "box": [
+            214,
+            414,
+            378,
+            787
+          ],
+          "contact": [
+            279.8199327422806,
+            777.675
+          ],
+          "scale": 0.2975871313672922
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 486,
+            "top": 404,
+            "width": 486,
+            "height": 401
+          },
+          "box": [
+            603,
+            414,
+            823,
+            787
+          ],
+          "contact": [
+            666.1031527395164,
+            777.675
+          ],
+          "scale": 0.2975871313672922
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 805,
+            "width": 486,
+            "height": 374
+          },
+          "box": [
+            220,
+            806,
+            385,
+            1171
+          ],
+          "contact": [
+            321.4189526184539,
+            1161.875
+          ],
+          "scale": 0.2857142857142857
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 486,
+            "top": 805,
+            "width": 486,
+            "height": 374
+          },
+          "box": [
+            606,
+            808,
+            822,
+            1171
+          ],
+          "contact": [
+            704.6181568088033,
+            1161.925
+          ],
+          "scale": 0.2857142857142857
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 1179,
+            "width": 486,
+            "height": 439
+          },
+          "box": [
+            216,
+            1182,
+            388,
+            1556
+          ],
+          "contact": [
+            280.00516403402185,
+            1546.65
+          ],
+          "scale": 0.2788844621513944
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 486,
+            "top": 1179,
+            "width": 486,
+            "height": 439
+          },
+          "box": [
+            555,
+            1180,
+            770,
+            1559
+          ],
+          "contact": [
+            663.8982142857143,
+            1549.525
+          ],
+          "scale": 0.2788844621513944
+        }
+      ]
+    },
+    {
+      "id": "owner",
+      "kind": "checkout",
+      "columns": 2,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 496,
+            "height": 406
+          },
+          "box": [
+            217,
+            25,
+            428,
+            406
+          ],
+          "contact": [
+            360.81176131449985,
+            396.475
+          ],
+          "scale": 0.290956749672346,
+          "propAnchor": [
+            105,
+            158
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 496,
+            "top": 406,
+            "width": 496,
+            "height": 390
+          },
+          "box": [
+            520,
+            410,
+            748,
+            796
+          ],
+          "contact": [
+            679.7800110132158,
+            786.35
+          ],
+          "scale": 0.28756476683937826,
+          "propAnchor": [
+            105,
+            158
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 406,
+            "width": 496,
+            "height": 390
+          },
+          "box": [
+            243,
+            410,
+            463,
+            796
+          ],
+          "contact": [
+            314.68681171098575,
+            786.35
+          ],
+          "scale": 0.28756476683937826,
+          "propAnchor": [
+            153,
+            158
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 496,
+            "top": 0,
+            "width": 496,
+            "height": 406
+          },
+          "box": [
+            563,
+            24,
+            787,
+            406
+          ],
+          "contact": [
+            629.9299645390071,
+            396.45
+          ],
+          "scale": 0.290956749672346,
+          "propAnchor": [
+            153,
+            158
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 796,
+            "width": 496,
+            "height": 373
+          },
+          "box": [
+            243,
+            798,
+            462,
+            1165
+          ],
+          "contact": [
+            341.14300358790365,
+            1155.825
+          ],
+          "scale": 0.2837653478854025,
+          "propAnchor": [
+            153,
+            142
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/owner-reach.png",
+          "rect": {
+            "left": 486,
+            "top": 805,
+            "width": 486,
+            "height": 374
+          },
+          "box": [
+            606,
+            808,
+            822,
+            1171
+          ],
+          "contact": [
+            704.6181568088033,
+            1161.925
+          ],
+          "scale": 0.2857142857142857,
+          "propAnchor": [
+            153,
+            142
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 1169,
+            "width": 496,
+            "height": 417
+          },
+          "box": [
+            210,
+            1170,
+            427,
+            1556
+          ],
+          "contact": [
+            309.50925925925924,
+            1546.35
+          ],
+          "scale": 0.2723735408560311,
+          "propAnchor": [
+            105,
+            142
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/owner-checkout.png",
+          "rect": {
+            "left": 496,
+            "top": 1169,
+            "width": 496,
+            "height": 417
+          },
+          "box": [
+            531,
+            1171,
+            758,
+            1556
+          ],
+          "contact": [
+            654.2150537634409,
+            1546.375
+          ],
+          "scale": 0.2723735408560311,
+          "propAnchor": [
+            105,
+            142
+          ]
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "kind": "knead",
+      "columns": 2,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            206,
+            37,
+            447,
+            357
+          ],
+          "contact": [
+            338.08112724167376,
+            349
+          ],
+          "scale": 0.3129890453834116
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 543,
+            "top": 0,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            612,
+            38,
+            853,
+            357
+          ],
+          "contact": [
+            743.8390576213454,
+            349.025
+          ],
+          "scale": 0.3129890453834116
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 362,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            206,
+            380,
+            452,
+            708
+          ],
+          "contact": [
+            314.7948373218607,
+            699.8
+          ],
+          "scale": 0.2978723404255319
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 543,
+            "top": 362,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            614,
+            380,
+            859,
+            710
+          ],
+          "contact": [
+            724.367302452316,
+            701.75
+          ],
+          "scale": 0.2978723404255319
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 724,
+            "width": 543,
+            "height": 351
+          },
+          "box": [
+            216,
+            736,
+            497,
+            1060
+          ],
+          "contact": [
+            344.2385811467444,
+            1051.9
+          ],
+          "scale": 0.30340557275541796
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 543,
+            "top": 724,
+            "width": 543,
+            "height": 351
+          },
+          "box": [
+            622,
+            738,
+            889,
+            1060
+          ],
+          "contact": [
+            750.4704019488429,
+            1051.95
+          ],
+          "scale": 0.30340557275541796
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 0,
+            "top": 1075,
+            "width": 543,
+            "height": 373
+          },
+          "box": [
+            188,
+            1076,
+            450,
+            1399
+          ],
+          "contact": [
+            316.6279326524979,
+            1390.925
+          ],
+          "scale": 0.29984544049459044
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/noah-knead.png",
+          "rect": {
+            "left": 543,
+            "top": 1075,
+            "width": 543,
+            "height": 373
+          },
+          "box": [
+            604,
+            1076,
+            857,
+            1400
+          ],
+          "contact": [
+            723.7073719752392,
+            1391.9
+          ],
+          "scale": 0.29984544049459044
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "kind": "carry",
+      "columns": 3,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 362,
+            "height": 362
+          },
+          "box": [
+            73,
+            33,
+            306,
+            340
+          ],
+          "contact": [
+            190.39677239844184,
+            332.325
+          ],
+          "scale": 0.31712473572938693,
+          "propPoint": [
+            146,
+            253
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 0,
+            "width": 362,
+            "height": 362
+          },
+          "box": [
+            432,
+            33,
+            665,
+            353
+          ],
+          "contact": [
+            529.1872088098263,
+            345
+          ],
+          "scale": 0.31712473572938693,
+          "propPoint": [
+            512,
+            253
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 2,
+          "source": "sources/noah-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 1024,
+            "height": 397
+          },
+          "box": [
+            389,
+            16,
+            660,
+            397
+          ],
+          "contact": [
+            555.0226052557219,
+            387.475
+          ],
+          "scale": 0.2555309550365401,
+          "propPoint": [
+            468.103961352657,
+            263.960193236715
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 362,
+            "width": 362,
+            "height": 361
+          },
+          "box": [
+            63,
+            372,
+            301,
+            676
+          ],
+          "contact": [
+            174.54646943901759,
+            668.4
+          ],
+          "scale": 0.31646932185145316,
+          "propPoint": [
+            235,
+            591
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 362,
+            "width": 362,
+            "height": 361
+          },
+          "box": [
+            427,
+            373,
+            665,
+            686
+          ],
+          "contact": [
+            567.005006827492,
+            678.175
+          ],
+          "scale": 0.31646932185145316,
+          "propPoint": [
+            600,
+            591
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 2,
+          "source": "sources/noah-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 397,
+            "width": 1024,
+            "height": 371
+          },
+          "box": [
+            369,
+            399,
+            642,
+            763
+          ],
+          "contact": [
+            466.4989409984871,
+            753.9
+          ],
+          "scale": 0.264304049018796,
+          "propPoint": [
+            563.7486929872003,
+            632.5406526050117
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 723,
+            "width": 362,
+            "height": 338
+          },
+          "box": [
+            78,
+            724,
+            327,
+            1032
+          ],
+          "contact": [
+            196.02579418951942,
+            1024.3
+          ],
+          "scale": 0.3088235294117647,
+          "propPoint": [
+            310,
+            802
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 723,
+            "width": 362,
+            "height": 338
+          },
+          "box": [
+            445,
+            725,
+            692,
+            1046
+          ],
+          "contact": [
+            510.111416781293,
+            1037.975
+          ],
+          "scale": 0.3088235294117647,
+          "propPoint": [
+            675,
+            802
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 2,
+          "source": "sources/noah-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 768,
+            "width": 1024,
+            "height": 360
+          },
+          "box": [
+            381,
+            771,
+            666,
+            1115
+          ],
+          "contact": [
+            545.3485700317771,
+            1106.4
+          ],
+          "scale": 0.2765047879616963,
+          "propPoint": [
+            626.0446265938069,
+            927.617941712204
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 0,
+            "top": 1061,
+            "width": 362,
+            "height": 387
+          },
+          "box": [
+            45,
+            1062,
+            291,
+            1370
+          ],
+          "contact": [
+            167.72309417040358,
+            1362.3
+          ],
+          "scale": 0.3085896076352068,
+          "propPoint": [
+            60,
+            1159
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/noah-carry.png",
+          "rect": {
+            "left": 362,
+            "top": 1061,
+            "width": 362,
+            "height": 387
+          },
+          "box": [
+            410,
+            1064,
+            659,
+            1380
+          ],
+          "contact": [
+            572.880429705745,
+            1372.1
+          ],
+          "scale": 0.3085896076352068,
+          "propPoint": [
+            430,
+            1159
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 2,
+          "source": "sources/noah-carry-alternate.png",
+          "rect": {
+            "left": 0,
+            "top": 1128,
+            "width": 1024,
+            "height": 408
+          },
+          "box": [
+            361,
+            1129,
+            649,
+            1490
+          ],
+          "contact": [
+            498.9233054280313,
+            1480.975
+          ],
+          "scale": 0.26328420817629833,
+          "propPoint": [
+            405.0764441369768,
+            1296.3230716015219
+          ]
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "kind": "reach",
+      "columns": 2,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            216,
+            33,
+            451,
+            348
+          ],
+          "contact": [
+            333.07065967430304,
+            340.125
+          ],
+          "scale": 0.315955766192733,
+          "propAnchor": [
+            116,
+            170
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 543,
+            "top": 0,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            622,
+            33,
+            858,
+            351
+          ],
+          "contact": [
+            749.0303452115813,
+            343.05
+          ],
+          "scale": 0.315955766192733,
+          "propAnchor": [
+            104,
+            166
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 362,
+            "width": 543,
+            "height": 360
+          },
+          "box": [
+            203,
+            376,
+            441,
+            696
+          ],
+          "contact": [
+            314.0620786516854,
+            688
+          ],
+          "scale": 0.3081761006289308,
+          "propAnchor": [
+            140,
+            170
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 543,
+            "top": 362,
+            "width": 543,
+            "height": 360
+          },
+          "box": [
+            624,
+            376,
+            878,
+            692
+          ],
+          "contact": [
+            729.9875091844232,
+            684.1
+          ],
+          "scale": 0.3081761006289308,
+          "propAnchor": [
+            153,
+            166
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 722,
+            "width": 543,
+            "height": 350
+          },
+          "box": [
+            211,
+            724,
+            437,
+            1050
+          ],
+          "contact": [
+            335.0877192982456,
+            1041.85
+          ],
+          "scale": 0.3001531393568147,
+          "propAnchor": [
+            150,
+            153
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 543,
+            "top": 722,
+            "width": 543,
+            "height": 350
+          },
+          "box": [
+            633,
+            723,
+            896,
+            1050
+          ],
+          "contact": [
+            750.2174121023678,
+            1041.825
+          ],
+          "scale": 0.3001531393568147,
+          "propAnchor": [
+            164,
+            148
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 0,
+            "top": 1072,
+            "width": 543,
+            "height": 376
+          },
+          "box": [
+            208,
+            1074,
+            443,
+            1401
+          ],
+          "contact": [
+            311.575043413545,
+            1392.825
+          ],
+          "scale": 0.2948328267477204,
+          "propAnchor": [
+            105,
+            153
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/noah-reach.png",
+          "rect": {
+            "left": 543,
+            "top": 1072,
+            "width": 543,
+            "height": 376
+          },
+          "box": [
+            608,
+            1073,
+            873,
+            1404
+          ],
+          "contact": [
+            743.1025775907417,
+            1395.725
+          ],
+          "scale": 0.2948328267477204,
+          "propAnchor": [
+            92,
+            148
+          ]
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "kind": "checkout",
+      "columns": 2,
+      "cells": [
+        {
+          "dir": 0,
+          "frame": 0,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            221,
+            29,
+            474,
+            346
+          ],
+          "contact": [
+            359.24728185112906,
+            338.075
+          ],
+          "scale": 0.315955766192733,
+          "propAnchor": [
+            154,
+            168
+          ]
+        },
+        {
+          "dir": 0,
+          "frame": 1,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 543,
+            "top": 0,
+            "width": 543,
+            "height": 362
+          },
+          "box": [
+            623,
+            30,
+            876,
+            346
+          ],
+          "contact": [
+            759.4788245462403,
+            338.1
+          ],
+          "scale": 0.315955766192733,
+          "propAnchor": [
+            154,
+            168
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 0,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 362,
+            "width": 543,
+            "height": 330
+          },
+          "box": [
+            220,
+            365,
+            470,
+            680
+          ],
+          "contact": [
+            335.10544113126343,
+            672.125
+          ],
+          "scale": 0.31061806656101426,
+          "propAnchor": [
+            154,
+            165
+          ]
+        },
+        {
+          "dir": 1,
+          "frame": 1,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 543,
+            "top": 362,
+            "width": 543,
+            "height": 330
+          },
+          "box": [
+            610,
+            366,
+            872,
+            682
+          ],
+          "contact": [
+            727.1735511713933,
+            674.1
+          ],
+          "scale": 0.31061806656101426,
+          "propAnchor": [
+            154,
+            165
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 0,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 692,
+            "width": 543,
+            "height": 337
+          },
+          "box": [
+            229,
+            693,
+            484,
+            1015
+          ],
+          "contact": [
+            352.15365733922437,
+            1006.95
+          ],
+          "scale": 0.30387596899224806,
+          "propAnchor": [
+            164,
+            148
+          ]
+        },
+        {
+          "dir": 2,
+          "frame": 1,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 543,
+            "top": 692,
+            "width": 543,
+            "height": 337
+          },
+          "box": [
+            623,
+            695,
+            879,
+            1018
+          ],
+          "contact": [
+            747.3361097501224,
+            1009.925
+          ],
+          "scale": 0.30387596899224806,
+          "propAnchor": [
+            164,
+            148
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 0,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 0,
+            "top": 1029,
+            "width": 543,
+            "height": 419
+          },
+          "box": [
+            219,
+            1030,
+            469,
+            1349
+          ],
+          "contact": [
+            343.27124681933844,
+            1341.025
+          ],
+          "scale": 0.304552590266876,
+          "propAnchor": [
+            98,
+            148
+          ]
+        },
+        {
+          "dir": 3,
+          "frame": 1,
+          "source": "sources/noah-checkout.png",
+          "rect": {
+            "left": 543,
+            "top": 1029,
+            "width": 543,
+            "height": 419
+          },
+          "box": [
+            609,
+            1032,
+            872,
+            1350
+          ],
+          "contact": [
+            746.6402580645162,
+            1342.05
+          ],
+          "scale": 0.304552590266876,
+          "propAnchor": [
+            98,
+            148
+          ]
+        }
+      ]
+    }
+  ]
+}

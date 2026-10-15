@@ -4,6 +4,8 @@ Node.js、Playwright、Chromiumを使用します。検証環境ではPlaywright
 
 ```
 node tools/tests/workflow.cjs
+node tools/tests/startup.cjs
+node tools/tests/work-motions.cjs
 node tools/tests/interior.cjs
 node tools/tests/furniture.cjs --once
 node tools/tests/workflow.cjs --published
