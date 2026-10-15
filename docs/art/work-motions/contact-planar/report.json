@@ -1,0 +1,250 @@
+{
+  "cases": 5760,
+  "baseline": "255432a79fc31f3374b757e0aa47f65e7aad2294",
+  "maxDefaultResidual": 0.8618261217610607,
+  "maxDefaultResidualX": 0,
+  "maxLimitedResidual": 20.666265310504293,
+  "maxLimitedResidualX": 6.483714394402607,
+  "groups": [
+    {
+      "viewport": "390x844",
+      "id": "owner",
+      "look": "small",
+      "cases": 192,
+      "maxResidual": 17.933615844440006,
+      "maxResidualX": 6.1564509852931115
+    },
+    {
+      "viewport": "390x844",
+      "id": "owner",
+      "look": "default",
+      "cases": 192,
+      "maxResidual": 0,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "390x844",
+      "id": "owner",
+      "look": "large",
+      "cases": 192,
+      "maxResidual": 9.655415949422263,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "390x844",
+      "id": "owner",
+      "look": "short-wide",
+      "cases": 192,
+      "maxResidual": 8.607711281266074,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "390x844",
+      "id": "owner",
+      "look": "tall-thin",
+      "cases": 192,
+      "maxResidual": 3.145589671766993,
+      "maxResidualX": 0.4059503871534193
+    },
+    {
+      "viewport": "390x844",
+      "id": "noah",
+      "look": "small",
+      "cases": 192,
+      "maxResidual": 20.666265310504293,
+      "maxResidualX": 6.483714394402607
+    },
+    {
+      "viewport": "390x844",
+      "id": "noah",
+      "look": "default",
+      "cases": 192,
+      "maxResidual": 0.8618261217610607,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "390x844",
+      "id": "noah",
+      "look": "large",
+      "cases": 192,
+      "maxResidual": 0.964234841785795,
+      "maxResidualX": 3.000090108368163
+    },
+    {
+      "viewport": "390x844",
+      "id": "noah",
+      "look": "short-wide",
+      "cases": 192,
+      "maxResidual": 12.511496232786488,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "390x844",
+      "id": "noah",
+      "look": "tall-thin",
+      "cases": 192,
+      "maxResidual": 0,
+      "maxResidualX": 0.8734695430241277
+    },
+    {
+      "viewport": "320x568",
+      "id": "owner",
+      "look": "small",
+      "cases": 192,
+      "maxResidual": 14.714761718514854,
+      "maxResidualX": 5.05144696229176
+    },
+    {
+      "viewport": "320x568",
+      "id": "owner",
+      "look": "default",
+      "cases": 192,
+      "maxResidual": 0,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "320x568",
+      "id": "owner",
+      "look": "large",
+      "cases": 192,
+      "maxResidual": 7.9223925738849585,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "320x568",
+      "id": "owner",
+      "look": "short-wide",
+      "cases": 192,
+      "maxResidual": 7.062737461551621,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "320x568",
+      "id": "owner",
+      "look": "tall-thin",
+      "cases": 192,
+      "maxResidual": 2.580996653757552,
+      "maxResidualX": 0.3330874971515071
+    },
+    {
+      "viewport": "320x568",
+      "id": "noah",
+      "look": "small",
+      "cases": 192,
+      "maxResidual": 16.956935639388117,
+      "maxResidualX": 5.319970785150834
+    },
+    {
+      "viewport": "320x568",
+      "id": "noah",
+      "look": "default",
+      "cases": 192,
+      "maxResidual": 0.707139381957762,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "320x568",
+      "id": "noah",
+      "look": "large",
+      "cases": 192,
+      "maxResidual": 0.7911670496704221,
+      "maxResidualX": 2.4616123966098002
+    },
+    {
+      "viewport": "320x568",
+      "id": "noah",
+      "look": "short-wide",
+      "cases": 192,
+      "maxResidual": 10.26584306279914,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "320x568",
+      "id": "noah",
+      "look": "tall-thin",
+      "cases": 192,
+      "maxResidual": 0,
+      "maxResidualX": 0.7166929583787549
+    },
+    {
+      "viewport": "844x390",
+      "id": "owner",
+      "look": "small",
+      "cases": 192,
+      "maxResidual": 9.388324533948282,
+      "maxResidualX": 3.22292840042052
+    },
+    {
+      "viewport": "844x390",
+      "id": "owner",
+      "look": "default",
+      "cases": 192,
+      "maxResidual": 0,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "844x390",
+      "id": "owner",
+      "look": "large",
+      "cases": 192,
+      "maxResidual": 5.054651511983877,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "844x390",
+      "id": "owner",
+      "look": "short-wide",
+      "cases": 192,
+      "maxResidual": 4.506173640833728,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "844x390",
+      "id": "owner",
+      "look": "tall-thin",
+      "cases": 192,
+      "maxResidual": 1.6467296358609254,
+      "maxResidualX": 0.2125167625054876
+    },
+    {
+      "viewport": "844x390",
+      "id": "noah",
+      "look": "small",
+      "cases": 192,
+      "maxResidual": 10.818878207422108,
+      "maxResidualX": 3.3942521936509182
+    },
+    {
+      "viewport": "844x390",
+      "id": "noah",
+      "look": "default",
+      "cases": 192,
+      "maxResidual": 0.4511696577595196,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "844x390",
+      "id": "noah",
+      "look": "large",
+      "cases": 192,
+      "maxResidual": 0.5047810603365807,
+      "maxResidualX": 1.5705599926286322
+    },
+    {
+      "viewport": "844x390",
+      "id": "noah",
+      "look": "short-wide",
+      "cases": 192,
+      "maxResidual": 6.549821745796337,
+      "maxResidualX": 0
+    },
+    {
+      "viewport": "844x390",
+      "id": "noah",
+      "look": "tall-thin",
+      "cases": 192,
+      "maxResidual": 0,
+      "maxResidualX": 0.4572650385489139
+    }
+  ]
+}

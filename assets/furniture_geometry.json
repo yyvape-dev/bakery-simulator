@@ -127,6 +127,7 @@
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
       },
+      "workSurfaceHeightTiles": 0.85,
       "files": [
         "assets/prep_r0.webp",
         "assets/prep_r1.webp",
