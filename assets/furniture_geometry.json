@@ -132,7 +132,8 @@
         "assets/prep_r1.webp",
         "assets/prep_r2.webp",
         "assets/prep_r3.webp"
-      ]
+      ],
+      "workSurfaceHeightTiles": 0.85
     },
     "table": {
       "tileFootprint": [

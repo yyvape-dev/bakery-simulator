@@ -22,6 +22,36 @@ function facing(a,objects,entry){
  const dx=tx-(a.x+.5),dy=ty-(a.y+.5);
  return Math.abs(dx)>Math.abs(dy)?dx>0?1:3:dy>0?0:2;
 }
+// Measured dough/hand contact in each kneading cell, in the shared 256px atlas.
+const prepHeight=.85;
+const kneadHands={owner:[[[105,160],[105,160]],[[155,158],[155,158]],[[154,139],[154,139]],[[104,139],[104,139]]],noah:[[[106,173],[106,173]],[[155,172],[155,172]],[[166,146],[166,146]],[[94,145],[94,145]]]};
+function contact(a,sp,o,project,tx){
+ if(!sp.workArt||sp.pose.kind!=='knead'||!o||o.type!=='prep')return null;
+ const ax=a.x+.5,ay=a.y+.5;
+ // Work only from an adjacent cell; stale jobs must not stretch across the shop.
+ const x=Math.max(o.x,Math.min(o.x+o.width,ax)),y=Math.max(o.y,Math.min(o.y+o.height,ay));
+ if(Math.abs(ax-x)+Math.abs(ay-y)>.501)return null;
+ const hand=kneadHands[a.id]?.[sp.dir]?.[sp.frame];if(!hand)return null;
+ const surface=project(x,y),sy=sp.h/256;
+ // Height projection from the fixed Blender camera: Z pixels / X-floor pixels.
+ surface.y-=prepHeight*tx*Math.sqrt(2)*Math.sqrt(1-.54*.54);
+ const top=sp.dir<2?(a.id==='noah'?151:132):(a.id==='noah'?125:115),bottom=184;
+ // Keep the head, boots and ground anchor fixed. Limit compression for tiny looks.
+ const desired=(surface.y-sp.y)/sy-hand[1],limit=(hand[1]-top)*.45;
+ const dy=Math.max(-limit,Math.min((bottom-hand[1])*.45,desired));
+ return{hand,top,bottom,dy,surface,residual:(desired-dy)*sy};
+}
+function contactY(y,fit){
+ if(!fit||y<=fit.top||y>=fit.bottom)return y;
+ const weight=y<=fit.hand[1]?(y-fit.top)/(fit.hand[1]-fit.top):(fit.bottom-y)/(fit.bottom-fit.hand[1]);
+ return y+fit.dy*weight;
+}
+function sourceY(y,fit){
+ if(!fit)return y;
+ const edges=[0,fit.top,fit.hand[1],fit.bottom,256];
+ for(let i=1;i<edges.length;i++){const a=edges[i-1],b=edges[i],da=contactY(a,fit),db=contactY(b,fit);if(y<=db)return a+(y-da)*(b-a)/(db-da)}
+ return y;
+}
 function create(){
  const states=new WeakMap();
  function update(staff,dt=75){for(const a of staff){
@@ -48,5 +78,5 @@ function create(){
  }
  return{update,get};
 }
-const api={describe,facing,create,counts};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
+const api={describe,facing,create,counts,prepHeight,contact,contactY,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

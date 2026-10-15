@@ -206,6 +206,12 @@ def make_oven():
 builders={'oven':make_oven,'register':make_register,'prep':make_prep,'table':make_table,'plant':make_plant}
 if TYPE not in builders:raise ValueError(TYPE)
 builders[TYPE]()
+# Keep the fixed camera and XY footprint; lower only prep model geometry in Z.
+# The top surface was 1.525 tiles, above the study characters' working hands.
+if TYPE=='prep':
+ for obj in root.children:
+  obj.location.z *= .85/1.525
+  obj.scale.z *= .85/1.525
 # Fixed camera, lighting, scale and image anchor for every furniture type.
 elevation=math.asin(.54);target=Vector((0,0,1.30));distance=12
 position=target+Vector((math.cos(elevation)/math.sqrt(2),-math.cos(elevation)/math.sqrt(2),math.sin(elevation)))*distance
@@ -215,6 +221,7 @@ for name,loc,power,size in [('Warm window',(-3,-4,7),600,5),('Gentle fill',(4,1,
 bpy.context.view_layer.update();origin=world_to_camera_view(scene,cam,Vector((0,0,0)));px=world_to_camera_view(scene,cam,Vector((1,0,0)))
 footprint=[2,1] if TYPE=='register' else [1,1] if TYPE=='plant' else [2,2]
 metadata={'tileFootprint':footprint,'cameraElevationDegrees':math.degrees(elevation),'screenFloorAngleDegrees':math.degrees(math.atan(.54)),'orthographicScale':cam.data.ortho_scale,'imageSize':[768,768],'anchorPixels':[origin.x*768,(1-origin.y)*768],'tileXAxisPixels':[(px.x-origin.x)*768,(origin.y-px.y)*768],'directions':{'0':'front +gameY / world -Y','1':'front +gameX / world +X','2':'front -gameY / world +Y','3':'front -gameX / world -X'}}
+if TYPE=='prep':metadata['workSurfaceHeightTiles']=.85
 (OUT/(TYPE+'_metadata.json')).write_text(json.dumps(metadata,indent=2))
 root.name=TYPE.title()+'_Rotation_Root';root['footprint_tiles']=str(footprint);root['tile_world_units']=1;root['front_axis']='-Y';scene['floor_screen_slope']=.54
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/(TYPE+'.blend')))
