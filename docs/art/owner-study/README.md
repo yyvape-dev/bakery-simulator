@@ -1,6 +1,7 @@
 # 主人公（店主）：採用第1案と4方向の歩行
 
 2026-10-15。ユーザーの「おお、いいんじゃない」を受け、第1案を基準デザインとして保存。
+続く「反映は承認する」で、主人公比較版のmain反映・公開も承認済み。
 顔・笑顔・低いまとめ髪・シュシュ・服装を維持し、4方向×待機・歩行2コマを制作した。
 
 ## デザインと制作元
@@ -17,7 +18,7 @@
 
 ## 比較する
 
-- Web比較（main反映後）：https://yyvape-dev.github.io/bakery-simulator/?owner=study&noah=study
+- Web比較：https://yyvape-dev.github.io/bakery-simulator/?owner=study&noah=study
 - 主人公だけ比較する場合は `?owner=study`。既存の `?noah=study` も利用できる。
 - Godot：`godot --path tools/art/godot -- --owner`。
 - Godotの「Owner / Noah」で対象変更。「Candidate / baseline」で選択中の人物だけ旧素材と切替。
