@@ -13,6 +13,7 @@ node tools/tests/workflow.cjs --noah-study
 node tools/tests/workflow.cjs --published --noah-study
 node tools/tests/noah-art.cjs --owner-study
 node tools/tests/workflow.cjs --owner-study --noah-study
+node tools/tests/startup.cjs
 ```
 
 前者はローカルのゲームファイルをスマホ相当Chromiumで操作します。後者は公開URLからHTML・スクリプト・素材をTLS検証付きで取得し、ローカル版とのバイト一致を確認してから、その公開ファイルをブラウザーへ配信して同じ操作を確認します。公開URLへの直接ブラウザーHTTPS接続やスマホ実機での検証とは区別します。
