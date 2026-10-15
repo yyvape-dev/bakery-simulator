@@ -29,23 +29,26 @@ function contact(a,sp,o,project,tx){
  if(!sp.workArt||sp.pose.kind!=='knead'||!o||o.type!=='prep')return null;
  const ax=a.x+.5,ay=a.y+.5;
  // Work only from an adjacent cell; stale jobs must not stretch across the shop.
- const x=Math.max(o.x,Math.min(o.x+o.width,ax)),y=Math.max(o.y,Math.min(o.y+o.height,ay));
- if(Math.abs(ax-x)+Math.abs(ay-y)>.501)return null;
+ const edgeX=Math.max(o.x,Math.min(o.x+o.width,ax)),edgeY=Math.max(o.y,Math.min(o.y+o.height,ay));
+ const inset=.18,x=Math.max(o.x+inset,Math.min(o.x+o.width-inset,ax)),y=Math.max(o.y+inset,Math.min(o.y+o.height-inset,ay));
+ if(Math.abs(ax-edgeX)+Math.abs(ay-edgeY)>.501)return null;
  const hand=kneadHands[a.id]?.[sp.dir]?.[sp.frame];if(!hand)return null;
- const surface=project(x,y),sy=sp.h/256;
+ const surface=project(x,y),sx=sp.w/256,sy=sp.h/256;
  // Height projection from the fixed Blender camera: Z pixels / X-floor pixels.
  surface.y-=prepHeight*tx*Math.sqrt(2)*Math.sqrt(1-.54*.54);
  const top=sp.dir<2?(a.id==='noah'?151:132):(a.id==='noah'?125:115),bottom=184;
  // Keep the head, boots and ground anchor fixed. Limit compression for tiny looks.
  const desired=(surface.y-sp.y)/sy-hand[1],limit=(hand[1]-top)*.45;
  const dy=Math.max(-limit,Math.min((bottom-hand[1])*.45,desired));
- return{hand,top,bottom,dy,surface,residual:(desired-dy)*sy};
+ const desiredX=(surface.x-sp.x)/sx-hand[0],dx=Math.max(-18,Math.min(18,desiredX));
+ return{hand,top,bottom,dx,dy,surface,targetId:o.id,world:{x,y},residual:(desired-dy)*sy,residualX:(desiredX-dx)*sx};
 }
-function contactY(y,fit){
- if(!fit||y<=fit.top||y>=fit.bottom)return y;
- const weight=y<=fit.hand[1]?(y-fit.top)/(fit.hand[1]-fit.top):(fit.bottom-y)/(fit.bottom-fit.hand[1]);
- return y+fit.dy*weight;
+function contactWeight(y,fit){
+ if(!fit||y<=fit.top||y>=fit.bottom)return 0;
+ return y<=fit.hand[1]?(y-fit.top)/(fit.hand[1]-fit.top):(fit.bottom-y)/(fit.bottom-fit.hand[1]);
 }
+function contactY(y,fit){return y+(fit?.dy||0)*contactWeight(y,fit)}
+function contactShift(y,fit){return(fit?.dx||0)*contactWeight(y,fit)}
 function sourceY(y,fit){
  if(!fit)return y;
  const edges=[0,fit.top,fit.hand[1],fit.bottom,256];
@@ -78,5 +81,5 @@ function create(){
  }
  return{update,get};
 }
-const api={describe,facing,create,counts,prepHeight,contact,contactY,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
+const api={describe,facing,create,counts,prepHeight,contact,contactY,contactShift,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

@@ -127,13 +127,13 @@
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
       },
+      "workSurfaceHeightTiles": 0.85,
       "files": [
         "assets/prep_r0.webp",
         "assets/prep_r1.webp",
         "assets/prep_r2.webp",
         "assets/prep_r3.webp"
-      ],
-      "workSurfaceHeightTiles": 0.85
+      ]
     },
     "table": {
       "tileFootprint": [
