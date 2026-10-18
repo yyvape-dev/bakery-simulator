@@ -9,9 +9,10 @@ function describe(a){
   if(j.type==='stock'&&j.carry>0)return{kind:'carry',prop:'bread'};
   return{kind:a.next?'walk':'idle',prop:null};
  }
- if(j.type==='produce')return{kind:j.stage==='knead'?'knead':'reach',prop:j.stage==='knead'?null:'dough'};
+ if(j.type==='produce')return{kind:j.stage==='knead'?'knead':'reach',prop:j.stage!=='knead'&&j.raw&&j.doughReady?'dough':null};
  if(j.type==='checkout')return{kind:'checkout',prop:null};
  if(j.type==='supply')return{kind:'reach',prop:'box'};
+ if(j.type==='stock'&&j.stage==='deliver'&&!j.carry)return{kind:'reach',prop:null};
  return{kind:'reach',prop:'bread'};
 }
 function facing(a,objects,entry){
@@ -25,13 +26,30 @@ function facing(a,objects,entry){
 // Measured dough/hand contact in each kneading cell, in the shared 256px atlas.
 const prepHeight=.85;
 const kneadHands={owner:[[[105,160],[105,160]],[[155,158],[155,158]],[[154,139],[154,139]],[[104,139],[104,139]]],noah:[[[106,173],[106,173]],[[155,172],[155,172]],[[166,146],[166,146]],[[94,145],[94,145]]]};
+// Palm/grip centres measured separately for A/B, rather than reusing held-item offsets.
+const equipmentHands={
+ owner:{reach:[[[109,154],[94,153]],[[145,154],[165,151]],[[141,143],[156,140]],[[117,143],[103,140]]],checkout:[[[96,153],[96,153]],[[160,154],[160,154]],[[151,142],[155,140]],[[109,143],[105,140]]]},
+ noah:{reach:[[[110,168],[96,163]],[[139,170],[162,163]],[[148,153],[166,149]],[[111,153],[92,149]]],checkout:[[[94,163],[96,165]],[[163,164],[163,164]],[[162,145],[165,145]],[[97,147],[97,147]]]}
+};
+function contactSpec(a,sp,o){
+ if(!sp.workArt||!o)return null;
+ const j=a.job;
+ if(sp.pose.kind==='knead'&&o.type==='prep')return{kind:'knead',baseHeight:prepHeight,hand:kneadHands[a.id]?.[sp.dir]?.[sp.frame]};
+ let kind;
+ if(sp.pose.kind==='reach'&&o.type==='oven'&&((j?.type==='produce'&&j.stage==='load'&&j.raw&&j.doughReady)||(j?.type==='collect'&&j.stage==='work')||(j?.type==='stock'&&j.stage==='pickup'&&!j.carry)))kind='oven';
+ if(sp.pose.kind==='reach'&&o.type==='shelf'&&j?.type==='stock'&&j.stage==='deliver'&&j.carry>0)kind='shelf';
+ if(sp.pose.kind==='checkout'&&o.type==='register'&&j?.type==='checkout'&&j.stage==='work')kind='register';
+ if(!kind)return null;
+ return{kind,baseHeight:{oven:1.085,shelf:.855,register:1.325}[kind],hand:equipmentHands[a.id]?.[sp.pose.kind]?.[sp.dir]?.[sp.frame]};
+}
 function contact(a,sp,o,project,tx){
- if(!sp.workArt||sp.pose.kind!=='knead'||!o||o.type!=='prep')return null;
+ const spec=contactSpec(a,sp,o);if(!spec)return null;
+ const baseHeight=spec.baseHeight;
  const ax=a.x+.5,ay=a.y+.5;
  // Work only from an adjacent cell; stale jobs must not stretch across the shop.
  const edgeX=Math.max(o.x,Math.min(o.x+o.width,ax)),edgeY=Math.max(o.y,Math.min(o.y+o.height,ay));
  if(Math.abs(ax-edgeX)+Math.abs(ay-edgeY)>.501)return null;
- const hand=kneadHands[a.id]?.[sp.dir]?.[sp.frame];if(!hand)return null;
+ const hand=spec.hand;if(!hand)return null;
  const sx=sp.w/256,sy=sp.h/256,zScale=tx*Math.sqrt(2)*Math.sqrt(1-.54*.54);
  const top=sp.dir<2?(a.id==='noah'?151:132):(a.id==='noah'?125:115),bottom=184;
  const normal={x:ax<o.x?-1:ax>o.x+o.width?1:0,y:ay<o.y?-1:ay>o.y+o.height?1:0};
@@ -41,23 +59,26 @@ function contact(a,sp,o,project,tx){
  let x,y;
  const place=()=>{x=clamp(ax,o.x+inset,o.x+o.width-inset);y=clamp(ay,o.y+inset,o.y+o.height-inset)};
  const fitAtBench=()=>{
-  const surface=project(x,y);surface.y-=prepHeight*zScale;
+  const surface=project(x,y);surface.y-=baseHeight*zScale;
   const desired=(surface.y-sp.y)/sy-hand[1],dy=clamp(desired,-(hand[1]-top)*.45,(bottom-hand[1])*.45);
-  return{surface,desired,dy,height:prepHeight+(desired-dy)*sy/zScale};
+  return{surface,desired,dy,height:baseHeight+(desired-dy)*sy/zScale};
  };
  place();
  // A low pull-out board crosses the edge rather than passing through the solid top.
- if(fitAtBench().height<prepHeight-.03){inset=Math.min(inset,-.06);place()}
+ if(fitAtBench().height<baseHeight-.03){inset=Math.min(inset,-.06);place()}
  let screen=project(x,y),desiredX=(screen.x-sp.x)/sx-hand[0],dx=clamp(desiredX,-18,18);
  const correction=(desiredX-dx)*sx/tx;
  if(normal.y)x=clamp(x-correction,ax-.35,ax+.35);
  else y=clamp(y+correction,ay-.35,ay+.35);
  const fit=fitAtBench();
- const height=Math.abs(fit.height-prepHeight)>.03?clamp(fit.height,.15,1.8):prepHeight;
+ const height=Math.abs(fit.height-baseHeight)>.03?clamp(fit.height,.15,1.8):baseHeight;
  const surface=project(x,y);surface.y-=height*zScale;
  const desired=(surface.y-sp.y)/sy-hand[1],dy=clamp(desired,-(hand[1]-top)*.45,(bottom-hand[1])*.45);
  desiredX=(surface.x-sp.x)/sx-hand[0];dx=clamp(desiredX,-18,18);
- return{hand,top,bottom,dx,dy,height,normal,overTop:height>=prepHeight-.03,surface,targetId:o.id,world:{x,y},mount:{x:clamp(x,o.x,o.x+o.width),y:clamp(y,o.y,o.y+o.height)},residual:(desired-dy)*sy,residualX:(desiredX-dx)*sx};
+ const frontNormal=[[0,1],[1,0],[0,-1],[-1,0]][o.rot||0],front=normal.x===frontNormal[0]&&normal.y===frontNormal[1];
+ let tip=null;
+ if(spec.kind==='oven'&&front){const progress=a.job.type==='produce'?sp.frame:1-sp.frame,offset=.96-.24*progress,world={x:o.x+o.width/2+normal.x*offset,y:o.y+o.height/2+normal.y*offset},p=project(world.x,world.y);tip={...p,y:p.y-baseHeight*zScale,world,height:baseHeight}}
+ return{kind:spec.kind,baseHeight,hand,top,bottom,dx,dy,height,normal,front,tip,overTop:(spec.kind==='knead'||spec.kind==='register')&&height>=baseHeight-.03,surface,targetId:o.id,world:{x,y},mount:{x:clamp(x,o.x,o.x+o.width),y:clamp(y,o.y,o.y+o.height)},residual:(desired-dy)*sy,residualX:(desiredX-dx)*sx};
 }
 function contactWeight(y,fit){
  if(!fit||y<=fit.top||y>=fit.bottom)return 0;
@@ -97,5 +118,5 @@ function create(){
  }
  return{update,get};
 }
-const api={describe,facing,create,counts,prepHeight,contact,contactY,contactShift,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
+const api={describe,facing,create,counts,prepHeight,contactSpec,contact,contactY,contactShift,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
