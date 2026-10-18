@@ -2,6 +2,63 @@
 
 更新：2026-10-18。新しいチャットではこの文書を最初に読み、mainと下記の作業ブランチを確認する。直近の続きは設備接触の調整後の全作業レビューと表示の統一。
 
+## チャット移行チェックポイント（2026-10-18・最初に読む）
+
+この節が現在の状態。以下の日付付き節は制作履歴であり、過去の「次は」「未調整」は最新節を優先する。mainに置いた本書は未公開作業の案内も含む。本書の素材・テスト・実装パスは、特記なければ **`art/work-motions` ブランチ** のもの。
+
+### 保存先と公開状態
+
+- リポジトリ：[yyvape-dev/bakery-simulator](https://github.com/yyvape-dev/bakery-simulator)。作業ブランチ **`art/work-motions`**、[draft PR #4](https://github.com/yyvape-dev/bakery-simulator/pull/4)。最新の実装コミット **`976dda2848c7fd13374e201aaa19f5567c2440b5`**（この後の文書コミットはコード変更なし）。再開時にはブランチの最新HEADも確認する。
+- **新モーションと接触調整はmainのゲームへ未反映・未公開**。ユーザーは今回「チャット移行しよう、引き継ぎをGitHubに入れて」と依頼。引き継ぎ文書をmainにも保存する承認であり、新モーション実装のmain公開まで拡大しない。
+- 公開ゲーム：<https://yyvape-dev.github.io/bakery-simulator/>。公開デモ `?demo=motion` も現時点では新モーションの最新実装ではない。
+- 既存の[ブラウザー再生用動画ページ](https://yyvape-dev.github.io/bakery-simulator/previews/work-motions.html)と既存MP4は**高さ・手元調整前**。今回の実装を見たものとして扱わない。チャットのsandboxリンク・GIFはユーザー環境で表示できず、raw MP4はダウンロードになった経緯がある。
+- この環境のチェックアウトは `/workspace/bakery-checkout`。新環境に存在する保証はないので、なければGitHubから取得する。`/workspace/bakery-handoff-main` は今回のmain文書更新専用で、作業を引き継ぐ場所ではない。
+
+### 完了したこと
+
+1. 主人公・ノア各36コマ、計72コマの作業を実際の仕事へ接続。仕事段階・所持品から表示だけを導出する。歩行は実移動距離、作業は225ms切替、座標更新は従来の75ms。
+2. 仕込み台を1.525→0.85マスへ下げ、道具を中央・下段へ整理。人物の足元・頭部の上側・影・座標を固定し、手元の縦横補正と選択の逆写像を実装。
+3. 小さい体型は低い引き出し式補助板、大きい体型は天板上の脚付き板を使う。張り出しは作業者の1セル内。保存・占有・経路・仕事時間・資産は変更しない。
+4. オーブン正面の差し込み板をA/Bで出し入れし、生地・パンを先端へ表示。棚・レジの受渡しトレーに手元を接続し、特にノアの硬貨が逆側へ出る位置ずれを修正。運搬数0の陳列パンや所持していない窯入れ生地は描かない。
+
+### 最新の確認資料と検証
+
+- [設備接触：前後8シート・計128画面、再現方法と制限](https://github.com/yyvape-dev/bakery-simulator/blob/art/work-motions/docs/art/work-motions/equipment-contact/README.md)。139,968条件、手元基準点と**体型に合わせたトレー**の縦最大約1.024 CSS px・横は丸め程度。固定窯口や各指先へ直接接触する保証値ではない。
+- [仕込みの体型差：前後96枚](https://github.com/yyvape-dev/bakery-simulator/blob/art/work-motions/docs/art/work-motions/contact-reach/README.md)。31,104条件、縦最大約0.862px・横は丸め程度。27体型（高さ・幅・全体70／100／130%の全組み合わせ）・3画面・3ズームなどの離散検証。
+- 両人物の担当入替、実営業の仕込み・窯入れ・回収・陳列・会計、72セル・13件販売、表示計算のセーブ・資産非変更、画像欠損・対象撤去・停止を確認。workflow20項目・3営業日、家具操作18項目も成功。直近のコードは上記の `976dda2`。
+- 実装：`character-motion.js`（`contactSpec`／`contact`／A/B掌位置／表示導出）、`index.html`（`characterSprite`／`drawWorkSurface`／`drawOvenTool`／`drawWorkProp`／`hitCharacter`）。`workforce.js` の経路・時間・資産処理は今回変更していない。
+
+### 残る点と次の着手
+
+- **次は、最新実装の通常速度の営業を全作業通しで録画・レビューし、表示を統一する**。両人物の役割を入れ替え、標準と小・大の体型、設備4回転、手元の隠れ方、A/Bでの顔・輪郭・小物の揺れ、トレーの見え方を確認してから修正する。
+- 既存の `tools/art/record_work_demo.cjs` は過去の `game-*.png` を上書きする。新しい録画は日付付きの別ディレクトリへ出し、過去資料と混同しない。ユーザーに見せる場合はブラウザー内再生できる形を優先する。動画の公開とゲーム実装の公開は別の範囲。
+- **側面・背面と窯内動線は厳密には未整合**。既存経路が全周囲から設備を利用するため、その側では受渡しトレーを描き、壁を貫通する差し込み板は描かない。次の担当者が解決済みと誤認しない。接触だけを直すために経路・作業時間・保存を無断で変えない。
+- 低い板や手元は設備の奥で隠れる。小さい人物が頭だけになる場合もある。透過・手前重ねで常に見せる処理は実装していない。
+- 左右の指先の独立接触・IK、60fps補間・多コマ化、顔・輪郭の微差、Godot側の手元補正は未対応。Godotは比較検証用で、Web版から移行していない。
+- mainへ取り込むと通常URLでも仕込み台の高さ・道具配置が変わる（家具素材が共通）。新モーションはデモ／study指定のみ。ユーザーがデザインを最終採用した、全接触が完成した、と扱わない。
+
+### 新環境での再開
+
+通常の履歴付きcloneを使う。比較テストは過去のSHAを `git show` で読むため、浅いcloneでは不足することがある。
+
+```sh
+git clone --branch art/work-motions https://github.com/yyvape-dev/bakery-simulator.git
+cd bakery-simulator
+git status --short
+git log --oneline -5
+node tools/tests/work-motions.cjs
+node tools/tests/equipment-contact.cjs
+node tools/tests/work-contact.cjs
+node tools/tests/workflow.cjs --owner-study --noah-study
+node tools/tests/furniture.cjs --once
+```
+
+Node.jsにPlaywright・sharp、Chromium `/usr/bin/chromium` が必要。環境の権限・接続は再確認する。文章のみの引き継ぎ更新では上記テストを再実行していない。人物画像の再構築は `node tools/art/pack_work_motions.cjs`、**`--init` は手調整を上書きするため使わない**。素材の採用基準・元写真を含めない扱い・既存Web版／保存互換・家具自由配置の制約は下記も維持する。
+
+新しいチャットへの依頼文例：
+
+> yyvape-dev/bakery-simulator の docs/HANDOFF.md と PR #4 を読み、art/work-motions の作業を引き継いで。最新実装は976dda2。次は通常速度の営業で全作業の見た目を録画・レビューし、表示を統一して。mainへのゲーム公開はまだ行わない。
+
 ## 2026-10-18：オーブン出し入れ・陳列・会計の接触調整（PR #4 の続き）
 
 - `art/work-motions` で継続。オーブン正面は窯口へ差し込み板を伸ばし、窯入れはA→Bで外→内、回収・陳列用取出しは内→外。先端高さ1.085マス、家具回転に追従。生地・パンは先端だけに表示する。
@@ -39,7 +96,7 @@
 - 比較画像・再出力・制限：`docs/art/work-motions/contact/README.md`。`work-contact.cjs` の192条件で標準体型の縦の差は最大約0.252px（390×844、ズーム155%）。極小体型は変形制限により最大約17.87px残る。左右の手の独立接触・IK・他設備・Godot側の補正は未対応。
 - 次は比較画像の見た目レビュー、手元と天板の横位置・道具との重なり、極小体型への対応。その後オーブン／陳列／会計の接触位置を詰める。既存の公開動画は調整前であり、今回の比較と混同しない。
 
-## チャット移行時点：動画公開と未公開の作業モーション
+## 2026-10-15の移行記録：動画公開と当時の作業モーション
 
 - ユーザーは動画のブラウザー内再生と、本書更新を承認済み。動画専用ページ：`https://yyvape-dev.github.io/bakery-simulator/previews/work-motions.html`。`previews/work-motions.mp4` をHTMLのvideo要素で再生する。チャットのsandboxリンク・GIF添付はユーザー環境で表示できず、GitHub rawのMP4はダウンロードになったため、このページを用意した。
 - 開店前の詰み防止はmainの `596ec54` で公開済み。通常セーブに触れない営業デモ：`https://yyvape-dev.github.io/bakery-simulator/?demo=motion`。
