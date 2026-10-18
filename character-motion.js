@@ -31,6 +31,7 @@ const equipmentHands={
  owner:{reach:[[[109,154],[94,153]],[[145,154],[165,151]],[[141,143],[156,140]],[[117,143],[103,140]]],checkout:[[[96,153],[96,153]],[[160,154],[160,154]],[[151,142],[155,140]],[[109,143],[105,140]]]},
  noah:{reach:[[[110,168],[96,163]],[[139,170],[162,163]],[[148,153],[166,149]],[[111,153],[92,149]]],checkout:[[[94,163],[96,165]],[[163,164],[163,164]],[[162,145],[165,145]],[[97,147],[97,147]]]}
 };
+function propAnchor(a,pose){return equipmentHands[a.id]?.[pose.kind]?.[pose.dir]?.[pose.frame]||null}
 function contactSpec(a,sp,o){
  if(!sp.workArt||!o)return null;
  const j=a.job;
@@ -118,5 +119,5 @@ function create(){
  }
  return{update,get};
 }
-const api={describe,facing,create,counts,prepHeight,contactSpec,contact,contactY,contactShift,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
+const api={describe,facing,create,counts,prepHeight,propAnchor,contactSpec,contact,contactY,contactShift,sourceY};root.BakeryCharacterMotion=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);
