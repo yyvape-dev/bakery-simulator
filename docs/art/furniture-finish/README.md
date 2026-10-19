@@ -1,6 +1,6 @@
 # 設置物6種の共通素材仕上げ
 
-2026-10-19。`art/furniture-finish` は `art/work-motions` の `bc02309` を基にした作業ブランチ。mainの公開ゲームには未反映。
+2026-10-19。`art/furniture-finish` は `art/work-motions` の `bc02309` を基にした作業ブランチ。[draft PR #5](https://github.com/yyvape-dev/bakery-simulator/pull/5)、実装 `ad72d58`。mainの公開ゲームには未反映。
 
 ## 更新したもの
 
