@@ -1,0 +1,41 @@
+{
+  "mergeCommit": "8701cb51452a14b325c9e913ca070679fc77b20e",
+  "pullRequest": 8,
+  "publicFiles": 87,
+  "byteIdentical": true,
+  "publicReviewFiles": 4,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "exteriorMaterials": 6,
+      "doorPersistence": true,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    },
+    {
+      "mode": "motion-demo",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "exteriorMaterials": 6,
+      "doorPersistence": false,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    }
+  ],
+  "localRegression": {
+    "workflowCases": 20,
+    "workflowDays": 3,
+    "workDisplayCases": 438,
+    "interiorExperienceCases": 16,
+    "exteriorSalesIn180Minutes": 6,
+    "doorDesigns": 3,
+    "ownerWidthCorrection": 1.2,
+    "ownerHeightCorrection": 1.1
+  }
+}
