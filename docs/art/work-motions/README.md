@@ -1,5 +1,7 @@
 # 主人公・ノアの作業モーション試作
 
+公開状況（2026-10-19）：PR #4・#5はmainへ取り込み済み。[最新動作デモ](https://yyvape-dev.github.io/bakery-simulator/?demo=motion)・[モーション録画](https://yyvape-dev.github.io/bakery-simulator/docs/art/work-motions/review-2026-10-18/after/) を公開。以下の日付付き節の「未公開」は制作当時の記録。[公開記録](../../publication-2026-10-19.md) を優先する。
+
 2026-10-15。既存の比較用キャラクターに4方向の作業を追加。主人公・ノアとも36コマ、合計72コマ。通常URLの旧素材は維持し、`?demo=motion` または各人物の `=study` で表示する。
 
 | 実際の仕事 | 表示 |

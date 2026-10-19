@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-19",
+  "codeMainSHA": "b88ea6b6d6b9b479ab9b5bcd0c0fba9ddf45c83b",
+  "merges": {
+    "pr4": "60f443bf2c14f1893a1a861b4cbf772f39e55ef8",
+    "pr5": "b88ea6b6d6b9b479ab9b5bcd0c0fba9ddf45c83b"
+  },
+  "liveBrowserSmoke": [
+    {
+      "mode": "normal",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "workSheets": 0,
+      "staffDialog": true,
+      "errors": []
+    },
+    {
+      "mode": "motion-demo",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    }
+  ],
+  "publicWorkflow": {
+    "passed": true,
+    "cases": [
+      "individual supply walks to receipt, charges once, and reloads safely",
+      "prep, dough transport and oven baking consume material once and wait for physical collection",
+      "stock instruction collects, carries and deposits without inventory duplication",
+      "customer reservation, register walk, waiting and staffed payment survive reload without double sale",
+      "height, width and scale keep the foot anchor and one-tile route",
+      "touching character pixels opens matching individual instructions",
+      "pause and hidden page freeze work and transactions",
+      "moving the oven mid-production replans and completes",
+      "removed shelf keeps carried bread, replacement resumes stocking",
+      "removed register returns unpaid reserved bread",
+      "moving prep mid-knead resumes prep work without skipping it or consuming material twice",
+      "role changes and queued priority instructions finish current work before switching",
+      "register with only one accessible side cannot start unusable checkout",
+      "early closing returns unfinished dough and preserves paid daily costs",
+      "insufficient funds never create materials or a negative balance",
+      "v4 already-paid bake, stock, furniture and money migrate unchanged",
+      "paid legacy guest exits without a second checkout",
+      "three autonomous days, mid-day reload, close and reinvestment conserve cash, material and bread",
+      "furniture cannot overwrite staff current or reserved tiles",
+      "mobile layouts, staff/report dialogs and full reset work"
+    ],
+    "threeDays": [
+      {
+        "day": 1,
+        "sold": 16,
+        "sales": 1920,
+        "materials": 210,
+        "equipment": 1730,
+        "profit": 1710,
+        "coins": 4980
+      },
+      {
+        "day": 2,
+        "sold": 21,
+        "sales": 2520,
+        "materials": 120,
+        "equipment": 250,
+        "profit": 2400,
+        "coins": 7130
+      },
+      {
+        "day": 3,
+        "sold": 21,
+        "sales": 2520,
+        "materials": 120,
+        "equipment": 0,
+        "profit": 2400,
+        "coins": 9530
+      }
+    ],
+    "publishedFiles": 74,
+    "verification": "Public files compared byte-for-byte and replayed in mobile Chromium"
+  }
+}

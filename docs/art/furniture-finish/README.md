@@ -1,6 +1,6 @@
 # 設置物6種の共通素材仕上げ
 
-2026-10-19。`art/furniture-finish` は `art/work-motions` の `bc02309` を基にした作業ブランチ。[draft PR #5](https://github.com/yyvape-dev/bakery-simulator/pull/5)、実装 `ad72d58`。mainの公開ゲームには未反映。
+2026-10-19。`art/furniture-finish` は `art/work-motions` の `bc02309` を基にした作業ブランチ。[PR #5](https://github.com/yyvape-dev/bakery-simulator/pull/5)、実装 `ad72d58`。2026-10-19にmainへ取り込み・公開済み。[公開比較ページ](https://yyvape-dev.github.io/bakery-simulator/docs/art/furniture-finish/review/)。
 
 ## 更新したもの
 
@@ -15,7 +15,7 @@
 | テーブル | 2×2 | 木目の天板と脚、セージのマット、花器 |
 | 植木 | 1×1 | テラコッタの鉢、筆跡のある緑、クリーム色の花 |
 
-[ゲーム内の前後比較・全24方向](review/index.html)。HTMLはローカルでの確認用。GitHub上では [変更後一覧](review/after-sheet.png)、[変更前一覧](review/before-sheet.png)、[390px変更後](review/shop-390-after.png)、[390px変更前](review/shop-390-before.png) を開ける。
+[ゲーム内の前後比較・全24方向](review/index.html)。HTMLは公開URLでも確認できる。GitHub上では [変更後一覧](review/after-sheet.png)、[変更前一覧](review/before-sheet.png)、[390px変更後](review/shop-390-after.png)、[390px変更前](review/shop-390-before.png) を開ける。
 
 方向別画像24枚に加え、読み込み中の代替画像6枚も同じ素材の正面画像へそろえた。512pxの共通フレームを持つ代替画像にも固定アンカーを適用し、余白から縮尺を推定する旧表示へ戻らないようにした。従来サイズの代替画像に対する処理も保持する。
 
