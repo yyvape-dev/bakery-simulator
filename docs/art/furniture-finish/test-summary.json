@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-19",
+  "baseline": "bc02309",
+  "results": [
+    {
+      "command": "node tools/tests/furniture-art.cjs",
+      "passed": true,
+      "directionalImages": 24,
+      "browserCases": 48,
+      "minimumSilhouetteIoU": 0.9990248659190639
+    },
+    {
+      "command": "node tools/tests/furniture.cjs --once",
+      "passed": true,
+      "cases": 18
+    },
+    {
+      "command": "node tools/tests/workflow.cjs --owner-study --noah-study",
+      "passed": true,
+      "cases": 20,
+      "days": 3
+    },
+    {
+      "command": "node tools/tests/work-motions.cjs",
+      "passed": true,
+      "cells": 72,
+      "sold": 13
+    },
+    {
+      "command": "node tools/tests/work-display.cjs",
+      "passed": true,
+      "cases": 288,
+      "identityRasterCases": 96,
+      "opaqueWarpCases": 54
+    },
+    {
+      "command": "node tools/tests/work-contact.cjs",
+      "passed": true,
+      "cases": 31104,
+      "maxVerticalResidualCSSPixels": 0.8618261217610607
+    },
+    {
+      "command": "node tools/tests/equipment-contact.cjs",
+      "passed": true,
+      "cases": 139968,
+      "maxVerticalResidualCSSPixels": 1.0238928786968597
+    }
+  ]
+}

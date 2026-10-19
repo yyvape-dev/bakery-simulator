@@ -33,10 +33,25 @@ python tools/art/export_sprites.py
 `.blend`とフルサイズPNGは `tools/art/build/{type}/` に生成されます。これらはGit管理外です。
 形状・配色を編集する場合は制作スクリプトを変更して再出力してください。生成された.blendの手動編集を採用する場合は、その.blendも別途保管してください。
 
+## 共通素材仕上げ（2026-10-19）
+
+[設置物6種の素材・前後比較・再構築](../../docs/art/furniture-finish/README.md)。共通アトラス1枚を8素材へ分割し、既存のメッシュ・カメラ・接地を維持して24方向へ出力する。`--painted` で共通仕上げ、`--preview` で正面1枚だけ試し描画。`build/painted/` に制作物を分け、元の制作設定を維持する。
+
+```sh
+node tools/art/pack_furniture_materials.cjs
+blender -b -t 2 --python tools/art/build_shelf.py -- --painted
+for furniture_type in oven register prep table plant; do
+  blender -b -t 2 --python tools/art/build_furniture.py -- "$furniture_type" --painted
+done
+python tools/art/export_sprites.py --build-root tools/art/build/painted --fallback
+```
+
+代替画像も512pxの正面フレームへ更新し、読み込み中も固定した接地アンカーを使う。素材はBlenderの制作時だけ使い、ゲームで追加のテクスチャを取得しない。金具や土などは既存の質感を活用する。
+
 ## 質感と今後の仕上げ
 
 試作パン棚と同じ丸い形状・温かい木目・グリーンの布や塗装を基準にしています。
-質感はプロシージャルマテリアルで、元画像の手描き厚塗りを完全再現したものではありません。
+従来設定はプロシージャルマテリアル、`--painted` は生成した手描き調テクスチャを使用します。既存3D形状への素材適用で、輪郭の描き直しは行っていません。
 以後は幾何・カメラを固定したまま、UV上の手描きテクスチャや輪郭表現を仕上げられます。
 
 家具の占有判定、設置・移動・回転・撤去、通路判定、セーブ形式は既存のタイル管理を使用します。

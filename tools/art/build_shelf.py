@@ -1,8 +1,10 @@
-import bpy, math, json, random
+import bpy, math, json, random, sys
 from mathutils import Vector
 from bpy_extras.object_utils import world_to_camera_view
 from pathlib import Path
-OUT=Path(__file__).resolve().parent/'build'/'shelf'
+args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
+PAINTED='--painted' in args
+OUT=Path(__file__).resolve().parent/'build'/('painted' if PAINTED else '')/'shelf'
 OUT.mkdir(parents=True,exist_ok=True);(OUT/'renders').mkdir(exist_ok=True)
 random.seed(19)
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
@@ -99,8 +101,12 @@ for name,loc,power,size in [('Warm window',(-3,-4,7),600,5),('Gentle fill',(4,1,
 bpy.context.view_layer.update()
 origin=world_to_camera_view(scene,cam,Vector((0,0,0)));px=world_to_camera_view(scene,cam,Vector((1,0,0)))
 metadata={'tileFootprint':[2,1],'cameraElevationDegrees':math.degrees(elevation),'screenFloorAngleDegrees':math.degrees(math.atan(.54)),'orthographicScale':cam.data.ortho_scale,'imageSize':[768,768],'anchorPixels':[origin.x*768,(1-origin.y)*768],'tileXAxisPixels':[(px.x-origin.x)*768,(origin.y-px.y)*768],'directions':{'0':'front +gameY / world -Y','1':'front +gameX / world +X','2':'front -gameY / world +Y','3':'front -gameX / world -X'}}
+if PAINTED:
+ sys.path.insert(0,str(Path(__file__).resolve().parent))
+ from furniture_finish import apply
+ apply(scene,metadata)
 (OUT/'shelf_metadata.json').write_text(json.dumps(metadata,indent=2))
 root['footprint_tiles']='2x1';root['tile_world_units']=1;root['front_axis']='-Y';scene['floor_screen_slope']=.54
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'shelf.blend'))
-for rot in range(4):
+for rot in range(1 if '--preview' in args else 4):
  root.rotation_euler.z=rot*math.pi/2;scene.render.filepath=str(OUT/'renders'/f'shelf_r{rot}.png');bpy.ops.render.render(write_still=True)

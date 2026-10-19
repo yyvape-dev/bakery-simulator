@@ -1,0 +1,87 @@
+{
+  "source": "sources/material-atlas.png",
+  "width": 1774,
+  "height": 887,
+  "tiles": [
+    {
+      "name": "oak",
+      "rect": {
+        "left": 8,
+        "top": 8,
+        "width": 428,
+        "height": 428
+      },
+      "file": "materials/oak.png"
+    },
+    {
+      "name": "terracotta",
+      "rect": {
+        "left": 452,
+        "top": 8,
+        "width": 427,
+        "height": 428
+      },
+      "file": "materials/terracotta.png"
+    },
+    {
+      "name": "limestone",
+      "rect": {
+        "left": 895,
+        "top": 8,
+        "width": 428,
+        "height": 428
+      },
+      "file": "materials/limestone.png"
+    },
+    {
+      "name": "sage",
+      "rect": {
+        "left": 1339,
+        "top": 8,
+        "width": 427,
+        "height": 428
+      },
+      "file": "materials/sage.png"
+    },
+    {
+      "name": "linen",
+      "rect": {
+        "left": 8,
+        "top": 452,
+        "width": 428,
+        "height": 427
+      },
+      "file": "materials/linen.png"
+    },
+    {
+      "name": "walnut",
+      "rect": {
+        "left": 452,
+        "top": 452,
+        "width": 427,
+        "height": 427
+      },
+      "file": "materials/walnut.png"
+    },
+    {
+      "name": "leaf",
+      "rect": {
+        "left": 895,
+        "top": 452,
+        "width": 428,
+        "height": 427
+      },
+      "file": "materials/leaf.png"
+    },
+    {
+      "name": "crust",
+      "rect": {
+        "left": 1339,
+        "top": 452,
+        "width": 427,
+        "height": 427
+      },
+      "file": "materials/crust.png"
+    }
+  ]
+}
