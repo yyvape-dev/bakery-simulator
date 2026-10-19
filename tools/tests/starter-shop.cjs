@@ -2,7 +2,7 @@
 const {chromium}=require('playwright'),fs=require('fs'),path=require('path'),assert=require('assert');
 const {click}=require('./ui-navigation.cjs');
 const ROOT=process.env.BAKERY_TEST_ROOT||path.resolve(__dirname,'../..'),OUT=path.join(ROOT,'docs/starter-shop/screenshots');
-const hook='window.__starter={state,get sim(){return sim},get crew(){return crew},get visitor(){return visitor},dims,accessible,service,step,walk,store,render,update,furnitureViews,characterImages};';
+const hook='window.__starter={state,get sim(){return sim},get crew(){return crew},get visitor(){return visitor},dims,accessible,service,step,walk,store,render,update,furnitureViews,characterImages,workImages};';
 let browser;const contexts=[];
 async function setup(save){
  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),p=await context.newPage(),errors=[];contexts.push(context);p.on('pageerror',e=>errors.push(e.message));
@@ -10,11 +10,12 @@ async function setup(save){
  await p.route('http://bakery.test/**',r=>{const n=new URL(r.request().url()).pathname.slice(1)||'index.html',file=path.join(ROOT,n);if(!fs.existsSync(file))return r.fulfill({status:404,body:''});let body=fs.readFileSync(file);if(n==='index.html')body=body.toString().replace('})();',hook+'})();');return r.fulfill({body,contentType:n.endsWith('.html')?'text/html':n.endsWith('.js')?'application/javascript':n.endsWith('.css')?'text/css':n.endsWith('.json')?'application/json':'image/webp'})});
  await p.goto('http://bakery.test/');await ready(p);return{p,errors};
 }
-const ready=p=>p.waitForFunction(()=>Object.values(__starter.furnitureViews).flat().filter(Boolean).length===24&&Object.keys(__starter.characterImages).length===2);
+const ready=p=>p.waitForFunction(()=>Object.values(__starter.furnitureViews).flat().filter(Boolean).length===24&&Object.keys(__starter.characterImages).length===2&&Object.values(__starter.workImages).every(images=>Object.keys(images).length===4));
 const snap=p=>p.evaluate(()=>{const t=__starter;return JSON.parse(JSON.stringify({coins:t.state.coins,objects:t.state.objects,room:t.state.room,sim:t.sim,staff:t.crew.save(),visitor:t.visitor}))});
 function opening(s){assert.equal(s.coins,3000);assert.deepEqual([s.room.width,s.room.height],[12,12]);assert.equal(s.objects.length,7);assert.equal(s.room.walls.length,24);assert.equal(Object.keys(s.room.floors).length,144);assert.equal(s.sim.stock,5);assert.equal(s.sim.materials,3);assert.equal(s.sim.phase,'prep');assert.equal(s.sim.open,false);assert.equal(s.sim.openingCoins,3000);assert.equal(s.sim.equipmentCosts,0);assert.equal(s.sim.materialCosts,0);for(const type of ['oven','prep','shelf','register','table','plant'])assert(s.objects.some(o=>o.type===type));}
 (async()=>{browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});try{
  const checks=[],fresh=await setup(),p=fresh.p;opening(await snap(p));
+ for(const id of ['owner','noah']){assert(fs.readFileSync(path.join(ROOT,'assets/characters/'+id+'.webp')).equals(fs.readFileSync(path.join(ROOT,'docs/art/'+id+'-study/'+id+'.webp'))));assert(await p.evaluate(id=>new URL(__starter.characterImages[id].src).pathname.endsWith('/assets/characters/'+id+'.webp'),id));}
  assert(await p.evaluate(()=>{const t=__starter,seen=new Set();for(const o of t.state.objects){const[w,h]=t.dims(o);for(let x=o.x;x<o.x+w;x++)for(let y=o.y;y<o.y+h;y++){const k=x+','+y;if(seen.has(k)||x<0||y<0||x>=12||y>=12)return false;seen.add(k)}}return t.accessible(t.state.objects)&&['oven','prep','shelf','register'].every(type=>t.service(type))&&t.crew.staff.every(a=>!seen.has(a.cell.x+','+a.cell.y))}));checks.push('fresh shop has decorated 12x12 room, all essentials, stock, materials and unobstructed staff/customer routes');
  fs.mkdirSync(OUT,{recursive:true});for(const size of [{width:390,height:844},{width:320,height:568},{width:844,height:390}]){
   await p.setViewportSize(size);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert(await p.locator('#game').evaluate(c=>c.getBoundingClientRect().height>=90));await p.screenshot({path:path.join(OUT,`opening-${size.width}x${size.height}.png`)});
