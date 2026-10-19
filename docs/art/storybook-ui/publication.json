@@ -1,0 +1,46 @@
+{
+  "mergeCommit": "367ef1ef8f6c761f9a96dad8ac33e52772b0dffa",
+  "pullRequest": 9,
+  "publicFiles": 97,
+  "byteIdentical": true,
+  "publicReviewFiles": 4,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "exteriorMaterials": 6,
+      "uiTextures": 8,
+      "sceneZoomKeepsUIFixed": true,
+      "doorPersistence": true,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    },
+    {
+      "mode": "motion-demo",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "exteriorMaterials": 6,
+      "uiTextures": 8,
+      "sceneZoomKeepsUIFixed": true,
+      "doorPersistence": false,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    }
+  ],
+  "localRegression": {
+    "storybookChecks": 5,
+    "experienceChecks": 9,
+    "interiorExperienceChecks": 16,
+    "productsChecks": 15,
+    "workflowChecks": 20,
+    "workflowDays": 3,
+    "realTouchPinch": true,
+    "fixedHUDDimensions": true,
+    "wheelAnchorToleranceCssPixels": 1
+  }
+}

@@ -6,8 +6,9 @@
 
 - 景色だけのホイール・実2本指ピンチ・ボタンで45〜300%へ拡大縮小。空き地をドラッグしてパン。「全体」で100%と中央位置へ戻る。UIの文字・ボタン・ウインドウの寸法は固定。倍率は保存、パンは一時的。
 - `viewport.js` で景色操作を独立させ、2本指になった時点で未確定の編集を取り消し、指を離すまでUIのクリックを抑える。キャンバスが狭い場合は右上の操作を隠すが設定から操作できる。
+- 公開97ファイルのmainとのバイト一致、公開URLの通常／デモでUI素材8枚、景色ズームとHUD寸法固定、画面一覧を確認。画面操作9・内装16・商品15・営業20項目／3営業日も成功。[公開記録](art/storybook-ui/publication.json)。
 - `storybook.css` でHUD・全ダイアログ・商品カード・設備／内装パネル・状態ラベルを油彩の面と木枠、草花に統一。生成元2枚から実行時WebP8枚をパック。飾りはクリックを遮らない。
-- [画面・仕様・再現](art/storybook-ui/README.md)、[全体／拡大と各画面](art/storybook-ui/review/index.html)。制作ブランチ `feat/storybook-ui`。`tools/tests/storybook-ui.cjs` で実ピンチ・焦点固定・UI寸法固定・資産維持・全画面を確認。
+- [画面・仕様・再現](art/storybook-ui/README.md)、[全体／拡大と各画面](art/storybook-ui/review/index.html)。[PR #9](https://github.com/yyvape-dev/bakery-simulator/pull/9) をmainへ取り込み（`367ef1e`）、公開済み。制作ブランチ `feat/storybook-ui`。`tools/tests/storybook-ui.cjs` で実ピンチ・焦点固定・UI寸法固定・資産維持・全画面を確認。
 
 ## 2026-10-19：店外の景観・3種類の扉・店主のサイズ（最新）
 
