@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "checks": [
+    "8 transparent sheets contain 96 unclipped, occupied direction/walk cells",
+    "all 8 designs render with shared foot anchors; drawing 96 poses preserves visitor and cash",
+    "all 8 customers enter, walk on two feet through four directions and complete staffed sales",
+    "mid-visit reload preserves chosen animal, paid sales and cash"
+  ],
+  "seen": [
+    "rabbit",
+    "rabbit-black",
+    "bird-purple",
+    "bird-white",
+    "cat-tabby",
+    "cat-white",
+    "cat-black",
+    "deer"
+  ],
+  "directions": [
+    2,
+    1,
+    0,
+    3
+  ],
+  "sold": 12
+}
