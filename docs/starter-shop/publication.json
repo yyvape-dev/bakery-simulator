@@ -1,0 +1,37 @@
+{
+  "mergeCommit": "821f5f9a127d2c3a697dc84af6266994fe94c3d3",
+  "pullRequest": 6,
+  "publicFiles": {
+    "count": 74,
+    "byteIdentical": true
+  },
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    },
+    {
+      "mode": "motion-demo",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    }
+  ],
+  "localRegression": {
+    "starterShop": 7,
+    "startupAndDemo": 5,
+    "workflow": 20,
+    "products": 15,
+    "interior": 23,
+    "experience": 9,
+    "interiorExperience": 16,
+    "workflowDays": 3,
+    "expandedStoreDays": 3
+  }
+}
