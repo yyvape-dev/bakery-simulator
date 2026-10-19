@@ -51,10 +51,10 @@ async function main(){
    a.look={width:1,height:1,scale:1};a.dir=0;a.frame=0;t.render();t.store();
    return {src:t.characterImages[id].src,other:t.characterImages[id==='owner'?'noah':'owner'].src,save:JSON.parse(localStorage.getItem('bakery_web_v1')),samples:samples.length};
   },CHARACTER);
-  assert(record.src.endsWith('/docs/art/'+CHARACTER+'-study/'+CHARACTER+'.webp'));assert(record.other.endsWith(CHARACTER==='owner'?'/docs/art/noah-study/noah.webp':'/assets/characters/owner.webp'));assert.equal(record.save.saveVersion,7);
+  assert(record.src.endsWith('/docs/art/'+CHARACTER+'-study/'+CHARACTER+'.webp'));assert(new URL(record.other).pathname.endsWith(CHARACTER==='owner'?'/docs/art/noah-study/noah.webp':'/assets/characters/owner.webp'));assert.equal(record.save.saveVersion,7);
   await page.screenshot({path:path.join(OUT,`web-${width}x${height}.png`)});
   await page.goto('http://bakery.test/'+(CHARACTER==='owner'?'?noah=study':''));await page.waitForFunction(()=>__noah.characterImages.owner&&__noah.characterImages.noah);
-  assert((await page.evaluate(id=>__noah.characterImages[id].src,CHARACTER)).endsWith('/assets/characters/'+CHARACTER+'.webp'));
+  assert(new URL(await page.evaluate(id=>__noah.characterImages[id].src,CHARACTER)).pathname.endsWith('/assets/characters/'+CHARACTER+'.webp'));
   assert.equal(await page.evaluate(()=>__noah.state.coins),record.save.coins);
   assert.deepEqual(await page.evaluate(id=>__noah.crew.staff.find(x=>x.id===id).look,CHARACTER),{width:1,height:1,scale:1});
   assert.deepEqual(errors,[]);records.push({width,height,poseAndSizeChecks:record.samples});await context.close();

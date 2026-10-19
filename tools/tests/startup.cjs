@@ -14,7 +14,7 @@ async function setup(save,url='http://bakery.test/'){
 const buy=(p,type,x,y)=>p.evaluate(({type,x,y})=>{__startup.state.type=type;__startup.selectCell({x,y});return __startup.state.objects.length},{type,x,y});
 async function main(){
  browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const cases=[];
- const fresh=await setup();await click(fresh,'#build');
+ const fresh=await setup({coins:5000,objects:[]});await click(fresh,'#build');
  assert(await fresh.locator('[data-type=plant]').isDisabled());assert(await fresh.locator('[data-type=table]').isDisabled());assert(await fresh.locator('[data-type=oven]').isEnabled());
  await fresh.setViewportSize({width:320,height:568});assert(await fresh.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await fresh.screenshot({path:'/tmp/bakery-startup-320.png'});
  assert.equal(await buy(fresh,'plant',8,8),0);assert.equal(await buy(fresh,'shelf',1,1),1);assert(await fresh.locator('[data-type=shelf]').isDisabled());assert.equal(await buy(fresh,'shelf',7,4),1);
