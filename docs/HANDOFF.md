@@ -5,9 +5,10 @@
 ## 2026-10-19：壁・床6素材を手描き調へ更新（最新）
 
 - 初期店舗の壁床が旧デザインのままだった指摘を受け、床3素材・壁3素材を更新。漆喰は塗り跡と木の腰板、木床は広めの板、石床は石目を追加。新規開始だけでなく既存セーブにも新表示を適用する。
-- 作業ブランチ `art/interior-finish`。[制作元・描画方式・検証](art/interior-finish/README.md)、[店舗の前後比較](art/interior-finish/review/index.html)。画像生成した共通素材1枚を6枚のWebPへパックし、追加の実行時画像は約45KB。
+- [PR #7](https://github.com/yyvape-dev/bakery-simulator/pull/7) をmainへ取り込み（`6bf6a73e2665723840d54f7fbc6436367f5f9c8a`）。制作ブランチ `art/interior-finish`。[制作元・描画方式・検証](art/interior-finish/README.md)、[店舗の前後比較](art/interior-finish/review/index.html)。画像生成した共通素材1枚を6枚のWebPへパックし、追加の実行時画像は約45KB。
 - 経路・壁の輪郭・出入口・高さ・占有・購入費・保存形式は維持。画像失敗時も代替色と構造が残る。素材選択の見本も読み込み後に再描画する。
-- `tools/tests/interior-art.cjs`：48壁条件、3画面、6画像、開口の透明性、保存非変更、画像失敗を確認。過去の「床・壁の質感更新は残る」は本節の前の記録。
+- 公開済み：[前後比較](https://yyvape-dev.github.io/bakery-simulator/docs/art/interior-finish/review/)。公開80ファイルがmainと一致。公開ゲームの通常／デモでも新素材6枚、人物・作業・家具・メニュー、エラーなしを実ブラウザーで確認。
+- `tools/tests/interior-art.cjs`：48壁条件、3画面、6画像、開口の透明性、保存非変更、画像失敗を確認。内装画面16項目・起動／デモ5項目も成功。過去の「床・壁の質感更新は残る」は本節の前の記録。
 
 ## 2026-10-19：営業できる初期店舗セットとキャラ統一（最新）
 

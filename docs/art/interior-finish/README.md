@@ -19,4 +19,6 @@
 
 `node tools/tests/interior-art.cjs`：6画像の読み込み、320×568／390×844／844×390の前後画面、両方向・通常／低い壁・出入口の48ケース、出入口の透明な開口、描画前後の保存非変更、画像失敗時の代替表示を確認。[結果](review/validation.json)。比較元は `e23516e:interior.js`。
 
-通常の営業時間や購入処理は変更していない。`interior-experience.cjs` と `startup.cjs` で内装操作・初期資金保護・デモの保存非変更も確認する。
+通常の営業時間や購入処理は変更していない。`interior-experience.cjs` の内装操作16項目と `startup.cjs` の起動・資金保護・デモ5項目も成功。PR #7をmainへ取り込み（`6bf6a73`）。
+
+公開確認：新しい素材6枚を含む80ファイルがmainとバイト一致。公開ゲームの通常／デモへChromiumで直接HTTPS接続し、素材6枚・家具30画像・作業8枚・スタッフ画面とJavaScript／HTTPエラーなしを確認。比較ページと掲載画像3枚も公開内容を照合済み。[公開記録](publication.json)。

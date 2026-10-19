@@ -1,0 +1,33 @@
+{
+  "mergeCommit": "6bf6a73e2665723840d54f7fbc6436367f5f9c8a",
+  "pullRequest": 7,
+  "publicFiles": 80,
+  "byteIdentical": true,
+  "publicReviewFiles": 4,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    },
+    {
+      "mode": "motion-demo",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    }
+  ],
+  "localChecks": {
+    "wallCases": 48,
+    "interiorExperience": 16,
+    "startupAndDemo": 5
+  },
+  "note": "One transient HTTP 503 during file download; byte comparison completed with retries. Direct HTTPS browser checks passed without HTTP or JavaScript errors."
+}
