@@ -5,7 +5,7 @@ const materials={plaster:{name:'しっくい',cost:30,face:'#e5dec7',top:'#fff4d
 const key=e=>e.axis+','+e.x+','+e.y;
 function edge(a,b){if(!a||!b||Math.abs(a.x-b.x)+Math.abs(a.y-b.y)!==1)return null;return a.x!==b.x?{axis:'x',x:Math.max(a.x,b.x),y:a.y}:{axis:'y',x:a.x,y:Math.max(a.y,b.y)}}
 function validEdge(e,r){return e&&['x','y'].includes(e.axis)&&Number.isInteger(e.x)&&Number.isInteger(e.y)&&e.x>=0&&e.y>=0&&(e.axis==='x'?e.x<=r.width&&e.y<r.height:e.x<r.width&&e.y<=r.height)}
-function restore(old){const dim=v=>[10,12,14,16].includes(v)?v:10,r={width:dim(old?.width),height:dim(old?.height),floors:{},walls:[],lowWalls:old?.lowWalls===true};
+function restore(old){const dim=v=>[10,12,14,16].includes(v)?v:10,r={width:dim(old?.width),height:dim(old?.height),floors:{},walls:[],lowWalls:old?.lowWalls===true,entranceStyle:['timber','sage','arch'].includes(old?.entranceStyle)?old.entranceStyle:'timber'};
  if(old?.floors&&typeof old.floors==='object')for(const [k,v] of Object.entries(old.floors)){const m=/^(\d+),(\d+)$/.exec(k);if(m&&Number(m[1])<r.width&&Number(m[2])<r.height&&Object.hasOwn(floors,v)&&v!=='cream')r.floors[Number(m[1])+','+Number(m[2])]=v}
  const seen=new Set();if(Array.isArray(old?.walls))for(const e of old.walls){if(!validEdge(e,r)||seen.has(key(e))||!Object.hasOwn(materials,e.material)||!['wall','door'].includes(e.type))continue;seen.add(key(e));r.walls.push({axis:e.axis,x:e.x,y:e.y,material:e.material,type:e.type})}
  return r;
