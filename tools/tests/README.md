@@ -8,6 +8,7 @@ node tools/tests/starter-shop.cjs
 node tools/tests/interior-art.cjs
 node tools/tests/exterior.cjs
 node tools/tests/storybook-ui.cjs
+node tools/tests/customers.cjs
 node tools/tests/startup.cjs
 node tools/tests/work-display.cjs
 node tools/tests/work-motions.cjs

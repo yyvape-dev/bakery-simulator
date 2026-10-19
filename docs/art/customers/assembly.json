@@ -1,0 +1,130 @@
+[
+  {
+    "id": "rabbit",
+    "source": "rabbit-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.38011695906432746,
+    "frames": 12
+  },
+  {
+    "id": "rabbit-black",
+    "source": "rabbit-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.38011695906432746,
+    "frames": 12
+  },
+  {
+    "id": "bird-purple",
+    "source": "bird-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.3387096774193548,
+    "frames": 12
+  },
+  {
+    "id": "bird-white",
+    "source": "bird-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.3387096774193548,
+    "frames": 12
+  },
+  {
+    "id": "cat-tabby",
+    "source": "cat-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.3473053892215569,
+    "frames": 12
+  },
+  {
+    "id": "cat-white",
+    "source": "cat-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.3473053892215569,
+    "frames": 12
+  },
+  {
+    "id": "cat-black",
+    "source": "cat-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.3473053892215569,
+    "frames": 12
+  },
+  {
+    "id": "deer",
+    "source": "deer-source.png",
+    "width": 768,
+    "height": 1024,
+    "frame": [
+      256,
+      256
+    ],
+    "anchor": [
+      128,
+      200
+    ],
+    "scale": 0.4024390243902439,
+    "frames": 12
+  }
+]
