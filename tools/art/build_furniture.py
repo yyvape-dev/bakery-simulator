@@ -106,17 +106,19 @@ def make_prep():
  box('Lower storage shelf',(0,0,.31),(1.80,1.80,.12),dark,.035)
  box('Thick prep top',(0,0,1.43),(1.98,1.98,.19),edge,.06)
  for y in [-.79,.79]:box('Workbench apron',(0,y,1.24),(1.72,.12,.25),wood)
- bowl('Mixing bowl',-.50,.42,1.53,.32,cream)
- curve('Green bowl rim',[(-.75,.38,1.70),(-.50,.11,1.70),(-.22,.38,1.70),(-.50,.69,1.70),(-.75,.38,1.70)],.025,green)
- curve('Wood mixing spoon',[(-.47,.42,1.67),(-.34,.44,2.0)],.035,wood);ball('Spoon head',(-.32,.44,2.03),(.07,.04,.10),edge)
- ball('Bread dough',(.14,-.18,1.65),(.36,.28,.14),crumb)
- o=cylinder('Rolling pin',(.28,-.64,1.64),.08,.63,wood);o.rotation_euler.y=math.pi/2
- for x in [-.13,.69]:o=cylinder('Rolling pin handle',(x,-.64,1.64),.037,.18,edge);o.rotation_euler.y=math.pi/2
- box('Flour bag',(.63,.50,1.80),(.40,.35,.52),cloth,.10)
- cylinder('Flour bag mouth',(.63,.50,2.07),.19,.06,cloth)
- cylinder('Flour surface',(.63,.50,2.107),.15,.015,crumb)
+ # Leave a clear perimeter for either adjacent cell on all four sides.
+ bowl('Mixing bowl',0,.20,1.53,.24,cream)
+ curve('Green bowl rim',[(-.20,.17,1.67),(0,-.03,1.67),(.21,.17,1.67),(0,.40,1.67),(-.20,.17,1.67)],.022,green)
+ curve('Wood mixing spoon',[(.02,.20,1.65),(.12,.22,1.91)],.03,wood);ball('Spoon head',(.14,.22,1.94),(.06,.035,.08),edge)
+ # Dough is supplied by the actual worker's kneading art; no permanent extra dough.
+ o=cylinder('Rolling pin',(0,-.26,1.64),.08,.54,wood);o.rotation_euler.y=math.pi/2
+ for x in [-.35,.35]:o=cylinder('Rolling pin handle',(x,-.26,1.64),.037,.16,edge);o.rotation_euler.y=math.pi/2
+ # Flour is stored under the worktop, clear of both the tray stack and bowl.
+ box('Flour bag',(.40,-.43,.65),(.40,.35,.52),cloth,.10)
+ cylinder('Flour bag mouth',(.40,-.43,.92),.19,.06,cloth)
+ cylinder('Flour surface',(.40,-.43,.957),.15,.015,crumb)
  for i in range(10):
-  x=-.70+i*.045;curve('Hanging towel',[(x,-.65,1.54),(x,-.99,1.54),(x,-1.01,1.10)],.026,green if i%3==0 else cloth)
+  x=-.20+i*.045;curve('Hanging towel',[(x,-.65,1.54),(x,-.99,1.54),(x,-1.01,1.10)],.026,green if i%3==0 else cloth)
  for i in range(3):box('Stored baking tray',(.34,.20,.43+i*.08),(.62,.65,.06),stone,.02)
  bowl('Stored mixing bowl',-.43,-.12,.38,.24,cream)
 
@@ -206,6 +208,12 @@ def make_oven():
 builders={'oven':make_oven,'register':make_register,'prep':make_prep,'table':make_table,'plant':make_plant}
 if TYPE not in builders:raise ValueError(TYPE)
 builders[TYPE]()
+# Keep the fixed camera and XY footprint; lower only prep model geometry in Z.
+# The top surface was 1.525 tiles, above the study characters' working hands.
+if TYPE=='prep':
+ for obj in root.children:
+  obj.location.z *= .85/1.525
+  obj.scale.z *= .85/1.525
 # Fixed camera, lighting, scale and image anchor for every furniture type.
 elevation=math.asin(.54);target=Vector((0,0,1.30));distance=12
 position=target+Vector((math.cos(elevation)/math.sqrt(2),-math.cos(elevation)/math.sqrt(2),math.sin(elevation)))*distance
@@ -215,6 +223,7 @@ for name,loc,power,size in [('Warm window',(-3,-4,7),600,5),('Gentle fill',(4,1,
 bpy.context.view_layer.update();origin=world_to_camera_view(scene,cam,Vector((0,0,0)));px=world_to_camera_view(scene,cam,Vector((1,0,0)))
 footprint=[2,1] if TYPE=='register' else [1,1] if TYPE=='plant' else [2,2]
 metadata={'tileFootprint':footprint,'cameraElevationDegrees':math.degrees(elevation),'screenFloorAngleDegrees':math.degrees(math.atan(.54)),'orthographicScale':cam.data.ortho_scale,'imageSize':[768,768],'anchorPixels':[origin.x*768,(1-origin.y)*768],'tileXAxisPixels':[(px.x-origin.x)*768,(origin.y-px.y)*768],'directions':{'0':'front +gameY / world -Y','1':'front +gameX / world +X','2':'front -gameY / world +Y','3':'front -gameX / world -X'}}
+if TYPE=='prep':metadata['workSurfaceHeightTiles']=.85
 (OUT/(TYPE+'_metadata.json')).write_text(json.dumps(metadata,indent=2))
 root.name=TYPE.title()+'_Rotation_Root';root['footprint_tiles']=str(footprint);root['tile_world_units']=1;root['front_axis']='-Y';scene['floor_screen_slope']=.54
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/(TYPE+'.blend')))

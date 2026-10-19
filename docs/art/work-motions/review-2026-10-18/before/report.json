@@ -1,0 +1,1320 @@
+{
+  "source": "976dda2",
+  "workingTree": false,
+  "cells": 288,
+  "recordings": [
+    {
+      "name": "size-0.7-default",
+      "size": 0.7,
+      "swap": false,
+      "seconds": 65,
+      "normalTimers": true,
+      "observed": {
+        "owner:produce:travel:walk": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 52
+        },
+        "noah:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 505
+        },
+        "owner:produce:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 16
+        },
+        "owner:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 109
+        },
+        "owner:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 146
+        },
+        "owner:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 52
+        },
+        "owner:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 1331
+        },
+        "noah:checkout:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 365
+        },
+        "noah:checkout:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 88
+        },
+        "noah:checkout:work:checkout": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "register"
+          ],
+          "samples": 105
+        },
+        "owner:collect:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 59
+        },
+        "noah:stock:travel:idle": {
+          "frames": [
+            0,
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 17
+        },
+        "noah:stock:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 63
+        },
+        "noah:stock:pickup:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 64
+        },
+        "noah:stock:travel:carry": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 246
+        },
+        "noah:stock:deliver:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "shelf"
+          ],
+          "samples": 55
+        },
+        "noah:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 187
+        },
+        "noah:supply:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 47
+        },
+        "noah:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 24
+        },
+        "owner:collect:travel:idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 1
+        }
+      },
+      "sold": 5,
+      "minute": 729,
+      "saved": "{\"review\":\"untouched\"}"
+    },
+    {
+      "name": "size-0.7-swapped",
+      "size": 0.7,
+      "swap": true,
+      "seconds": 65,
+      "normalTimers": true,
+      "observed": {
+        "owner:produce:travel:walk": {
+          "frames": [
+            2
+          ],
+          "contacts": [],
+          "samples": 3
+        },
+        "noah:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 1225
+        },
+        "owner:produce:travel:idle": {
+          "frames": [
+            1
+          ],
+          "contacts": [],
+          "samples": 2
+        },
+        "owner:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 34
+        },
+        "owner:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 64
+        },
+        "owner:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 14
+        },
+        "owner:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 517
+        },
+        "owner:checkout:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 229
+        },
+        "owner:checkout:travel:idle": {
+          "frames": [
+            2,
+            1,
+            0
+          ],
+          "contacts": [],
+          "samples": 143
+        },
+        "owner:checkout:work:checkout": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "register"
+          ],
+          "samples": 120
+        },
+        "noah:collect:travel:idle": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 27
+        },
+        "noah:collect:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 85
+        },
+        "noah:collect:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 48
+        },
+        "owner:stock:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 106
+        },
+        "noah:produce:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 68
+        },
+        "owner:stock:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 28
+        },
+        "noah:produce:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 18
+        },
+        "owner:stock:pickup:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 60
+        },
+        "noah:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 72
+        },
+        "owner:stock:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 216
+        },
+        "noah:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 64
+        },
+        "noah:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 33
+        },
+        "owner:stock:deliver:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "shelf"
+          ],
+          "samples": 38
+        },
+        "noah:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 60
+        },
+        "noah:supply:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 15
+        },
+        "noah:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 15
+        },
+        "owner:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 110
+        },
+        "owner:supply:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 27
+        },
+        "owner:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 19
+        }
+      },
+      "sold": 5,
+      "minute": 728,
+      "saved": "{\"review\":\"untouched\"}"
+    },
+    {
+      "name": "size-1-default",
+      "size": 1,
+      "swap": false,
+      "seconds": 65,
+      "normalTimers": true,
+      "observed": {
+        "owner:produce:knead:knead": {
+          "frames": [
+            1,
+            0
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 65
+        },
+        "noah:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 351
+        },
+        "owner:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 119
+        },
+        "owner:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 27
+        },
+        "owner:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 1023
+        },
+        "noah:checkout:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 288
+        },
+        "noah:checkout:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 69
+        },
+        "noah:checkout:work:checkout": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "register"
+          ],
+          "samples": 71
+        },
+        "owner:collect:travel:idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 2
+        },
+        "owner:collect:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 37
+        },
+        "owner:produce:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 33
+        },
+        "noah:stock:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 46
+        },
+        "owner:produce:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 9
+        },
+        "noah:stock:travel:idle": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 13
+        },
+        "noah:stock:pickup:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 36
+        },
+        "noah:stock:travel:carry": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 194
+        },
+        "noah:stock:deliver:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "shelf"
+          ],
+          "samples": 44
+        },
+        "noah:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 137
+        },
+        "noah:supply:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 36
+        },
+        "noah:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 30
+        }
+      },
+      "sold": 4,
+      "minute": 733,
+      "saved": "{\"review\":\"untouched\"}"
+    },
+    {
+      "name": "size-1-swapped",
+      "size": 1,
+      "swap": true,
+      "seconds": 65,
+      "normalTimers": true,
+      "observed": {
+        "owner:produce:travel:idle": {
+          "frames": [
+            1
+          ],
+          "contacts": [],
+          "samples": 1
+        },
+        "noah:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 948
+        },
+        "owner:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 30
+        },
+        "owner:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 56
+        },
+        "owner:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 3
+        },
+        "owner:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 378
+        },
+        "owner:checkout:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 216
+        },
+        "owner:checkout:travel:idle": {
+          "frames": [
+            2,
+            1,
+            0
+          ],
+          "contacts": [],
+          "samples": 117
+        },
+        "owner:checkout:work:checkout": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "register"
+          ],
+          "samples": 101
+        },
+        "noah:collect:travel:idle": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 18
+        },
+        "noah:collect:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 59
+        },
+        "noah:collect:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 35
+        },
+        "owner:stock:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 58
+        },
+        "noah:produce:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 54
+        },
+        "owner:stock:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 14
+        },
+        "noah:produce:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 15
+        },
+        "owner:stock:pickup:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 47
+        },
+        "noah:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 59
+        },
+        "owner:stock:travel:carry": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 197
+        },
+        "noah:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 86
+        },
+        "owner:stock:deliver:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "shelf"
+          ],
+          "samples": 41
+        },
+        "noah:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 30
+        },
+        "noah:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 56
+        },
+        "noah:supply:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 13
+        },
+        "noah:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 14
+        },
+        "owner:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 95
+        },
+        "owner:supply:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 24
+        },
+        "owner:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 9
+        }
+      },
+      "sold": 5,
+      "minute": 730,
+      "saved": "{\"review\":\"untouched\"}"
+    },
+    {
+      "name": "size-1.3-default",
+      "size": 1.3,
+      "swap": false,
+      "seconds": 65,
+      "normalTimers": true,
+      "observed": {
+        "owner:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 38
+        },
+        "noah:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 203
+        },
+        "owner:produce:travel:carry": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 85
+        },
+        "owner:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 21
+        },
+        "owner:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 753
+        },
+        "noah:checkout:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 196
+        },
+        "noah:checkout:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 47
+        },
+        "noah:checkout:work:checkout": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "register"
+          ],
+          "samples": 71
+        },
+        "owner:collect:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 33
+        },
+        "noah:stock:travel:idle": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 10
+        },
+        "owner:produce:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 33
+        },
+        "noah:stock:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 46
+        },
+        "owner:produce:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 7
+        },
+        "noah:stock:pickup:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 34
+        },
+        "noah:stock:travel:carry": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 166
+        },
+        "noah:stock:deliver:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "shelf"
+          ],
+          "samples": 42
+        },
+        "noah:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 122
+        },
+        "noah:supply:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 26
+        },
+        "noah:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 10
+        },
+        "owner:collect:travel:idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 3
+        }
+      },
+      "sold": 4,
+      "minute": 728,
+      "saved": "{\"review\":\"untouched\"}"
+    },
+    {
+      "name": "size-1.3-swapped",
+      "size": 1.3,
+      "swap": true,
+      "seconds": 65,
+      "normalTimers": true,
+      "observed": {
+        "owner:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 12
+        },
+        "noah:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 1184
+        },
+        "owner:produce:travel:carry": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 38
+        },
+        "owner:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 13
+        },
+        "owner:idle::idle": {
+          "frames": [
+            0
+          ],
+          "contacts": [],
+          "samples": 471
+        },
+        "owner:checkout:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 258
+        },
+        "owner:checkout:travel:idle": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 130
+        },
+        "owner:checkout:work:checkout": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "register"
+          ],
+          "samples": 93
+        },
+        "noah:collect:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 54
+        },
+        "noah:collect:travel:idle": {
+          "frames": [
+            2,
+            1,
+            0
+          ],
+          "contacts": [],
+          "samples": 15
+        },
+        "noah:collect:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 30
+        },
+        "owner:stock:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 50
+        },
+        "noah:produce:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 36
+        },
+        "owner:stock:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 11
+        },
+        "noah:produce:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 10
+        },
+        "owner:stock:pickup:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 39
+        },
+        "noah:produce:knead:knead": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "knead"
+          ],
+          "samples": 27
+        },
+        "owner:stock:travel:carry": {
+          "frames": [
+            1,
+            2,
+            0
+          ],
+          "contacts": [],
+          "samples": 210
+        },
+        "noah:produce:travel:carry": {
+          "frames": [
+            0,
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 56
+        },
+        "owner:stock:deliver:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "shelf"
+          ],
+          "samples": 50
+        },
+        "noah:produce:load:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [
+            "oven"
+          ],
+          "samples": 25
+        },
+        "noah:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 32
+        },
+        "noah:supply:travel:idle": {
+          "frames": [
+            2,
+            1
+          ],
+          "contacts": [],
+          "samples": 8
+        },
+        "noah:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 11
+        },
+        "owner:supply:travel:walk": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 88
+        },
+        "owner:supply:travel:idle": {
+          "frames": [
+            1,
+            2
+          ],
+          "contacts": [],
+          "samples": 16
+        },
+        "owner:supply:work:reach": {
+          "frames": [
+            0,
+            1
+          ],
+          "contacts": [],
+          "samples": 9
+        }
+      },
+      "sold": 6,
+      "minute": 802,
+      "saved": "{\"review\":\"untouched\"}"
+    }
+  ]
+}

@@ -81,7 +81,7 @@ function createBakeryCrew(api,saved){
  function setRole(id,role){const a=staff.find(a=>a.id===id);if(!a||!Object.hasOwn(roles,role))return;a.role=role;a.command=null;api.changed()}
  function setLook(id,key,value){const a=staff.find(a=>a.id===id);if(!a||!['width','height','scale'].includes(key))return;a.look[key]=clamp(Number(value),1,.7,1.3);api.changed()}
  function reconcile(){for(const a of staff){if(api.occupied().has(a.cell.x+','+a.cell.y))relocate(a);if(a.next&&api.occupied().has(a.next.x+','+a.next.y)){a.next=null;a.x=a.cell.x;a.y=a.cell.y}if(a.job?.type==='checkout'&&!api.customer().reserved)a.job=null}}
- return{staff,roles,labels,command,setRole,setLook,cancelAll,reconcile,breadTotal,tick,walk(){frames++;for(const a of staff){a.frame=0;move(a);if(a.job&&a.job.stage!=='travel')a.frame=1+(Math.floor(frames/6)%2)}},save(){return{version:1,staff:clone(staff)}},get selected(){return selected},set selected(id){if(names[id])selected=id}};
+ return{staff,roles,labels,command,setRole,setLook,cancelAll,reconcile,breadTotal,tick,walk(){frames++;for(const a of staff){a.frame=0;move(a)}},save(){return{version:1,staff:clone(staff)}},get selected(){return selected},set selected(id){if(names[id])selected=id}};
 }
 root.createBakeryCrew=createBakeryCrew;
 if(typeof module!=='undefined')module.exports=createBakeryCrew;
