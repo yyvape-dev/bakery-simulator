@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checks": [
+    "fresh shop has decorated 12x12 room, all essentials, stock, materials and unobstructed staff/customer routes",
+    "opening set remains usable in small portrait and landscape",
+    "one opening action runs production, baking, restocking and checkout through a full day; reload preserves progress",
+    "legacy empty shop is retained instead of silently replaced",
+    "customized legacy layout, room, balance, day and supplies survive startup",
+    "reset cancellation preserves the save; confirmed reset restores the playable opening set and closes menus",
+    "unreadable save recovers to a playable opening set"
+  ],
+  "soldInFirst180Minutes": 6,
+  "observedJobs": [
+    "produce:knead",
+    "produce:travel",
+    "produce:load",
+    "checkout:travel",
+    "checkout:work",
+    "collect:work",
+    "stock:travel",
+    "stock:pickup",
+    "stock:deliver",
+    "supply:travel",
+    "supply:work",
+    "collect:travel"
+  ]
+}
