@@ -5,8 +5,9 @@
 ## 2026-10-19：汎用の二足歩行の動物客8種類（最新）
 
 - うさぎ・黒うさぎ・暗い紫の鳥・白い鳥・茶とら猫・白猫・黒猫・シカを絵本調で制作。4基本シートの画像生成と色違いで8種、各4方向×3コマの計96セル。従来の客の猫絵文字を置換。
-- [完成デザインと歩行の一覧](art/customers/review/index.html)、[制作元・再構築・仕様](art/customers/README.md)。ブランチ `art/customer-animals`。`customer-art.js` と `assets/customers/` が実行時の素材。
+- [完成デザインと歩行の一覧](art/customers/review/index.html)、[制作元・再構築・仕様](art/customers/README.md)。[PR #10](https://github.com/yyvape-dev/bakery-simulator/pull/10) をmainへ取り込み（`11f5abf`）、公開済み。制作ブランチ `art/customer-animals`。`customer-art.js` と `assets/customers/` が実行時の素材。
 - 来店時に8種を順番に選ぶ。外見・方向・歩行距離は既存customerへ任意項目で保存し、旧セーブはうさぎへ復元。予約・会計・価格・経路・占有は維持。左右反転ではなく4方向の個別画像を使用。
+- 公開106ファイルがmainと一致。公開ゲームの通常／デモで客8種類の素材、公開一覧の8種類・向き切替・歩行再生とエラーなしを確認。[公開記録](art/customers/publication.json)。営業20項目／3営業日の回帰も成功。
 - `tools/tests/customers.cjs`：96セルの透過・欠け・非空、全8種・4方向・360分12件販売、途中保存、描画による資産非変更を確認。
 
 ## 2026-10-19：景色のズームと絵本調の共通UI（最新）

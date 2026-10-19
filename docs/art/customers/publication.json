@@ -1,0 +1,73 @@
+{
+  "mergeCommit": "11f5abf4441c94291497ae4437312919097fbdc0",
+  "pullRequest": 10,
+  "publicFiles": 106,
+  "byteIdentical": true,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "exteriorMaterials": 6,
+      "uiTextures": 8,
+      "customerDesigns": 8,
+      "sceneZoomKeepsUIFixed": true,
+      "doorPersistence": true,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    },
+    {
+      "mode": "motion-demo",
+      "publicHTTPS": true,
+      "furniture": 30,
+      "interiorMaterials": 6,
+      "exteriorMaterials": 6,
+      "uiTextures": 8,
+      "customerDesigns": 8,
+      "sceneZoomKeepsUIFixed": true,
+      "doorPersistence": false,
+      "workSheets": 8,
+      "staffDialog": true,
+      "errors": []
+    }
+  ],
+  "publicDesignReview": {
+    "publicHTTPS": true,
+    "designs": 8,
+    "directionSwitch": true,
+    "walkToggle": true,
+    "errors": []
+  },
+  "localCustomers": {
+    "passed": true,
+    "checks": [
+      "8 transparent sheets contain 96 unclipped, occupied direction/walk cells",
+      "all 8 designs render with shared foot anchors; drawing 96 poses preserves visitor and cash",
+      "all 8 customers enter, walk on two feet through four directions and complete staffed sales",
+      "mid-visit reload preserves chosen animal, paid sales and cash"
+    ],
+    "seen": [
+      "rabbit",
+      "rabbit-black",
+      "bird-purple",
+      "bird-white",
+      "cat-tabby",
+      "cat-white",
+      "cat-black",
+      "deer"
+    ],
+    "directions": [
+      2,
+      1,
+      0,
+      3
+    ],
+    "sold": 12
+  },
+  "regression": {
+    "workflowCases": 20,
+    "workflowDays": 3
+  }
+}
