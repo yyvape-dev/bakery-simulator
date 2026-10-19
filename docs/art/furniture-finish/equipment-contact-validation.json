@@ -1,0 +1,118 @@
+{
+  "baseline": "13b18cad8812b51e536b6f727f78362ac7705e82",
+  "cases": 139968,
+  "maxGripX": 6.717667320659767e-14,
+  "maxGripY": 1.0238928786968597,
+  "minHeight": 0.3189503620459847,
+  "maxHeight": 1.325,
+  "groups": [
+    {
+      "cases": 15552,
+      "maxGripX": 3.104544081042236e-14,
+      "maxGripY": 0.4293744330018727,
+      "minHeight": 0.3189503620459856,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "390x844",
+      "zoom": 0.65
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 2.228903442799554e-14,
+      "maxGripY": 0.6605760507721564,
+      "minHeight": 0.3189503620459878,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "390x844",
+      "zoom": 1
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 3.208028883743644e-14,
+      "maxGripY": 1.0238928786968597,
+      "minHeight": 0.3189503620459868,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "390x844",
+      "zoom": 1.55
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 2.207675790963368e-14,
+      "maxGripY": 0.3523072270784953,
+      "minHeight": 0.3189503620459847,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "320x568",
+      "zoom": 0.65
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 3.0145777755530736e-14,
+      "maxGripY": 0.5420111185822639,
+      "minHeight": 0.3189503620459869,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "320x568",
+      "zoom": 1
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 3.1150637014048424e-14,
+      "maxGripY": 0.8401172338025231,
+      "minHeight": 0.31895036204598726,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "320x568",
+      "zoom": 1.55
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 4.229796731060585e-14,
+      "maxGripY": 0.2247793506099737,
+      "minHeight": 0.3189503620459869,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "844x390",
+      "zoom": 0.65
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 3.612717632364743e-14,
+      "maxGripY": 0.3458143855537882,
+      "minHeight": 0.31895036204598814,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "844x390",
+      "zoom": 1
+    },
+    {
+      "cases": 15552,
+      "maxGripX": 6.717667320659767e-14,
+      "maxGripY": 0.5360122976083987,
+      "minHeight": 0.31895036204598715,
+      "maxHeight": 1.325,
+      "frontTools": 2592,
+      "sideTransfers": 7776,
+      "picked": 300,
+      "viewport": "844x390",
+      "zoom": 1.55
+    }
+  ]
+}

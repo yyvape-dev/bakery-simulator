@@ -28,6 +28,20 @@
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
       },
+      "finish": {
+        "revision": "painted-materials-v1",
+        "method": "shared hand-painted albedo on unchanged Blender meshes",
+        "materials": {
+          "Cream linen": "linen",
+          "Golden bevel wood": "oak",
+          "Golden bread crust": "crust",
+          "Honey wood - painted grain": "oak",
+          "Pale flour scoring": "limestone",
+          "Sage green linen": "sage",
+          "Toasted bread": "crust",
+          "Warm shelf recess": "walnut"
+        }
+      },
       "files": [
         "assets/shelf_r0.webp",
         "assets/shelf_r1.webp",
@@ -61,6 +75,28 @@
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
       },
+      "finish": {
+        "revision": "painted-materials-v1",
+        "method": "shared hand-painted albedo on unchanged Blender meshes",
+        "materials": {
+          "Cream flowers": "limestone",
+          "Cream linen": "linen",
+          "Cream stone mortar": "limestone",
+          "Dark potting soil": "walnut",
+          "Fresh green leaves": "leaf",
+          "Golden bevel wood": "oak",
+          "Golden bread crust": "crust",
+          "Honey wood - painted grain": "oak",
+          "Light leaves": "leaf",
+          "Pale flour scoring": "limestone",
+          "Sage green linen": "sage",
+          "Sage painted wood": "sage",
+          "Toasted bread": "crust",
+          "Warm ceramic": "limestone",
+          "Warm shelf recess": "walnut",
+          "Warm terracotta brick": "terracotta"
+        }
+      },
       "files": [
         "assets/oven_r0.webp",
         "assets/oven_r1.webp",
@@ -93,6 +129,28 @@
         "1": "front +gameX / world +X",
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
+      },
+      "finish": {
+        "revision": "painted-materials-v1",
+        "method": "shared hand-painted albedo on unchanged Blender meshes",
+        "materials": {
+          "Cream flowers": "limestone",
+          "Cream linen": "linen",
+          "Cream stone mortar": "limestone",
+          "Dark potting soil": "walnut",
+          "Fresh green leaves": "leaf",
+          "Golden bevel wood": "oak",
+          "Golden bread crust": "crust",
+          "Honey wood - painted grain": "oak",
+          "Light leaves": "leaf",
+          "Pale flour scoring": "limestone",
+          "Sage green linen": "sage",
+          "Sage painted wood": "sage",
+          "Toasted bread": "crust",
+          "Warm ceramic": "limestone",
+          "Warm shelf recess": "walnut",
+          "Warm terracotta brick": "terracotta"
+        }
       },
       "files": [
         "assets/register_r0.webp",
@@ -128,6 +186,28 @@
         "3": "front -gameX / world -X"
       },
       "workSurfaceHeightTiles": 0.85,
+      "finish": {
+        "revision": "painted-materials-v1",
+        "method": "shared hand-painted albedo on unchanged Blender meshes",
+        "materials": {
+          "Cream flowers": "limestone",
+          "Cream linen": "linen",
+          "Cream stone mortar": "limestone",
+          "Dark potting soil": "walnut",
+          "Fresh green leaves": "leaf",
+          "Golden bevel wood": "oak",
+          "Golden bread crust": "crust",
+          "Honey wood - painted grain": "oak",
+          "Light leaves": "leaf",
+          "Pale flour scoring": "limestone",
+          "Sage green linen": "sage",
+          "Sage painted wood": "sage",
+          "Toasted bread": "crust",
+          "Warm ceramic": "limestone",
+          "Warm shelf recess": "walnut",
+          "Warm terracotta brick": "terracotta"
+        }
+      },
       "files": [
         "assets/prep_r0.webp",
         "assets/prep_r1.webp",
@@ -161,6 +241,28 @@
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
       },
+      "finish": {
+        "revision": "painted-materials-v1",
+        "method": "shared hand-painted albedo on unchanged Blender meshes",
+        "materials": {
+          "Cream flowers": "limestone",
+          "Cream linen": "linen",
+          "Cream stone mortar": "limestone",
+          "Dark potting soil": "walnut",
+          "Fresh green leaves": "leaf",
+          "Golden bevel wood": "oak",
+          "Golden bread crust": "crust",
+          "Honey wood - painted grain": "oak",
+          "Light leaves": "leaf",
+          "Pale flour scoring": "limestone",
+          "Sage green linen": "sage",
+          "Sage painted wood": "sage",
+          "Toasted bread": "crust",
+          "Warm ceramic": "limestone",
+          "Warm shelf recess": "walnut",
+          "Warm terracotta brick": "terracotta"
+        }
+      },
       "files": [
         "assets/table_r0.webp",
         "assets/table_r1.webp",
@@ -193,6 +295,27 @@
         "1": "front +gameX / world +X",
         "2": "front -gameY / world +Y",
         "3": "front -gameX / world -X"
+      },
+      "finish": {
+        "revision": "painted-materials-v1",
+        "method": "shared hand-painted albedo on unchanged Blender meshes",
+        "materials": {
+          "Cream flowers": "limestone",
+          "Cream linen": "linen",
+          "Cream stone mortar": "limestone",
+          "Fresh green leaves": "leaf",
+          "Golden bevel wood": "oak",
+          "Golden bread crust": "crust",
+          "Honey wood - painted grain": "oak",
+          "Light leaves": "leaf",
+          "Pale flour scoring": "limestone",
+          "Sage green linen": "sage",
+          "Sage painted wood": "sage",
+          "Toasted bread": "crust",
+          "Warm ceramic": "limestone",
+          "Warm shelf recess": "walnut",
+          "Warm terracotta brick": "terracotta"
+        }
       },
       "files": [
         "assets/plant_r0.webp",

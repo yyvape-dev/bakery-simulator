@@ -10,6 +10,7 @@ node tools/tests/work-motions.cjs
 node tools/tests/work-contact.cjs
 node tools/tests/equipment-contact.cjs
 node tools/tests/interior.cjs
+node tools/tests/furniture-art.cjs
 node tools/tests/furniture.cjs --once
 node tools/tests/workflow.cjs --published
 node tools/tests/interior.cjs --published
