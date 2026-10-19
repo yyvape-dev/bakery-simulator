@@ -30,25 +30,59 @@ function create(api){const room=()=>api.state().room,sim=()=>api.sim();
  return{floorQuote,paint,wallQuote,walls,expansion,expand};
 }
 function polygon(ctx,points,fill,stroke){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.closePath();if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke()}}
-function drawFloor(ctx,point,x,y,material){const a=point(x,y),b=point(x+1,y),d=point(x,y+1),corners=[a,b,point(x+1,y+1),d];polygon(ctx,corners,material==='wood'?'#cda573':material==='stone'?((x+y)%2?'#b8c5bc':'#c5cfc3'):((x+y)%2?'#f4dcb6':'#f9e5c2'));
- ctx.save();ctx.transform(b.x-a.x,b.y-a.y,d.x-a.x,d.y-a.y,a.x,a.y);ctx.beginPath();ctx.rect(0,0,1,1);ctx.clip();ctx.lineWidth=.018;
- if(material==='wood'){ctx.strokeStyle='#916d4470';for(let i=1;i<4;i++){const v=i/4;ctx.beginPath();ctx.moveTo(0,v);ctx.lineTo(1,v);ctx.stroke()}for(let i=0;i<4;i++){const u=(x+i+y)%2?.32:.68;ctx.beginPath();ctx.moveTo(u,i/4);ctx.lineTo(u,(i+1)/4);ctx.stroke()}ctx.strokeStyle='#f2d7a244';ctx.lineWidth=.008;for(let i=0;i<12;i++){const v=(i+.5)/12;ctx.beginPath();ctx.moveTo(.06,v);ctx.bezierCurveTo(.3,v+.025,.65,v-.018,.95,v);ctx.stroke()}}
- if(material==='stone'){ctx.strokeStyle='#f2f0df60';ctx.lineWidth=.009;for(let i=0;i<8;i++){const seed=((x*37+y*19+i*23)%97)/97;ctx.beginPath();ctx.moveTo(seed*.7,.1+i*.11);ctx.lineTo(Math.min(.94,seed*.7+.18),.12+i*.11);ctx.stroke()}ctx.strokeStyle='#78918566';ctx.lineWidth=.015;ctx.strokeRect(.025,.025,.95,.95)}
- if(material==='cream'){ctx.fillStyle='#fff9e519';ctx.fillRect(.05,.05,.9,.22)}ctx.restore();polygon(ctx,corners,null,material==='wood'?'#b38c5d':material==='stone'?'#91a297':'#dfc095');
+// Painterly surfaces share world coordinates; visual detail never changes wall topology.
+const textures={},textureListeners=[];
+let pendingTextures=6;
+if(typeof Image!=='undefined')for(const name of ['floor-wood','floor-cream','floor-stone','wall-plaster','wall-wood','wall-brick']){
+ const im=new Image();im.onload=()=>{textures[name]=im;settled()};im.onerror=settled;im.src='assets/interior/'+name+'.webp?v=1';
+}
+function settled(){if(--pendingTextures===0)for(const fn of textureListeners.splice(0))fn()}
+function whenTexturesReady(fn){if(pendingTextures===0)fn();else textureListeners.push(fn)}
+function surface(ctx,name,x,y){const im=textures[name];if(!im)return;ctx.save();ctx.globalAlpha*=name==='floor-wood'?.66:1;const sx=((x%2)+2)%2*im.width/2,sy=((y%2)+2)%2*im.height/2;ctx.drawImage(im,sx,sy,im.width/2,im.height/2,0,0,1,1);ctx.restore()}
+function line(ctx,ax,ay,bx,by,color,width){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);ctx.stroke()}
+function drawFloor(ctx,point,x,y,material){
+ const m=floors[material]||floors.cream,a=point(x,y),b=point(x+1,y),d=point(x,y+1),corners=[a,b,point(x+1,y+1),d];
+ ctx.save();ctx.transform(b.x-a.x,b.y-a.y,d.x-a.x,d.y-a.y,a.x,a.y);ctx.beginPath();ctx.rect(0,0,1,1);ctx.clip();ctx.fillStyle=m.color;ctx.fillRect(0,0,1,1);surface(ctx,'floor-'+material,x,y);
+ // Broad boards and staggered joints replace the small uniform wire grid.
+ if(material==='wood'){
+  line(ctx,0,0,1,0,'#65492d65',.018);line(ctx,0,.022,1,.022,'#ffedbd45',.01);
+  if((x+y*2)%3===0)line(ctx,0,0,0,1,'#71503665',.015);
+ }else{
+  ctx.strokeStyle=material==='stone'?'#6d796650':'#b6997255';ctx.lineWidth=.035;ctx.strokeRect(.005,.005,.99,.99);
+  line(ctx,.035,.965,.965,.965,'#fff9df8a',.02);line(ctx,.965,.035,.965,.965,'#fff9df70',.02);
+ }
+ ctx.restore();
 }
 function wallPoints(w,point,height){const a=point(w.x,w.y),b=point(w.x+(w.axis==='y'?1:0),w.y+(w.axis==='x'?1:0));return[a,b,{x:b.x,y:b.y-height},{x:a.x,y:a.y-height}]}
-function drawWall(ctx,point,w,tx,{low=false,alpha=1,selected=false}={}){const m=materials[w.material],height=tx*(low?1.15:2.15),pts=wallPoints(w,point,height),[a,b]=pts,n=point(w.axis==='x'?.08:0,w.axis==='y'?.08:0),z=point(0,0),offset={x:n.x-z.x,y:n.y-z.y};ctx.save();ctx.globalAlpha=alpha;
- polygon(ctx,[pts[3],pts[2],{x:pts[2].x+offset.x,y:pts[2].y+offset.y},{x:pts[3].x+offset.x,y:pts[3].y+offset.y}],m.top,'#826c4950');
+function drawWall(ctx,point,w,tx,{low=false,alpha=1,selected=false}={}){
+ const m=materials[w.material],height=tx*(low?1.15:2.15),pts=wallPoints(w,point,height),[a,b]=pts,n=point(w.axis==='x'?.08:0,w.axis==='y'?.08:0),z=point(0,0),offset={x:n.x-z.x,y:n.y-z.y};ctx.save();ctx.globalAlpha=alpha;
+ polygon(ctx,[pts[3],pts[2],{x:pts[2].x+offset.x,y:pts[2].y+offset.y},{x:pts[3].x+offset.x,y:pts[3].y+offset.y}],m.top,'#80664a45');
  polygon(ctx,[b,{x:b.x+offset.x,y:b.y+offset.y},{x:pts[2].x+offset.x,y:pts[2].y+offset.y},pts[2]],m.side);
  ctx.save();ctx.transform(b.x-a.x,b.y-a.y,0,-height,a.x,a.y);
  ctx.beginPath();if(w.type==='door'){ctx.rect(0,0,.13,1);ctx.rect(.87,0,.13,1);ctx.rect(.13,.82,.74,.18)}else ctx.rect(0,0,1,1);ctx.clip();ctx.fillStyle=m.face;ctx.fillRect(0,0,1,1);
- const gradient=ctx.createLinearGradient(0,0,1,1);gradient.addColorStop(0,'#60422e22');gradient.addColorStop(1,'#fff9e430');ctx.fillStyle=gradient;ctx.fillRect(0,0,1,1);
- if(w.material==='brick'){ctx.strokeStyle='#edcaa780';ctx.lineWidth=.022;for(let row=0;row<8;row++){const v=row/8;ctx.beginPath();ctx.moveTo(0,v);ctx.lineTo(1,v);ctx.stroke();for(let col=0;col<4;col++){const u=(col+(row%2)*.5)/3;ctx.beginPath();ctx.moveTo(u,v);ctx.lineTo(u,v+.125);ctx.stroke()}}}
- else if(w.material==='wood'){ctx.strokeStyle='#78593f80';ctx.lineWidth=.014;for(let i=1;i<5;i++){ctx.beginPath();ctx.moveTo(i/5,0);ctx.lineTo(i/5,1);ctx.stroke()}ctx.strokeStyle='#eccb9433';ctx.lineWidth=.008;for(let i=0;i<12;i++){const u=(i+.3)/12;ctx.beginPath();ctx.moveTo(u,.07);ctx.bezierCurveTo(u+.012,.3,u-.018,.55,u,.97);ctx.stroke()}}
- else{ctx.fillStyle='#f4eddb30';for(let i=0;i<10;i++)ctx.fillRect(((w.x*13+w.y*7+i*11)%31)/40,i/10,.3,.027)}
- ctx.fillStyle=m.side;ctx.fillRect(0,0,1,.055);ctx.restore();if(selected)polygon(ctx,pts,null,'#ffdb4c');else if(w.type==='wall')polygon(ctx,pts,null,'#89725470');ctx.restore();return pts;
+ // Canvas wall coordinates run upwards; flip the albedo so it stays upright.
+ ctx.save();ctx.translate(0,1);ctx.scale(1,-1);surface(ctx,'wall-'+w.material,w.x,w.y);ctx.restore();
+ if(w.material==='plaster'){
+  ctx.save();ctx.beginPath();ctx.rect(0,0,1,.28);ctx.clip();ctx.fillStyle='#b68c5b';ctx.fillRect(0,0,1,.28);surface(ctx,'wall-wood',w.x,w.y);ctx.restore();
+  for(const u of [.05,.5,.95])line(ctx,u,.03,u,.25,'#72533770',.018);
+  ctx.fillStyle='#d6b580';ctx.fillRect(0,.275,1,.035);line(ctx,0,.31,1,.31,'#ffebc29c',.014);line(ctx,0,.27,1,.27,'#79604465',.014);
+ }else if(w.material==='wood'){
+  for(const u of [0,.25,.5,.75]){line(ctx,u,0,u,1,'#60462f75',.015);line(ctx,u+.018,0,u+.018,1,'#f0d2a040',.01)}
+  ctx.fillStyle='#967045';ctx.fillRect(0,.08,1,.025);ctx.fillRect(0,.84,1,.025);
+ }else{
+  for(let row=0;row<5;row++){
+   const v=row/5;line(ctx,0,v,1,v,'#e2ceb0cc',.025);
+   const u=((row+(w.axis==='x'?w.y:w.x))%2)*.5;
+   for(let col=-1;col<2;col++)line(ctx,u+col*.9,v,u+col*.9,v+.2,'#e2ceb0cc',.025);
+  }
+ }
+ const shade=ctx.createLinearGradient(0,0,0,1);shade.addColorStop(0,'#5d46332b');shade.addColorStop(.5,'#ffffff00');shade.addColorStop(1,'#fff7df22');ctx.fillStyle=shade;ctx.fillRect(0,0,1,1);
+ if(w.axis==='y'){ctx.fillStyle='#5c513412';ctx.fillRect(0,0,1,1)}
+ ctx.fillStyle='#7d6548';ctx.fillRect(0,0,1,.035);ctx.fillStyle=m.top;ctx.fillRect(0,.965,1,.035);
+ if(w.type==='door'){ctx.fillStyle='#b08c5f';ctx.fillRect(.095,0,.035,.82);ctx.fillRect(.87,0,.035,.82);ctx.fillRect(.095,.8,.81,.035)}
+ ctx.restore();if(selected)polygon(ctx,pts,null,'#ffdb4c');ctx.restore();return pts;
 }
 function inPolygon(p,points){let inside=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const a=points[i],b=points[j];if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)inside=!inside}return inside}
-root.BakeryInterior={floors,materials,key,edge,validEdge,restore,blocked,crosses,create,drawFloor,drawWall,wallPoints,inPolygon};
+root.BakeryInterior={floors,materials,key,edge,validEdge,restore,blocked,crosses,create,drawFloor,drawWall,wallPoints,inPolygon,whenTexturesReady};
 if(typeof module!=='undefined')module.exports=root.BakeryInterior;
 })(typeof window!=='undefined'?window:globalThis);

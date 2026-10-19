@@ -1,0 +1,61 @@
+{
+  "source": "material-atlas.png",
+  "width": 1536,
+  "height": 1024,
+  "files": [
+    {
+      "name": "floor-wood",
+      "crop": {
+        "left": 6,
+        "top": 6,
+        "width": 500,
+        "height": 500
+      }
+    },
+    {
+      "name": "floor-cream",
+      "crop": {
+        "left": 518,
+        "top": 6,
+        "width": 500,
+        "height": 500
+      }
+    },
+    {
+      "name": "floor-stone",
+      "crop": {
+        "left": 1030,
+        "top": 6,
+        "width": 500,
+        "height": 500
+      }
+    },
+    {
+      "name": "wall-plaster",
+      "crop": {
+        "left": 6,
+        "top": 518,
+        "width": 500,
+        "height": 500
+      }
+    },
+    {
+      "name": "wall-wood",
+      "crop": {
+        "left": 518,
+        "top": 518,
+        "width": 500,
+        "height": 500
+      }
+    },
+    {
+      "name": "wall-brick",
+      "crop": {
+        "left": 1030,
+        "top": 518,
+        "width": 500,
+        "height": 500
+      }
+    }
+  ]
+}
