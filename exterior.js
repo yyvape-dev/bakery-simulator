@@ -8,7 +8,13 @@ function ready(fn){if(pending===0)fn();else listeners.push(fn)}
 function poly(c,pts,color,stroke){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();if(color){c.fillStyle=color;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=.7;c.stroke()}}
 function quad(c,p,x,y,w,h,color,texture){const a=p(x,y),b=p(x+w,y),d=p(x,y+h);poly(c,[a,b,p(x+w,y+h),d],color);const im=textures[texture];if(im){c.save();c.transform((b.x-a.x)/w,(b.y-a.y)/w,(d.x-a.x)/h,(d.y-a.y)/h,a.x,a.y);c.globalAlpha=.72;const pattern=c.createPattern(im,'repeat');c.scale(1/64,1/64);c.fillStyle=pattern;c.fillRect(0,0,w*64,h*64);c.restore()}}
 function stroke(c,pts,color,width){c.strokeStyle=color;c.lineWidth=width;c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.stroke()}
+let terrainCache=null;
 function background(c,p,w,h,entry,tx){
+ const origin=p(0,0),unit=p(1,0),key=[c.canvas.width,c.canvas.height,origin.x,origin.y,unit.x,unit.y,w,h,entry.x,pending].join(',');
+ if(terrainCache?.key!==key){const canvas=document.createElement('canvas');canvas.width=c.canvas.width;canvas.height=c.canvas.height;const layer=canvas.getContext('2d');layer.setTransform(c.getTransform());paintBackground(layer,p,w,h,entry,tx);terrainCache={key,canvas}}
+ c.save();c.resetTransform();c.drawImage(terrainCache.canvas,0,0);c.restore();
+}
+function paintBackground(c,p,w,h,entry,tx){
  quad(c,p,-100,-100,w+200,h+220,'#b5b58b','meadow');
  // Packed sandy ground gives the shop breathing space on all four sides.
  quad(c,p,-1,-1,w+2,h+2,'#cab793','sand');
