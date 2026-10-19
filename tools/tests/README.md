@@ -7,6 +7,7 @@ node tools/tests/workflow.cjs
 node tools/tests/starter-shop.cjs
 node tools/tests/interior-art.cjs
 node tools/tests/exterior.cjs
+node tools/tests/storybook-ui.cjs
 node tools/tests/startup.cjs
 node tools/tests/work-display.cjs
 node tools/tests/work-motions.cjs
@@ -36,3 +37,5 @@ node tools/tests/startup.cjs
 `interior-art.cjs` は壁床6素材、3画面、48壁条件、出入口の透明性、画像失敗時の代替、保存非変更を確認し、前後画面を `docs/art/interior-finish/review/` へ保存します。比較元の取得には通常のGit履歴が必要です。
 
 `exterior.cjs` は外観素材6枚、3扉の設定・保存、画角、店主の光学的なサイズ補正と足元、配置・所持金の維持、初回180分の販売を確認します。
+
+`storybook-ui.cjs` は景色のボタン／ホイール／実ピンチ、UI寸法固定、焦点と足元、パンと全体表示、資産維持、全ウインドウと小画面を確認します。
