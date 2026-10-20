@@ -1,8 +1,8 @@
 /* Cosmetic world outside the playable room. All coordinates stay in shop tiles. */
 (function(root){'use strict';
 const styles={timber:{name:'木のガラス扉',frame:'#885a35',leaf:'#bd8b4c',awning:'#c78d50'},sage:{name:'セージの扉',frame:'#4d6959',leaf:'#83a08a',awning:'#718e76'},arch:{name:'アーチの扉',frame:'#b0754d',leaf:'#cd9c65',awning:'#b66f4f'}};
-const textures={},listeners=[];let pending=6;
-if(typeof Image!=='undefined')for(const name of ['meadow','sand','road','door-timber','door-sage','door-arch']){const im=new Image();im.onload=()=>{textures[name]=im;done()};im.onerror=done;im.src='assets/exterior/'+name+'.webp?v=1'}
+const textures={},listeners=[];const scenery=['apple-tree','birch-tree','flowers','moss-stones'];let pending=10;
+if(typeof Image!=='undefined')for(const name of ['meadow','sand','road','door-timber','door-sage','door-arch',...scenery]){const im=new Image();im.onload=()=>{textures[name]=im;done()};im.onerror=done;im.src='assets/exterior/'+name+'.webp?v=2'}
 function done(){if(--pending===0)for(const fn of listeners.splice(0))fn()}
 function ready(fn){if(pending===0)fn();else listeners.push(fn)}
 function poly(c,pts,color,stroke){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();if(color){c.fillStyle=color;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=.7;c.stroke()}}
@@ -14,23 +14,55 @@ function background(c,p,w,h,entry,tx){
  if(terrainCache?.key!==key){const canvas=document.createElement('canvas');canvas.width=c.canvas.width;canvas.height=c.canvas.height;const layer=canvas.getContext('2d');layer.setTransform(c.getTransform());paintBackground(layer,p,w,h,entry,tx);terrainCache={key,canvas}}
  c.save();c.resetTransform();c.drawImage(terrainCache.canvas,0,0);c.restore();
 }
-function paintBackground(c,p,w,h,entry,tx){
- quad(c,p,-100,-100,w+200,h+220,'#b5b58b','meadow');
- // Packed sandy ground gives the shop breathing space on all four sides.
- quad(c,p,-1,-1,w+2,h+2,'#cab793','sand');
- const front=h+3.2;quad(c,p,-18,front,w+36,3.5,'#777e79','road');
- quad(c,p,-18,front-.7,w+36,.7,'#c6c1ac','sand');quad(c,p,-18,front+3.5,w+36,.45,'#c6c1ac','sand');
- for(let x=-17;x<w+18;x+=3)quad(c,p,x,front+1.7,1.4,.06,'#efe4bd');
- for(let x=-18;x<w+18;x+=1.2){const a=p(x,front),b=p(x+1.2,front);stroke(c,[a,b],'#ece3cb',Math.max(1,tx*.06))}
- quad(c,p,entry.x-.2,h+.05,1.4,front-h-.75,'#d2b98d','sand');
- // Sparse deterministic tufts and stones; no animated random noise.
- for(let i=0;i<170;i++){const x=-9+(i*37%311)/10,y=-8+(i*53%251)/10;if(x>-1.5&&x<w+1.5&&y>-1.5&&y<h+1.7||y>front-.9&&y<front+4.4)continue;const a=p(x,y);stroke(c,[{x:a.x-tx*.13,y:a.y},{x:a.x,y:a.y-tx*.22},{x:a.x+tx*.09,y:a.y-tx*.04}],'#738b526b',Math.max(.6,tx*.045));}
+// Stable brush dabs and sprite positions are scenery, never simulation state.
+function dab(c,p,x,y,tx,i){
+ const a=p(x,y);c.save();c.translate(a.x,a.y);c.rotate((i%7-3)*.19);
+ c.fillStyle=['#9dba8070','#d9ce9270','#6f926575','#b8bf8870'][i%4];
+ c.beginPath();c.ellipse(0,0,tx*(.18+i%3*.09),tx*.08,0,0,Math.PI*2);c.fill();c.restore();
 }
-function roadside(c,p,w,h,entry,tx){const y=h+6.95;
- // Rail is interrupted at the approach to the bakery.
- for(let x=-4;x<w+5;x+=2){if(Math.abs(x-entry.x)<2)continue;const a=p(x,y),b=p(x+1.75,y);for(const q of [a,b])stroke(c,[q,{x:q.x,y:q.y-tx*.65}],'#687c70',tx*.11);stroke(c,[{x:a.x,y:a.y-tx*.55},{x:b.x,y:b.y-tx*.55}],'#d3dacf',tx*.15);}
- for(const x of [-2.5,w+2.5]){const a=p(x,h+2.1),top={x:a.x,y:a.y-tx*4.7};stroke(c,[a,top],'#766b55',tx*.19);stroke(c,[{x:top.x-tx*.5,y:top.y+tx*.35},{x:top.x+tx*.65,y:top.y+tx*.35}],'#82735a',tx*.13);c.fillStyle='#d8ded2';c.fillRect(top.x-tx*.35,top.y+tx*.1,tx*.16,tx*.3);}
- const a=p(-2.5,h+2.1),b=p(w+2.5,h+2.1);c.strokeStyle='#5b615277';c.lineWidth=Math.max(.6,tx*.035);c.beginPath();c.moveTo(a.x,a.y-tx*4.4);c.quadraticCurveTo((a.x+b.x)/2,(a.y+b.y)/2-tx*3.3,b.x,b.y-tx*4.4);c.stroke();
+function scenerySprite(c,p,name,x,y,width,tx){
+ const im=textures[name];if(!im)return;const a=p(x,y),sw=width*tx,sh=sw*im.height/im.width;
+ c.drawImage(im,a.x-sw/2,a.y-sh,sw,sh);
+}
+function paintBackground(c,p,w,h,entry,tx){
+ quad(c,p,-100,-100,w+200,h+220,'#9ba77b','meadow');
+ // Broken brushwork softens the edge of the earth instead of a rectangular apron.
+ for(let i=0;i<480;i++){const x=-26+(i*137%601)/10,y=-24+(i*193%631)/10;dab(c,p,x,y,tx,i)}
+ quad(c,p,-.65,-.65,w+1.3,h+1.3,'#ceba91','sand');
+ const front=h+3.2;
+ quad(c,p,-40,front-.35,w+80,4.15,'#b6b08b','sand');
+ quad(c,p,-40,front,w+80,3.5,'#959783','road');
+ quad(c,p,entry.x-.2,h+.05,1.4,front-h-.05,'#d6be93','sand');
+ // Paint a soft, ragged verge along both sides of the old village lane.
+ for(let i=0;i<180;i++){const x=-25+i*.38;for(const y of [front-.4,front+3.9])dab(c,p,x,y+(i%5)*.055,tx,i)}
+ const plants=[];
+ // Tall trees stay beyond the rear and side walls, clear of the playable room.
+ for(let i=0;i<8;i++){plants.push(['apple-tree',-10+i*4.1,-5.2-(i*7%5)*.8,8.4+(i*3%5)*.55]);plants.push(['birch-tree',-6.8-(i*3%4)*1.1,-8+i*2.7,6.3+(i*7%5)*.4])}
+ plants.push(['apple-tree',w+4,-2,8.8],['birch-tree',w+5,2,7.2]);
+ for(let i=0;i<15;i++){
+  const x=-10+(i*73%293)/10,y=h+8+(i*47%107)/10;
+  plants.push([i%4===0?'moss-stones':'flowers',x,y,2.2+i%3*.5]);
+ }
+ for(let i=0;i<8;i++)plants.push([i%3===0?'moss-stones':'flowers',i%2?-2.1:w+2.2,-1+i*1.7,1.8+i%3*.3]);
+ plants.push(['flowers',entry.x-1.4,h+1.8,1.6],['flowers',entry.x+2.1,h+1.8,1.6]);
+ plants.sort((a,b)=>(a[1]+a[2])-(b[1]+b[2]));
+ for(const [name,x,y,width] of plants)scenerySprite(c,p,name,x,y,width,tx);
+}
+function roadside(c,p,w,h,entry,tx){const y=h+7.1;
+ // Weathered cream wooden rails and warm lanterns belong to the painted village.
+ c.save();c.lineCap='round';
+ for(let x=-4;x<w+5;x+=2){if(Math.abs(x-entry.x)<2)continue;const a=p(x,y),b=p(x+1.7,y);
+  for(const q of [a,b]){stroke(c,[q,{x:q.x,y:q.y-tx*.65}],'#82745b',tx*.13);stroke(c,[{x:q.x-tx*.025,y:q.y},{x:q.x-tx*.025,y:q.y-tx*.63}],'#d1c49e',tx*.065)}
+  for(const z of [.3,.55])stroke(c,[{x:a.x,y:a.y-tx*z},{x:b.x,y:b.y-tx*z}],'#c6bd97',tx*.1);
+ }
+ for(const x of [-2.5,w+2.5]){const a=p(x,h+2.1),top={x:a.x,y:a.y-tx*3.6};
+  stroke(c,[a,top],'#786549',tx*.2);stroke(c,[{x:a.x-tx*.035,y:a.y},{x:top.x-tx*.035,y:top.y}],'#baa078',tx*.07);
+  const lx=top.x+tx*.38,ly=top.y+tx*.35;
+  stroke(c,[top,{x:lx,y:top.y},{x:lx,y:ly}],'#786549',tx*.09);
+  poly(c,[{x:lx-tx*.17,y:ly},{x:lx+tx*.17,y:ly},{x:lx+tx*.13,y:ly+tx*.43},{x:lx-tx*.13,y:ly+tx*.43}],'#f3d995','#75694d');
+  stroke(c,[{x:lx-tx*.2,y:ly},{x:lx+tx*.2,y:ly}],'#75694d',tx*.09);
+ }
+ c.restore();
 }
 function entrance(c,p,w,h,entry,tx,style='timber'){
  for(let x=0;x<w;x++)if(x!==entry.x&&x!==entry.x+1)BakeryInterior.drawWall(c,p,{axis:'y',x,y:h,material:'plaster',type:'wall'},tx,{low:true});
