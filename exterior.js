@@ -1,12 +1,12 @@
 /* Cosmetic world outside the playable room. All coordinates stay in shop tiles. */
 (function(root){'use strict';
 const styles={timber:{name:'木のガラス扉',frame:'#885a35',leaf:'#bd8b4c',awning:'#c78d50'},sage:{name:'セージの扉',frame:'#4d6959',leaf:'#83a08a',awning:'#718e76'},arch:{name:'アーチの扉',frame:'#b0754d',leaf:'#cd9c65',awning:'#b66f4f'}};
-const textures={},listeners=[];const scenery=['apple-tree','birch-tree','flowers','moss-stones'];let pending=10;
-if(typeof Image!=='undefined')for(const name of ['meadow','sand','road','door-timber','door-sage','door-arch',...scenery]){const im=new Image();im.onload=()=>{textures[name]=im;done()};im.onerror=done;im.src='assets/exterior/'+name+'.webp?v=2'}
+const textures={},listeners=[];const scenery=['apple-tree','blossom-tree','flowers','moss-stones'];let pending=10;
+if(typeof Image!=='undefined')for(const name of ['meadow','sand','road','door-timber','door-sage','door-arch',...scenery]){const im=new Image();im.onload=()=>{textures[name]=im;done()};im.onerror=done;im.src='assets/exterior/'+name+'.webp?v=3'}
 function done(){if(--pending===0)for(const fn of listeners.splice(0))fn()}
 function ready(fn){if(pending===0)fn();else listeners.push(fn)}
 function poly(c,pts,color,stroke){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();if(color){c.fillStyle=color;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=.7;c.stroke()}}
-function quad(c,p,x,y,w,h,color,texture){const a=p(x,y),b=p(x+w,y),d=p(x,y+h);poly(c,[a,b,p(x+w,y+h),d],color);const im=textures[texture];if(im){c.save();c.transform((b.x-a.x)/w,(b.y-a.y)/w,(d.x-a.x)/h,(d.y-a.y)/h,a.x,a.y);c.globalAlpha=.72;const pattern=c.createPattern(im,'repeat');c.scale(1/64,1/64);c.fillStyle=pattern;c.fillRect(0,0,w*64,h*64);c.restore()}}
+function quad(c,p,x,y,w,h,color,texture){const a=p(x,y),b=p(x+w,y),d=p(x,y+h);poly(c,[a,b,p(x+w,y+h),d],color);const im=textures[texture];if(im){c.save();c.transform((b.x-a.x)/w,(b.y-a.y)/w,(d.x-a.x)/h,(d.y-a.y)/h,a.x,a.y);c.globalAlpha=texture==='meadow'?.6:.94;const pattern=c.createPattern(im,'repeat');const density=texture==='meadow'?40:64;c.scale(1/density,1/density);c.fillStyle=pattern;c.fillRect(0,0,w*density,h*density);c.restore()}}
 function stroke(c,pts,color,width){c.strokeStyle=color;c.lineWidth=width;c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.stroke()}
 let terrainCache=null;
 function background(c,p,w,h,entry,tx){
@@ -17,7 +17,7 @@ function background(c,p,w,h,entry,tx){
 // Stable brush dabs and sprite positions are scenery, never simulation state.
 function dab(c,p,x,y,tx,i){
  const a=p(x,y);c.save();c.translate(a.x,a.y);c.rotate((i%7-3)*.19);
- c.fillStyle=['#9dba8070','#d9ce9270','#6f926575','#b8bf8870'][i%4];
+ c.fillStyle=['#8cc96f60','#f5dc7660','#50995745','#a2d97c55'][i%4];
  c.beginPath();c.ellipse(0,0,tx*(.18+i%3*.09),tx*.08,0,0,Math.PI*2);c.fill();c.restore();
 }
 function scenerySprite(c,p,name,x,y,width,tx){
@@ -25,26 +25,30 @@ function scenerySprite(c,p,name,x,y,width,tx){
  c.drawImage(im,a.x-sw/2,a.y-sh,sw,sh);
 }
 function paintBackground(c,p,w,h,entry,tx){
- quad(c,p,-100,-100,w+200,h+220,'#9ba77b','meadow');
+ quad(c,p,-100,-100,w+200,h+220,'#71bd58','meadow');
  // Broken brushwork softens the edge of the earth instead of a rectangular apron.
  for(let i=0;i<480;i++){const x=-26+(i*137%601)/10,y=-24+(i*193%631)/10;dab(c,p,x,y,tx,i)}
- quad(c,p,-.65,-.65,w+1.3,h+1.3,'#ceba91','sand');
+ quad(c,p,-.65,-.65,w+1.3,h+1.3,'#efd095','sand');
  const front=h+3.2;
- quad(c,p,-40,front-.35,w+80,4.15,'#b6b08b','sand');
- quad(c,p,-40,front,w+80,3.5,'#959783','road');
- quad(c,p,entry.x-.2,h+.05,1.4,front-h-.05,'#d6be93','sand');
+ quad(c,p,-40,front-.35,w+80,4.15,'#efd4a3','sand');
+ quad(c,p,-40,front,w+80,3.5,'#e8ca9b','road');
+ quad(c,p,entry.x-.2,h+.05,1.4,front-h-.05,'#f3d296','sand');
  // Paint a soft, ragged verge along both sides of the old village lane.
  for(let i=0;i<180;i++){const x=-25+i*.38;for(const y of [front-.4,front+3.9])dab(c,p,x,y+(i%5)*.055,tx,i)}
  const plants=[];
- // Tall trees stay beyond the rear and side walls, clear of the playable room.
- for(let i=0;i<8;i++){plants.push(['apple-tree',-10+i*4.1,-5.2-(i*7%5)*.8,8.4+(i*3%5)*.55]);plants.push(['birch-tree',-6.8-(i*3%4)*1.1,-8+i*2.7,6.3+(i*7%5)*.4])}
- plants.push(['apple-tree',w+4,-2,8.8],['birch-tree',w+5,2,7.2]);
+ // Rounded fruit and blossom trees form loose garden groups, never a looming wall.
+ for(const [name,x,y,width] of [
+  ['blossom-tree',-5.2,4.8,6.8],['apple-tree',-6.8,-1.5,6.4],
+  ['blossom-tree',-3.6,-5.5,7.2],['apple-tree',2.5,-7.3,6.8],
+  ['blossom-tree',8.2,-6.2,7.6],['apple-tree',w+1.8,-4.4,6.6],
+  ['blossom-tree',w+4.2,1.2,7.1],['apple-tree',w+4.6,5.5,6.3]
+ ])plants.push([name,x,y,width]);
  for(let i=0;i<15;i++){
   const x=-10+(i*73%293)/10,y=h+8+(i*47%107)/10;
-  plants.push([i%4===0?'moss-stones':'flowers',x,y,2.2+i%3*.5]);
+  plants.push([i%4===0?'moss-stones':'flowers',x,y,2.8+i%3*.55]);
  }
- for(let i=0;i<8;i++)plants.push([i%3===0?'moss-stones':'flowers',i%2?-2.1:w+2.2,-1+i*1.7,1.8+i%3*.3]);
- plants.push(['flowers',entry.x-1.4,h+1.8,1.6],['flowers',entry.x+2.1,h+1.8,1.6]);
+ for(let i=0;i<8;i++)plants.push([i%3===0?'moss-stones':'flowers',i%2?-2.1:w+2.2,-1+i*1.7,2.2+i%3*.35]);
+ plants.push(['flowers',entry.x-1.4,h+1.8,2.1],['flowers',entry.x+2.1,h+1.8,2.1]);
  plants.sort((a,b)=>(a[1]+a[2])-(b[1]+b[2]));
  for(const [name,x,y,width] of plants)scenerySprite(c,p,name,x,y,width,tx);
 }
@@ -52,8 +56,8 @@ function roadside(c,p,w,h,entry,tx){const y=h+7.1;
  // Weathered cream wooden rails and warm lanterns belong to the painted village.
  c.save();c.lineCap='round';
  for(let x=-4;x<w+5;x+=2){if(Math.abs(x-entry.x)<2)continue;const a=p(x,y),b=p(x+1.7,y);
-  for(const q of [a,b]){stroke(c,[q,{x:q.x,y:q.y-tx*.65}],'#82745b',tx*.13);stroke(c,[{x:q.x-tx*.025,y:q.y},{x:q.x-tx*.025,y:q.y-tx*.63}],'#d1c49e',tx*.065)}
-  for(const z of [.3,.55])stroke(c,[{x:a.x,y:a.y-tx*z},{x:b.x,y:b.y-tx*z}],'#c6bd97',tx*.1);
+  for(const q of [a,b]){stroke(c,[q,{x:q.x,y:q.y-tx*.65}],'#82745b',tx*.13);stroke(c,[{x:q.x-tx*.025,y:q.y},{x:q.x-tx*.025,y:q.y-tx*.63}],'#fff0c9',tx*.065)}
+  for(const z of [.3,.55])stroke(c,[{x:a.x,y:a.y-tx*z},{x:b.x,y:b.y-tx*z}],'#f6e4be',tx*.1);
  }
  for(const x of [-2.5,w+2.5]){const a=p(x,h+2.1),top={x:a.x,y:a.y-tx*3.6};
   stroke(c,[a,top],'#786549',tx*.2);stroke(c,[{x:a.x-tx*.035,y:a.y},{x:top.x-tx*.035,y:top.y}],'#baa078',tx*.07);
