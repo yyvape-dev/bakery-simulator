@@ -8,6 +8,7 @@ node tools/tests/starter-shop.cjs
 node tools/tests/interior-art.cjs
 node tools/tests/exterior.cjs
 node tools/tests/doors.cjs
+node tools/tests/tree-scenery.cjs
 node tools/tests/storybook-ui.cjs
 node tools/tests/customers.cjs
 node tools/tests/startup.cjs
@@ -43,3 +44,5 @@ node tools/tests/startup.cjs
 `storybook-ui.cjs` は景色のボタン／ホイール／実ピンチ、UI寸法固定、焦点と足元、パンと全体表示、資産維持、全ウインドウと小画面を確認します。
 
 `doors.cjs` は扉3種類×4方向の透明開口・敷居登録・壁に応じた方向選択・保存・低い壁での選択・欠損時の代替を確認します。画面と結果は `docs/art/doors/review/`。
+
+`tree-scenery.cjs` は床より後の木の描画、実際の横／奥の増築、範囲内の木の除去・残る木の固定位置、保存・営業を確認します。画面は `docs/art/tree-scenery/review/`。外観テストは `BAKERY_EXTERIOR_OUT` で出力先を変更できます。

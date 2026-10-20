@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "checks": [
+    "three doorway designs switch in settings, persist across reload and preserve layout, money and interior layers",
+    "bright meadow, rounded fruit and pink blossom trees, warm village lane, lanterns and wooden fence fit small portrait and landscape",
+    "owner gets 20% wider and 10% taller optical correction while foot anchors and saved appearance controls stay intact",
+    "customers and both staff continue manufacturing and selling through the unchanged shop entrance"
+  ],
+  "loaded": [
+    "assets/exterior/meadow.webp",
+    "assets/exterior/sand.webp",
+    "assets/exterior/road.webp",
+    "assets/exterior/door-timber.webp",
+    "assets/exterior/door-sage.webp",
+    "assets/exterior/door-arch.webp",
+    "assets/exterior/apple-tree.webp",
+    "assets/exterior/blossom-tree.webp",
+    "assets/exterior/flowers.webp",
+    "assets/exterior/moss-stones.webp"
+  ],
+  "sold": 6,
+  "characterScale": [
+    {
+      "id": "owner",
+      "width": 7.127636956996606,
+      "height": 6.533667210580222,
+      "anchor": [
+        0.5000004172325135,
+        0.7605161666870117
+      ],
+      "look": {
+        "width": 1,
+        "height": 1,
+        "scale": 1
+      }
+    },
+    {
+      "id": "noah",
+      "width": 5.939697464163839,
+      "height": 5.939697464163839,
+      "anchor": [
+        0.5000004172325135,
+        0.7605161666870116
+      ],
+      "look": {
+        "width": 1,
+        "height": 1,
+        "scale": 1
+      }
+    }
+  ]
+}
