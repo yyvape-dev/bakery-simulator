@@ -9,3 +9,5 @@
 再構築：`node tools/art/pack_landscape.cjs`。地面は反転した4面を結合し、繰り返しの境界を連続させる。実行時は `assets/exterior/*.webp`。生成素材は装飾用で、道路上の歩行や外への設備配置は未実装。
 
 [変更前後と各画面](review/index.html)。検証：`node tools/tests/exterior.cjs`（3扉・保存・配置／資金維持・3画面・ズーム45/300%・180分営業）、`workflow.cjs`、`storybook-ui.cjs`。
+
+検証結果：外観テスト成功、営業20項目／3営業日成功（販売16・21・21件、終了資金9,530円）、絵本UI 5項目成功（実ピンチ・焦点固定・寸法固定・パン・各画面）。mainへの取り込み・公開は未実施。
