@@ -36,13 +36,6 @@ function paintBackground(c,p,w,h,entry,tx){
  // Paint a soft, ragged verge along both sides of the old village lane.
  for(let i=0;i<180;i++){const x=-25+i*.38;for(const y of [front-.4,front+3.9])dab(c,p,x,y+(i%5)*.055,tx,i)}
  const plants=[];
- // Rounded fruit and blossom trees form loose garden groups, never a looming wall.
- for(const [name,x,y,width] of [
-  ['blossom-tree',-5.2,4.8,6.8],['apple-tree',-6.8,-1.5,6.4],
-  ['blossom-tree',-3.6,-5.5,7.2],['apple-tree',2.5,-7.3,6.8],
-  ['blossom-tree',8.2,-6.2,7.6],['apple-tree',w+1.8,-4.4,6.6],
-  ['blossom-tree',w+4.2,1.2,7.1],['apple-tree',w+4.6,5.5,6.3]
- ])plants.push([name,x,y,width]);
  for(let i=0;i<15;i++){
   const x=-10+(i*73%293)/10,y=h+8+(i*47%107)/10;
   plants.push([i%4===0?'moss-stones':'flowers',x,y,2.8+i%3*.55]);
@@ -52,6 +45,20 @@ function paintBackground(c,p,w,h,entry,tx){
  plants.sort((a,b)=>(a[1]+a[2])-(b[1]+b[2]));
  for(const [name,x,y,width] of plants)scenerySprite(c,p,name,x,y,width,tx);
 }
+// Trees use fixed lot positions measured from the front of the original 12×12 shop.
+// Depth expansion shifts the shop origin, so front-relative Y follows that shift.
+const treeLot=[
+ ['blossom-tree',-5.2,4.8,6.8],['apple-tree',-6.8,-1.5,6.4],
+ ['blossom-tree',-3.6,-5.5,7.2],['apple-tree',2.5,-7.3,6.8],
+ ['blossom-tree',8.2,-6.2,7.6],['apple-tree',13.8,-4.4,6.6],
+ ['blossom-tree',16.2,1.2,7.1],['apple-tree',16.6,5.5,6.3]
+];
+function trees(w,h){return treeLot.map(([name,x,y,width],id)=>({id,name,x,y:y+h-12,width})).filter(t=>{
+ const r=t.width*.35,margin=.8;
+ // Clear the whole crown/root footprint before construction reaches it.
+ return t.x+r< -margin||t.x-r>w+margin||t.y+r< -margin||t.y-r>h+margin;
+})}
+function drawTree(c,p,tree,tx){scenerySprite(c,p,tree.name,tree.x,tree.y,tree.width,tx)}
 function roadside(c,p,w,h,entry,tx){const y=h+7.1;
  // Weathered cream wooden rails and warm lanterns belong to the painted village.
  c.save();c.lineCap='round';
@@ -86,5 +93,5 @@ function entrance(c,p,w,h,entry,tx,style='timber'){
  c.save();const q=at(.5,1.26);c.translate(q.x,q.y);c.rotate(Math.atan2(b.y-a.y,b.x-a.x));c.fillStyle='#f8eacb';c.fillRect(-tx*.95,-tx*.19,tx*1.9,tx*.38);c.fillStyle='#60462e';c.font='bold '+Math.max(5,tx*.26)+'px sans-serif';c.textAlign='center';c.fillText('BAKERY',0,tx*.09);c.restore();
  const mat=[p(x-.15,y+.05),p(x+1.45,y+.05),p(x+1.45,y+.55),p(x-.15,y+.55)];poly(c,mat,'#8f9b70','#697751');
 }
-root.BakeryExterior={styles,ready,background,roadside,entrance};
+root.BakeryExterior={styles,ready,background,roadside,entrance,trees,drawTree};
 })(window);
