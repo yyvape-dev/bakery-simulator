@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "frames": 12,
+  "registration": [
+    {
+      "style": "timber",
+      "dir": 0,
+      "aligned": true
+    },
+    {
+      "style": "timber",
+      "dir": 1,
+      "aligned": true
+    },
+    {
+      "style": "timber",
+      "dir": 2,
+      "aligned": true
+    },
+    {
+      "style": "timber",
+      "dir": 3,
+      "aligned": true
+    },
+    {
+      "style": "sage",
+      "dir": 0,
+      "aligned": true
+    },
+    {
+      "style": "sage",
+      "dir": 1,
+      "aligned": true
+    },
+    {
+      "style": "sage",
+      "dir": 2,
+      "aligned": true
+    },
+    {
+      "style": "sage",
+      "dir": 3,
+      "aligned": true
+    },
+    {
+      "style": "arch",
+      "dir": 0,
+      "aligned": true
+    },
+    {
+      "style": "arch",
+      "dir": 1,
+      "aligned": true
+    },
+    {
+      "style": "arch",
+      "dir": 2,
+      "aligned": true
+    },
+    {
+      "style": "arch",
+      "dir": 3,
+      "aligned": true
+    }
+  ],
+  "checks": [
+    "12 non-empty alpha sprites and transparent passages",
+    "12 registered thresholds exactly match wall endpoints with distinct directional images",
+    "both wall axes and rear boundaries select 0/1/2/3 automatically",
+    "interior door style follows shop style; drawing does not change state",
+    "full-height doorway remains selectable while walls are shown low",
+    "three exterior styles render and selected style persists",
+    "missing directional image settles readiness and uses the existing open wall fallback"
+  ]
+}

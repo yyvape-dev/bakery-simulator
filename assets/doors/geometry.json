@@ -1,0 +1,214 @@
+{
+  "frames": {
+    "timber": [
+      {
+        "a": [
+          188,
+          259
+        ],
+        "b": [
+          333,
+          302
+        ],
+        "height": 220,
+        "file": "assets/doors/timber-r0.webp",
+        "axis": "y",
+        "size": [
+          384,
+          330
+        ]
+      },
+      {
+        "a": [
+          266,
+          257
+        ],
+        "b": [
+          134,
+          302
+        ],
+        "height": 220,
+        "file": "assets/doors/timber-r1.webp",
+        "axis": "x",
+        "size": [
+          384,
+          330
+        ]
+      },
+      {
+        "a": [
+          146,
+          249
+        ],
+        "b": [
+          262,
+          309
+        ],
+        "height": 230,
+        "file": "assets/doors/timber-r2.webp",
+        "axis": "y",
+        "size": [
+          384,
+          330
+        ]
+      },
+      {
+        "a": [
+          230,
+          258
+        ],
+        "b": [
+          106,
+          302
+        ],
+        "height": 220,
+        "file": "assets/doors/timber-r3.webp",
+        "axis": "x",
+        "size": [
+          384,
+          330
+        ]
+      }
+    ],
+    "sage": [
+      {
+        "a": [
+          189,
+          265
+        ],
+        "b": [
+          327,
+          313
+        ],
+        "height": 235,
+        "file": "assets/doors/sage-r0.webp",
+        "axis": "y",
+        "size": [
+          384,
+          325
+        ]
+      },
+      {
+        "a": [
+          270,
+          269
+        ],
+        "b": [
+          132,
+          312
+        ],
+        "height": 235,
+        "file": "assets/doors/sage-r1.webp",
+        "axis": "x",
+        "size": [
+          384,
+          325
+        ]
+      },
+      {
+        "a": [
+          145,
+          259
+        ],
+        "b": [
+          274,
+          315
+        ],
+        "height": 235,
+        "file": "assets/doors/sage-r2.webp",
+        "axis": "y",
+        "size": [
+          384,
+          325
+        ]
+      },
+      {
+        "a": [
+          228,
+          270
+        ],
+        "b": [
+          101,
+          310
+        ],
+        "height": 235,
+        "file": "assets/doors/sage-r3.webp",
+        "axis": "x",
+        "size": [
+          384,
+          325
+        ]
+      }
+    ],
+    "arch": [
+      {
+        "a": [
+          180,
+          261
+        ],
+        "b": [
+          329,
+          322
+        ],
+        "height": 225,
+        "file": "assets/doors/arch-r0.webp",
+        "axis": "y",
+        "size": [
+          384,
+          369
+        ]
+      },
+      {
+        "a": [
+          266,
+          268
+        ],
+        "b": [
+          137,
+          320
+        ],
+        "height": 225,
+        "file": "assets/doors/arch-r1.webp",
+        "axis": "x",
+        "size": [
+          384,
+          369
+        ]
+      },
+      {
+        "a": [
+          138,
+          257
+        ],
+        "b": [
+          279,
+          330
+        ],
+        "height": 230,
+        "file": "assets/doors/arch-r2.webp",
+        "axis": "y",
+        "size": [
+          384,
+          369
+        ]
+      },
+      {
+        "a": [
+          238,
+          265
+        ],
+        "b": [
+          104,
+          324
+        ],
+        "height": 225,
+        "file": "assets/doors/arch-r3.webp",
+        "axis": "x",
+        "size": [
+          384,
+          369
+        ]
+      }
+    ]
+  }
+}

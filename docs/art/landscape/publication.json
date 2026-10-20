@@ -1,0 +1,29 @@
+{
+  "mergeCommit": "e3af3df",
+  "pullRequest": 11,
+  "publicFiles": 108,
+  "byteIdentical": true,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "directHTTPS": true,
+      "exteriorImages": 10,
+      "errors": []
+    },
+    {
+      "mode": "demo",
+      "directHTTPS": true,
+      "exteriorImages": 10,
+      "errors": []
+    }
+  ],
+  "regression": {
+    "workflowCases": 20,
+    "workflowDays": 3,
+    "sold": [
+      16,
+      21,
+      21
+    ]
+  }
+}
