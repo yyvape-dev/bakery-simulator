@@ -1,0 +1,573 @@
+{
+  "floors": {
+    "wood": {
+      "name": "木床",
+      "group": "木目",
+      "cost": 8,
+      "color": "#cda573",
+      "catalog": false
+    },
+    "oak-milk": {
+      "name": "ミルクオーク",
+      "group": "木目",
+      "cost": 9,
+      "color": "#e5d5b6",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-oak-milk.webp"
+    },
+    "walnut": {
+      "name": "ウォルナット",
+      "group": "木目",
+      "cost": 10,
+      "color": "#86634b",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-walnut.webp"
+    },
+    "chestnut": {
+      "name": "栗の木床",
+      "group": "木目",
+      "cost": 9,
+      "color": "#b78451",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-chestnut.webp"
+    },
+    "pine-white": {
+      "name": "白いパイン",
+      "group": "木目",
+      "cost": 9,
+      "color": "#e9dfca",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-pine-white.webp"
+    },
+    "herringbone-honey": {
+      "name": "ヘリンボーン・蜜色",
+      "group": "寄木",
+      "cost": 12,
+      "color": "#c99a60",
+      "catalog": true,
+      "layout": "herringbone",
+      "file": "assets/interior/catalog/floor-herringbone-honey.webp"
+    },
+    "herringbone-milk": {
+      "name": "ヘリンボーン・ミルク",
+      "group": "寄木",
+      "cost": 12,
+      "color": "#ded1b8",
+      "catalog": true,
+      "layout": "herringbone",
+      "file": "assets/interior/catalog/floor-herringbone-milk.webp"
+    },
+    "herringbone-walnut": {
+      "name": "ヘリンボーン・胡桃",
+      "group": "寄木",
+      "cost": 13,
+      "color": "#8f6750",
+      "catalog": true,
+      "layout": "herringbone",
+      "file": "assets/interior/catalog/floor-herringbone-walnut.webp"
+    },
+    "chevron-oak": {
+      "name": "フレンチ寄木",
+      "group": "寄木",
+      "cost": 14,
+      "color": "#bc8d5b",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-chevron-oak.webp"
+    },
+    "parquet-walnut": {
+      "name": "市松パーケット",
+      "group": "寄木",
+      "cost": 14,
+      "color": "#a27b57",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-parquet-walnut.webp"
+    },
+    "stone": {
+      "name": "石床",
+      "group": "石目",
+      "cost": 10,
+      "color": "#b8c5bc",
+      "catalog": false
+    },
+    "limestone": {
+      "name": "クリーム石灰岩",
+      "group": "石目",
+      "cost": 11,
+      "color": "#ded2b5",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-limestone.webp"
+    },
+    "travertine": {
+      "name": "トラバーチン",
+      "group": "石目",
+      "cost": 12,
+      "color": "#d3bc98",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-travertine.webp"
+    },
+    "marble": {
+      "name": "白い大理石",
+      "group": "石目",
+      "cost": 15,
+      "color": "#ece5d9",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-marble.webp"
+    },
+    "slate": {
+      "name": "青灰のスレート",
+      "group": "石目",
+      "cost": 12,
+      "color": "#81918e",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-slate.webp"
+    },
+    "cream": {
+      "name": "クリームタイル",
+      "group": "タイル",
+      "cost": 6,
+      "color": "#f4dcb6",
+      "catalog": false
+    },
+    "terracotta": {
+      "name": "テラコッタ",
+      "group": "タイル",
+      "cost": 10,
+      "color": "#cf9069",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-terracotta.webp"
+    },
+    "hex-white": {
+      "name": "白い六角タイル",
+      "group": "タイル",
+      "cost": 11,
+      "color": "#e9e5d2",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-hex-white.webp"
+    },
+    "hex-sage": {
+      "name": "セージの六角タイル",
+      "group": "タイル",
+      "cost": 12,
+      "color": "#9db49c",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-hex-sage.webp"
+    },
+    "tile-blue": {
+      "name": "青い陶器タイル",
+      "group": "タイル",
+      "cost": 12,
+      "color": "#86a9b0",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-tile-blue.webp"
+    },
+    "checker-cream": {
+      "name": "クリームの市松",
+      "group": "柄タイル",
+      "cost": 12,
+      "color": "#dcc9a4",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-checker-cream.webp"
+    },
+    "checker-rose": {
+      "name": "ローズの市松",
+      "group": "柄タイル",
+      "cost": 12,
+      "color": "#d3b5a8",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-checker-rose.webp"
+    },
+    "encaustic-blue": {
+      "name": "青いセメントタイル",
+      "group": "柄タイル",
+      "cost": 15,
+      "color": "#9eafb2",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-encaustic-blue.webp"
+    },
+    "encaustic-coral": {
+      "name": "珊瑚のセメントタイル",
+      "group": "柄タイル",
+      "cost": 15,
+      "color": "#c99e8b",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-encaustic-coral.webp"
+    },
+    "flower-mosaic": {
+      "name": "小花のモザイク",
+      "group": "柄タイル",
+      "cost": 16,
+      "color": "#c9d2b9",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-flower-mosaic.webp"
+    },
+    "cork": {
+      "name": "コルク",
+      "group": "素材",
+      "cost": 9,
+      "color": "#bd9569",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-cork.webp"
+    },
+    "linen-beige": {
+      "name": "リネン・生成り",
+      "group": "素材",
+      "cost": 10,
+      "color": "#d4c4a7",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-linen-beige.webp"
+    },
+    "linen-sage": {
+      "name": "リネン・セージ",
+      "group": "素材",
+      "cost": 10,
+      "color": "#a7b69b",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-linen-sage.webp"
+    },
+    "terrazzo-cream": {
+      "name": "クリームテラゾー",
+      "group": "素材",
+      "cost": 13,
+      "color": "#e5d8be",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-terrazzo-cream.webp"
+    },
+    "terrazzo-rose": {
+      "name": "ローズテラゾー",
+      "group": "素材",
+      "cost": 13,
+      "color": "#dfc3b5",
+      "catalog": true,
+      "file": "assets/interior/catalog/floor-terrazzo-rose.webp"
+    }
+  },
+  "walls": {
+    "plaster": {
+      "name": "しっくい",
+      "group": "塗り壁",
+      "cost": 30,
+      "color": "#e5dec7",
+      "catalog": false,
+      "face": "#e5dec7",
+      "top": "#fff4dd",
+      "side": "#b7ad94"
+    },
+    "ivory-paint": {
+      "name": "バニラの塗り壁",
+      "group": "塗り壁",
+      "cost": 30,
+      "color": "#f0e2c7",
+      "catalog": true,
+      "face": "#f0e2c7",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-ivory-paint.webp"
+    },
+    "peach-plaster": {
+      "name": "ピーチの塗り壁",
+      "group": "塗り壁",
+      "cost": 32,
+      "color": "#e9c8b3",
+      "catalog": true,
+      "face": "#e9c8b3",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-peach-plaster.webp"
+    },
+    "sage-paint": {
+      "name": "セージの塗り壁",
+      "group": "塗り壁",
+      "cost": 32,
+      "color": "#acc0a3",
+      "catalog": true,
+      "face": "#acc0a3",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-sage-paint.webp"
+    },
+    "blue-paint": {
+      "name": "空色の塗り壁",
+      "group": "塗り壁",
+      "cost": 32,
+      "color": "#b2c8cf",
+      "catalog": true,
+      "face": "#b2c8cf",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-blue-paint.webp"
+    },
+    "oat-weave": {
+      "name": "オートミール織り",
+      "group": "織物",
+      "cost": 35,
+      "color": "#d5c6ab",
+      "catalog": true,
+      "face": "#d5c6ab",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-oat-weave.webp"
+    },
+    "cream-linen": {
+      "name": "クリームリネン",
+      "group": "織物",
+      "cost": 35,
+      "color": "#eee1c9",
+      "catalog": true,
+      "face": "#eee1c9",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-cream-linen.webp"
+    },
+    "rose-fabric": {
+      "name": "ローズの織物",
+      "group": "織物",
+      "cost": 37,
+      "color": "#d6b6b3",
+      "catalog": true,
+      "face": "#d6b6b3",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-rose-fabric.webp"
+    },
+    "grasscloth": {
+      "name": "草編みクロス",
+      "group": "織物",
+      "cost": 38,
+      "color": "#b6ae87",
+      "catalog": true,
+      "face": "#b6ae87",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-grasscloth.webp"
+    },
+    "blue-linen": {
+      "name": "青灰のリネン",
+      "group": "織物",
+      "cost": 37,
+      "color": "#a7b9c1",
+      "catalog": true,
+      "face": "#a7b9c1",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-blue-linen.webp"
+    },
+    "wood": {
+      "name": "木",
+      "group": "木・レンガ",
+      "cost": 40,
+      "color": "#b89162",
+      "catalog": false,
+      "face": "#b89162",
+      "top": "#e0bf8a",
+      "side": "#826647"
+    },
+    "white-beadboard": {
+      "name": "白い板壁",
+      "group": "木・レンガ",
+      "cost": 42,
+      "color": "#e6dfca",
+      "catalog": true,
+      "face": "#e6dfca",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-white-beadboard.webp"
+    },
+    "honey-wainscot": {
+      "name": "蜂蜜色の腰壁",
+      "group": "木・レンガ",
+      "cost": 45,
+      "color": "#d8c5a3",
+      "catalog": true,
+      "face": "#d8c5a3",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-honey-wainscot.webp"
+    },
+    "brick": {
+      "name": "レンガ",
+      "group": "木・レンガ",
+      "cost": 50,
+      "color": "#bc805f",
+      "catalog": false,
+      "face": "#bc805f",
+      "top": "#ddb08b",
+      "side": "#89583e"
+    },
+    "cream-brick": {
+      "name": "白いレンガ",
+      "group": "木・レンガ",
+      "cost": 48,
+      "color": "#e5d8bf",
+      "catalog": true,
+      "face": "#e5d8bf",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-cream-brick.webp"
+    },
+    "tiny-flowers": {
+      "name": "野の小花",
+      "group": "花・葉",
+      "cost": 45,
+      "color": "#ece0c8",
+      "catalog": true,
+      "face": "#ece0c8",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-tiny-flowers.webp"
+    },
+    "rose-vine": {
+      "name": "ローズのつる",
+      "group": "花・葉",
+      "cost": 50,
+      "color": "#e3cec0",
+      "catalog": true,
+      "face": "#e3cec0",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-rose-vine.webp"
+    },
+    "lemon-leaf": {
+      "name": "レモンの葉",
+      "group": "花・葉",
+      "cost": 48,
+      "color": "#dce1bd",
+      "catalog": true,
+      "face": "#dce1bd",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-lemon-leaf.webp"
+    },
+    "daisy-field": {
+      "name": "デイジー畑",
+      "group": "花・葉",
+      "cost": 48,
+      "color": "#c5d5bd",
+      "catalog": true,
+      "face": "#c5d5bd",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-daisy-field.webp"
+    },
+    "olive-branch": {
+      "name": "オリーブの枝",
+      "group": "花・葉",
+      "cost": 47,
+      "color": "#e5e2ca",
+      "catalog": true,
+      "face": "#e5e2ca",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-olive-branch.webp"
+    },
+    "sage-stripe": {
+      "name": "セージの縞",
+      "group": "縞・幾何",
+      "cost": 40,
+      "color": "#cad6bb",
+      "catalog": true,
+      "face": "#cad6bb",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-sage-stripe.webp"
+    },
+    "rose-stripe": {
+      "name": "ローズの縞",
+      "group": "縞・幾何",
+      "cost": 40,
+      "color": "#e3c6bd",
+      "catalog": true,
+      "face": "#e3c6bd",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-rose-stripe.webp"
+    },
+    "gingham": {
+      "name": "ミルクのギンガム",
+      "group": "縞・幾何",
+      "cost": 43,
+      "color": "#dfd3b7",
+      "catalog": true,
+      "face": "#dfd3b7",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-gingham.webp"
+    },
+    "blue-diamond": {
+      "name": "青いひし形",
+      "group": "縞・幾何",
+      "cost": 45,
+      "color": "#b6c8cd",
+      "catalog": true,
+      "face": "#b6c8cd",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-blue-diamond.webp"
+    },
+    "peach-scallop": {
+      "name": "ピーチのうろこ",
+      "group": "縞・幾何",
+      "cost": 45,
+      "color": "#e4c5b1",
+      "catalog": true,
+      "face": "#e4c5b1",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-peach-scallop.webp"
+    },
+    "subway-cream": {
+      "name": "白いサブウェイ",
+      "group": "タイル・石",
+      "cost": 45,
+      "color": "#e9e2ce",
+      "catalog": true,
+      "face": "#e9e2ce",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-subway-cream.webp"
+    },
+    "subway-sage": {
+      "name": "セージのタイル",
+      "group": "タイル・石",
+      "cost": 47,
+      "color": "#abc0ab",
+      "catalog": true,
+      "face": "#abc0ab",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-subway-sage.webp"
+    },
+    "moroccan-blue": {
+      "name": "青いモロッカン",
+      "group": "タイル・石",
+      "cost": 55,
+      "color": "#a3bbc3",
+      "catalog": true,
+      "face": "#a3bbc3",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-moroccan-blue.webp"
+    },
+    "terrazzo-peach": {
+      "name": "ピーチのテラゾー",
+      "group": "タイル・石",
+      "cost": 50,
+      "color": "#e5d2bd",
+      "catalog": true,
+      "face": "#e5d2bd",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-terrazzo-peach.webp"
+    },
+    "stone-greige": {
+      "name": "グレージュの石肌",
+      "group": "タイル・石",
+      "cost": 43,
+      "color": "#c9c4b4",
+      "catalog": true,
+      "face": "#c9c4b4",
+      "top": "#f4e8cd",
+      "side": "#a99577",
+      "file": "assets/interior/catalog/wall-stone-greige.webp"
+    }
+  }
+}

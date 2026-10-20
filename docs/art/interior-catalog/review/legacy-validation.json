@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "all 60 packed textures load; 320px, 390px and landscape store comparisons render without overflow",
+    "48 material/direction/height cases retain wall geometry, transparent generic doorway fallback and unchanged save",
+    "missing texture files retain usable painted geometry without JavaScript errors"
+  ],
+  "wallCases": 48,
+  "textureBytes": 1321832
+}

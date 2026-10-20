@@ -6,6 +6,7 @@ Node.js、Playwright、Chromiumを使用します。検証環境ではPlaywright
 node tools/tests/workflow.cjs
 node tools/tests/starter-shop.cjs
 node tools/tests/interior-art.cjs
+node tools/tests/interior-catalog.cjs
 node tools/tests/exterior.cjs
 node tools/tests/doors.cjs
 node tools/tests/tree-scenery.cjs
@@ -46,3 +47,5 @@ node tools/tests/startup.cjs
 `doors.cjs` は扉3種類×4方向の透明開口・敷居登録・壁に応じた方向選択・保存・低い壁での選択・欠損時の代替を確認します。画面と結果は `docs/art/doors/review/`。
 
 `tree-scenery.cjs` は床より後の木の描画、実際の横／奥の増築、範囲内の木の除去・残る木の固定位置、保存・営業を確認します。画面は `docs/art/tree-scenery/review/`。外観テストは `BAKERY_EXTERIOR_OUT` で出力先を変更できます。
+
+`interior-catalog.cjs` は壁紙30・床材30の画像、選択と料金、全材質の施工・保存、柄の絞り込み、3画面、欠損時代替、コーディネートと営業を確認します。画面は `docs/art/interior-catalog/review/`。
