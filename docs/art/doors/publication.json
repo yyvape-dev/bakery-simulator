@@ -1,0 +1,37 @@
+{
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "directHTTPS": true,
+      "doorImages": 12,
+      "errors": [],
+      "stylePersistence": true
+    },
+    {
+      "mode": "demo",
+      "directHTTPS": true,
+      "doorImages": 12,
+      "errors": []
+    }
+  ],
+  "reviewCanvases": 12,
+  "mergeCommit": "32ea3dbe91f056625fc8d04926a52c1ee78def38",
+  "pullRequest": 12,
+  "localRegression": {
+    "doorFrames": 12,
+    "interiorCases": 23,
+    "workflowCases": 20,
+    "workflowDays": 3
+  },
+  "publicFiles": 123,
+  "byteIdentical": true,
+  "publishedRegression": {
+    "workflowCases": 20,
+    "workflowDays": 3,
+    "sold": [
+      16,
+      21,
+      21
+    ]
+  }
+}

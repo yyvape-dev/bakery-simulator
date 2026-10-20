@@ -15,3 +15,5 @@
 検証：`node tools/tests/doors.cjs`（12画像の非空・透過・開口、12敷居の端点一致、4方向選択、状態非変更、3スタイル、保存、画像欠損時の代替）。既存 `interior.cjs` と `workflow.cjs` でも編集・営業を確認する。
 
 回帰結果：内装23項目（増築後3日間を含む）、営業20項目／3日間が成功。売場と厨房をつなぐ出入口の通行、保存、費用・収支・在庫の整合を維持。
+
+PR #12をmainへ取り込み（`32ea3db`）、公開済み。[公開一覧](https://yyvape-dev.github.io/bakery-simulator/docs/art/doors/review/)。通常／デモの直接HTTPS接続で12画像・設定保存・一覧を確認。公開123ファイルがmainと一致し、公開ファイルによる営業20項目／3日間も成功。記録は `publication.json`。
