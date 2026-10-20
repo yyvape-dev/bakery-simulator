@@ -15,3 +15,5 @@
 `node tools/tests/tree-scenery.cjs`：木が全床より後に各1回描かれること、描画時の状態非変更、実際の有料増築（横2回・奥2回）、木が復活しないこと、残る木の敷地位置、保存・再読込、増築後の180分6件販売を確認。12×12で8本 → 14×12で6本 → 16×12で6本 → 16×14で5本 → 16×16で4本。
 
 既存外観テストは `BAKERY_EXTERIOR_OUT=/tmp/bakery-tree-exterior node tools/tests/exterior.cjs` として旧レビュー画像を上書きせず確認できる。
+
+PR #14をmainへ取り込み（`19d2422`）、公開済み。実行時2ファイルがmainと一致。通常／デモへの直接HTTPS接続と公開比較6画像を確認。記録は `publication.json`。

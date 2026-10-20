@@ -1,0 +1,58 @@
+{
+  "changedPublicFiles": 2,
+  "byteIdentical": true,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "directHTTPS": true,
+      "initial": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "expanded": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "errors": []
+    },
+    {
+      "mode": "demo",
+      "directHTTPS": true,
+      "initial": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "expanded": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "errors": []
+    }
+  ],
+  "reviewImages": 6,
+  "mergeCommit": "19d2422dfd4dca2c4f5a9d2b3eec1a20738dee6f",
+  "pullRequest": 14,
+  "localRegression": {
+    "treeDepthOrder": true,
+    "realExpansions": 4,
+    "savedSceneryStable": true,
+    "soldIn180MinutesAfterExpansion": 6,
+    "exteriorRegression": true
+  }
+}
