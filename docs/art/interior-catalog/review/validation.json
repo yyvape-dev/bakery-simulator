@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "floors": 30,
+  "walls": 30,
+  "newImages": 54,
+  "checks": [
+    "54 unique non-empty textures and 60 selectable live swatches",
+    "category filters show five finishes and selecting never charges",
+    "all 30 floors and 30 walls apply through paid APIs and survive reload",
+    "same finish never charges twice; furniture and service routes stay intact",
+    "480 floor draws and 60 wall-axis draws do not change state",
+    "herringbone phase stays identical after the two-tile shift used for depth expansion",
+    "three screen sizes keep the scene, controls and exit reachable",
+    "paid whole-shop examples and 180-minute sales succeed",
+    "public-style material gallery renders 60 finishes",
+    "missing new artwork preserves saved material ids and money and renders fallback"
+  ],
+  "materialCost": 1560,
+  "sold": 6
+}

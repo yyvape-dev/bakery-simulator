@@ -1,0 +1,579 @@
+{
+  "floors": {
+    "wood": {
+      "name": "木床",
+      "group": "木目",
+      "cost": 8,
+      "color": "#cda573",
+      "prompt": "warm honey oak straight planks",
+      "catalog": false
+    },
+    "oak-milk": {
+      "name": "ミルクオーク",
+      "group": "木目",
+      "cost": 9,
+      "color": "#e5d5b6",
+      "prompt": "whitewashed ivory oak straight planks",
+      "catalog": true
+    },
+    "walnut": {
+      "name": "ウォルナット",
+      "group": "木目",
+      "cost": 10,
+      "color": "#86634b",
+      "prompt": "rich chocolate walnut straight planks",
+      "catalog": true
+    },
+    "chestnut": {
+      "name": "栗の木床",
+      "group": "木目",
+      "cost": 9,
+      "color": "#b78451",
+      "prompt": "warm chestnut straight planks",
+      "catalog": true
+    },
+    "pine-white": {
+      "name": "白いパイン",
+      "group": "木目",
+      "cost": 9,
+      "color": "#e9dfca",
+      "prompt": "cream painted pine boards",
+      "catalog": true
+    },
+    "herringbone-honey": {
+      "name": "ヘリンボーン・蜜色",
+      "group": "寄木",
+      "cost": 12,
+      "color": "#c99a60",
+      "prompt": "honey oak wood grain, horizontal grain only, NO plank seams, used on individual herringbone boards",
+      "catalog": true,
+      "layout": "herringbone"
+    },
+    "herringbone-milk": {
+      "name": "ヘリンボーン・ミルク",
+      "group": "寄木",
+      "cost": 12,
+      "color": "#ded1b8",
+      "prompt": "whitewashed pale oak wood grain, horizontal grain only, NO plank seams, used on individual herringbone boards",
+      "catalog": true,
+      "layout": "herringbone"
+    },
+    "herringbone-walnut": {
+      "name": "ヘリンボーン・胡桃",
+      "group": "寄木",
+      "cost": 13,
+      "color": "#8f6750",
+      "prompt": "warm dark walnut wood grain, horizontal grain only, NO plank seams, used on individual herringbone boards",
+      "catalog": true,
+      "layout": "herringbone"
+    },
+    "chevron-oak": {
+      "name": "フレンチ寄木",
+      "group": "寄木",
+      "cost": 14,
+      "color": "#bc8d5b",
+      "prompt": "golden oak chevron parquet zigzag V shaped wood planks",
+      "catalog": true
+    },
+    "parquet-walnut": {
+      "name": "市松パーケット",
+      "group": "寄木",
+      "cost": 14,
+      "color": "#a27b57",
+      "prompt": "basketweave square walnut parquet blocks",
+      "catalog": true
+    },
+    "stone": {
+      "name": "石床",
+      "group": "石目",
+      "cost": 10,
+      "color": "#b8c5bc",
+      "prompt": "soft sage grey natural stone tiles",
+      "catalog": false
+    },
+    "limestone": {
+      "name": "クリーム石灰岩",
+      "group": "石目",
+      "cost": 11,
+      "color": "#ded2b5",
+      "prompt": "cream limestone slabs with soft fine speckles",
+      "catalog": true
+    },
+    "travertine": {
+      "name": "トラバーチン",
+      "group": "石目",
+      "cost": 12,
+      "color": "#d3bc98",
+      "prompt": "warm beige travertine soft horizontal pores",
+      "catalog": true
+    },
+    "marble": {
+      "name": "白い大理石",
+      "group": "石目",
+      "cost": 15,
+      "color": "#ece5d9",
+      "prompt": "ivory marble with delicate warm grey veins",
+      "catalog": true
+    },
+    "slate": {
+      "name": "青灰のスレート",
+      "group": "石目",
+      "cost": 12,
+      "color": "#81918e",
+      "prompt": "muted blue slate stone with broad painterly layers",
+      "catalog": true
+    },
+    "cream": {
+      "name": "クリームタイル",
+      "group": "タイル",
+      "cost": 6,
+      "color": "#f4dcb6",
+      "prompt": "buttery cream square ceramic tiles",
+      "catalog": false
+    },
+    "terracotta": {
+      "name": "テラコッタ",
+      "group": "タイル",
+      "cost": 10,
+      "color": "#cf9069",
+      "prompt": "warm peach terracotta square tiles",
+      "catalog": true
+    },
+    "hex-white": {
+      "name": "白い六角タイル",
+      "group": "タイル",
+      "cost": 11,
+      "color": "#e9e5d2",
+      "prompt": "ivory hexagonal ceramic tiles with fine warm grout",
+      "catalog": true
+    },
+    "hex-sage": {
+      "name": "セージの六角タイル",
+      "group": "タイル",
+      "cost": 12,
+      "color": "#9db49c",
+      "prompt": "sage green hexagonal ceramic tiles",
+      "catalog": true
+    },
+    "tile-blue": {
+      "name": "青い陶器タイル",
+      "group": "タイル",
+      "cost": 12,
+      "color": "#86a9b0",
+      "prompt": "dusty blue handmade square ceramic tiles",
+      "catalog": true
+    },
+    "checker-cream": {
+      "name": "クリームの市松",
+      "group": "柄タイル",
+      "cost": 12,
+      "color": "#dcc9a4",
+      "prompt": "alternating cream and honey square checkerboard tiles",
+      "catalog": true
+    },
+    "checker-rose": {
+      "name": "ローズの市松",
+      "group": "柄タイル",
+      "cost": 12,
+      "color": "#d3b5a8",
+      "prompt": "alternating warm ivory and dusty rose checkerboard tiles",
+      "catalog": true
+    },
+    "encaustic-blue": {
+      "name": "青いセメントタイル",
+      "group": "柄タイル",
+      "cost": 15,
+      "color": "#9eafb2",
+      "prompt": "simple original cream and dusty blue encaustic floral geometric tiles",
+      "catalog": true
+    },
+    "encaustic-coral": {
+      "name": "珊瑚のセメントタイル",
+      "group": "柄タイル",
+      "cost": 15,
+      "color": "#c99e8b",
+      "prompt": "simple original ivory and coral encaustic star tiles",
+      "catalog": true
+    },
+    "flower-mosaic": {
+      "name": "小花のモザイク",
+      "group": "柄タイル",
+      "cost": 16,
+      "color": "#c9d2b9",
+      "prompt": "tiny white mosaic with sparse sage and yellow daisy rosettes",
+      "catalog": true
+    },
+    "cork": {
+      "name": "コルク",
+      "group": "素材",
+      "cost": 9,
+      "color": "#bd9569",
+      "prompt": "warm natural cork with soft flakes",
+      "catalog": true
+    },
+    "linen-beige": {
+      "name": "リネン・生成り",
+      "group": "素材",
+      "cost": 10,
+      "color": "#d4c4a7",
+      "prompt": "oatmeal woven floor textile with tactile broad threads",
+      "catalog": true
+    },
+    "linen-sage": {
+      "name": "リネン・セージ",
+      "group": "素材",
+      "cost": 10,
+      "color": "#a7b69b",
+      "prompt": "sage woven floor textile with tactile broad threads",
+      "catalog": true
+    },
+    "terrazzo-cream": {
+      "name": "クリームテラゾー",
+      "group": "素材",
+      "cost": 13,
+      "color": "#e5d8be",
+      "prompt": "cream terrazzo with sparse coral ochre and sage chips",
+      "catalog": true
+    },
+    "terrazzo-rose": {
+      "name": "ローズテラゾー",
+      "group": "素材",
+      "cost": 13,
+      "color": "#dfc3b5",
+      "prompt": "dusty pink terrazzo with sparse cream sage and honey chips",
+      "catalog": true
+    }
+  },
+  "walls": {
+    "plaster": {
+      "name": "しっくい",
+      "group": "塗り壁",
+      "cost": 30,
+      "color": "#e5dec7",
+      "prompt": "warm cream lime plaster with dry brush texture",
+      "catalog": false,
+      "face": "#e5dec7",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "ivory-paint": {
+      "name": "バニラの塗り壁",
+      "group": "塗り壁",
+      "cost": 30,
+      "color": "#f0e2c7",
+      "prompt": "vanilla ivory hand trowelled plaster",
+      "catalog": true,
+      "face": "#f0e2c7",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "peach-plaster": {
+      "name": "ピーチの塗り壁",
+      "group": "塗り壁",
+      "cost": 32,
+      "color": "#e9c8b3",
+      "prompt": "soft peach hand trowelled plaster",
+      "catalog": true,
+      "face": "#e9c8b3",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "sage-paint": {
+      "name": "セージの塗り壁",
+      "group": "塗り壁",
+      "cost": 32,
+      "color": "#acc0a3",
+      "prompt": "fresh sage green painted plaster",
+      "catalog": true,
+      "face": "#acc0a3",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "blue-paint": {
+      "name": "空色の塗り壁",
+      "group": "塗り壁",
+      "cost": 32,
+      "color": "#b2c8cf",
+      "prompt": "dusty sky blue painted plaster",
+      "catalog": true,
+      "face": "#b2c8cf",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "oat-weave": {
+      "name": "オートミール織り",
+      "group": "織物",
+      "cost": 35,
+      "color": "#d5c6ab",
+      "prompt": "oatmeal woven wallpaper coarse natural threads",
+      "catalog": true,
+      "face": "#d5c6ab",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "cream-linen": {
+      "name": "クリームリネン",
+      "group": "織物",
+      "cost": 35,
+      "color": "#eee1c9",
+      "prompt": "cream linen wallpaper fine weave",
+      "catalog": true,
+      "face": "#eee1c9",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "rose-fabric": {
+      "name": "ローズの織物",
+      "group": "織物",
+      "cost": 37,
+      "color": "#d6b6b3",
+      "prompt": "dusty rose woven fabric wallpaper",
+      "catalog": true,
+      "face": "#d6b6b3",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "grasscloth": {
+      "name": "草編みクロス",
+      "group": "織物",
+      "cost": 38,
+      "color": "#b6ae87",
+      "prompt": "muted fresh olive grasscloth wallpaper horizontal natural fibres",
+      "catalog": true,
+      "face": "#b6ae87",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "blue-linen": {
+      "name": "青灰のリネン",
+      "group": "織物",
+      "cost": 37,
+      "color": "#a7b9c1",
+      "prompt": "blue grey linen wallpaper with thick woven threads",
+      "catalog": true,
+      "face": "#a7b9c1",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "wood": {
+      "name": "木",
+      "group": "木・レンガ",
+      "cost": 40,
+      "color": "#b89162",
+      "prompt": "warm honey vertical timber wall boards",
+      "catalog": false,
+      "face": "#b89162",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "white-beadboard": {
+      "name": "白い板壁",
+      "group": "木・レンガ",
+      "cost": 42,
+      "color": "#e6dfca",
+      "prompt": "warm white painted vertical beadboard wood",
+      "catalog": true,
+      "face": "#e6dfca",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "honey-wainscot": {
+      "name": "蜂蜜色の腰壁",
+      "group": "木・レンガ",
+      "cost": 45,
+      "color": "#d8c5a3",
+      "prompt": "upper half cream plaster lower half honey oak wainscot panels",
+      "catalog": true,
+      "face": "#d8c5a3",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "brick": {
+      "name": "レンガ",
+      "group": "木・レンガ",
+      "cost": 50,
+      "color": "#bc805f",
+      "prompt": "warm handmade reddish terracotta staggered bricks",
+      "catalog": false,
+      "face": "#bc805f",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "cream-brick": {
+      "name": "白いレンガ",
+      "group": "木・レンガ",
+      "cost": 48,
+      "color": "#e5d8bf",
+      "prompt": "ivory painted irregular staggered brickwork",
+      "catalog": true,
+      "face": "#e5d8bf",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "tiny-flowers": {
+      "name": "野の小花",
+      "group": "花・葉",
+      "cost": 45,
+      "color": "#ece0c8",
+      "prompt": "original tiny coral pink yellow wildflowers on warm ivory ground, airy repeat",
+      "catalog": true,
+      "face": "#ece0c8",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "rose-vine": {
+      "name": "ローズのつる",
+      "group": "花・葉",
+      "cost": 50,
+      "color": "#e3cec0",
+      "prompt": "original delicate dusty pink rose vines and sage leaves on warm cream",
+      "catalog": true,
+      "face": "#e3cec0",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "lemon-leaf": {
+      "name": "レモンの葉",
+      "group": "花・葉",
+      "cost": 48,
+      "color": "#dce1bd",
+      "prompt": "original cheerful little yellow lemons and green leaves on ivory",
+      "catalog": true,
+      "face": "#dce1bd",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "daisy-field": {
+      "name": "デイジー畑",
+      "group": "花・葉",
+      "cost": 48,
+      "color": "#c5d5bd",
+      "prompt": "original little white daisies and yellow centres on sage green",
+      "catalog": true,
+      "face": "#c5d5bd",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "olive-branch": {
+      "name": "オリーブの枝",
+      "group": "花・葉",
+      "cost": 47,
+      "color": "#e5e2ca",
+      "prompt": "original airy olive branches and small leaves on cream",
+      "catalog": true,
+      "face": "#e5e2ca",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "sage-stripe": {
+      "name": "セージの縞",
+      "group": "縞・幾何",
+      "cost": 40,
+      "color": "#cad6bb",
+      "prompt": "narrow vertical sage and ivory stripes, hand painted",
+      "catalog": true,
+      "face": "#cad6bb",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "rose-stripe": {
+      "name": "ローズの縞",
+      "group": "縞・幾何",
+      "cost": 40,
+      "color": "#e3c6bd",
+      "prompt": "vertical dusty rose and ivory stripes, hand painted",
+      "catalog": true,
+      "face": "#e3c6bd",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "gingham": {
+      "name": "ミルクのギンガム",
+      "group": "縞・幾何",
+      "cost": 43,
+      "color": "#dfd3b7",
+      "prompt": "small honey beige and ivory gingham checks",
+      "catalog": true,
+      "face": "#dfd3b7",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "blue-diamond": {
+      "name": "青いひし形",
+      "group": "縞・幾何",
+      "cost": 45,
+      "color": "#b6c8cd",
+      "prompt": "small dusty blue diamonds spaced on ivory, hand painted",
+      "catalog": true,
+      "face": "#b6c8cd",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "peach-scallop": {
+      "name": "ピーチのうろこ",
+      "group": "縞・幾何",
+      "cost": 45,
+      "color": "#e4c5b1",
+      "prompt": "peach and ivory scalloped fan arcs, simple playful pattern",
+      "catalog": true,
+      "face": "#e4c5b1",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "subway-cream": {
+      "name": "白いサブウェイ",
+      "group": "タイル・石",
+      "cost": 45,
+      "color": "#e9e2ce",
+      "prompt": "warm white rectangular subway ceramic tiles with fine honey grout",
+      "catalog": true,
+      "face": "#e9e2ce",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "subway-sage": {
+      "name": "セージのタイル",
+      "group": "タイル・石",
+      "cost": 47,
+      "color": "#abc0ab",
+      "prompt": "sage green rectangular subway ceramic tiles",
+      "catalog": true,
+      "face": "#abc0ab",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "moroccan-blue": {
+      "name": "青いモロッカン",
+      "group": "タイル・石",
+      "cost": 55,
+      "color": "#a3bbc3",
+      "prompt": "original simple dusty blue and cream quatrefoil ceramic tile pattern",
+      "catalog": true,
+      "face": "#a3bbc3",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "terrazzo-peach": {
+      "name": "ピーチのテラゾー",
+      "group": "タイル・石",
+      "cost": 50,
+      "color": "#e5d2bd",
+      "prompt": "cream peach terrazzo wall surface with sparse coral sage chips",
+      "catalog": true,
+      "face": "#e5d2bd",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    },
+    "stone-greige": {
+      "name": "グレージュの石肌",
+      "group": "タイル・石",
+      "cost": 43,
+      "color": "#c9c4b4",
+      "prompt": "soft greige fine limestone wall plaster",
+      "catalog": true,
+      "face": "#c9c4b4",
+      "top": "#f4e8cd",
+      "side": "#a99577"
+    }
+  }
+}
