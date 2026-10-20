@@ -69,7 +69,8 @@ function entrance(c,p,w,h,entry,tx,style='timber'){
  const s=styles[style]||styles.timber,x=entry.x-.15,y=h+.04,a=p(x,y),b=p(x+1.3,y),height=tx*2.9;
  const at=(u,v)=>({x:a.x+(b.x-a.x)*u,y:a.y+(b.y-a.y)*u-height*v});
  const image=textures['door-'+style];
- if(image){const l=p(entry.x-.8,y),r=p(entry.x+1.5,y);c.save();c.transform(r.x-l.x,r.y-l.y,0,-tx*3.15,l.x,l.y);c.translate(0,1);c.scale(1,-1);c.drawImage(image,0,0,1,1);c.restore()}
+ const directional=root.BakeryDoorArt?.draw(c,p,{axis:'y',x:entry.x-.05,y},tx,{style,width:1.5,height:3.15});
+ if(directional){}else if(image){const l=p(entry.x-.8,y),r=p(entry.x+1.5,y);c.save();c.transform(r.x-l.x,r.y-l.y,0,-tx*3.15,l.x,l.y);c.translate(0,1);c.scale(1,-1);c.drawImage(image,0,0,1,1);c.restore()}
  else{
  // Open leaf and clear central opening preserve the visible customer route.
  poly(c,[at(-.32,0),at(0,0),at(0,.94),at(-.32,.89)],s.leaf,s.frame);
@@ -77,7 +78,7 @@ function entrance(c,p,w,h,entry,tx,style='timber'){
  poly(c,[at(-.065,.92),at(1.065,.92),at(1.065,1.02),at(-.065,1.02)],s.frame);
  if(style==='arch'){c.strokeStyle=s.frame;c.lineWidth=tx*.12;c.beginPath();const l=at(0,.95),r=at(1,.95),t=at(.5,1.3);c.moveTo(l.x,l.y);c.quadraticCurveTo(t.x,t.y-tx*.15,r.x,r.y);c.stroke()}
  }
- const top=[at(-.3,1.08),at(1.3,1.08),at(1.3,.91),at(-.3,.91)];poly(c,top,s.awning,s.frame);
+ const top=[at(-.3,1.08),at(1.3,1.08),at(1.3,.91),at(-.3,.91)];if(!directional)poly(c,top,s.awning,s.frame);
  c.save();const q=at(.5,1.26);c.translate(q.x,q.y);c.rotate(Math.atan2(b.y-a.y,b.x-a.x));c.fillStyle='#f8eacb';c.fillRect(-tx*.95,-tx*.19,tx*1.9,tx*.38);c.fillStyle='#60462e';c.font='bold '+Math.max(5,tx*.26)+'px sans-serif';c.textAlign='center';c.fillText('BAKERY',0,tx*.09);c.restore();
  const mat=[p(x-.15,y+.05),p(x+1.45,y+.05),p(x+1.45,y+.55),p(x-.15,y+.55)];poly(c,mat,'#8f9b70','#697751');
 }

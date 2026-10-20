@@ -54,8 +54,9 @@ function drawFloor(ctx,point,x,y,material){
  ctx.restore();
 }
 function wallPoints(w,point,height){const a=point(w.x,w.y),b=point(w.x+(w.axis==='y'?1:0),w.y+(w.axis==='x'?1:0));return[a,b,{x:b.x,y:b.y-height},{x:a.x,y:a.y-height}]}
-function drawWall(ctx,point,w,tx,{low=false,alpha=1,selected=false}={}){
- const m=materials[w.material],height=tx*(low?1.15:2.15),pts=wallPoints(w,point,height),[a,b]=pts,n=point(w.axis==='x'?.08:0,w.axis==='y'?.08:0),z=point(0,0),offset={x:n.x-z.x,y:n.y-z.y};ctx.save();ctx.globalAlpha=alpha;
+function drawWall(ctx,point,w,tx,{low=false,alpha=1,selected=false,doorStyle='timber'}={}){
+ const m=materials[w.material],height=tx*(w.type==='door'?2.15:low?1.15:2.15),pts=wallPoints(w,point,height),[a,b]=pts,n=point(w.axis==='x'?.08:0,w.axis==='y'?.08:0),z=point(0,0),offset={x:n.x-z.x,y:n.y-z.y};ctx.save();ctx.globalAlpha=alpha;
+ if(w.type==='door'&&root.BakeryDoorArt?.draw(ctx,point,w,tx,{style:doorStyle})){ctx.restore();if(selected)polygon(ctx,pts,null,'#ffdb4c');return pts}
  polygon(ctx,[pts[3],pts[2],{x:pts[2].x+offset.x,y:pts[2].y+offset.y},{x:pts[3].x+offset.x,y:pts[3].y+offset.y}],m.top,'#80664a45');
  polygon(ctx,[b,{x:b.x+offset.x,y:b.y+offset.y},{x:pts[2].x+offset.x,y:pts[2].y+offset.y},pts[2]],m.side);
  ctx.save();ctx.transform(b.x-a.x,b.y-a.y,0,-height,a.x,a.y);

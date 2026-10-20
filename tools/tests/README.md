@@ -7,6 +7,7 @@ node tools/tests/workflow.cjs
 node tools/tests/starter-shop.cjs
 node tools/tests/interior-art.cjs
 node tools/tests/exterior.cjs
+node tools/tests/doors.cjs
 node tools/tests/storybook-ui.cjs
 node tools/tests/customers.cjs
 node tools/tests/startup.cjs
@@ -40,3 +41,5 @@ node tools/tests/startup.cjs
 `exterior.cjs` は外観素材6枚、3扉の設定・保存、画角、店主の光学的なサイズ補正と足元、配置・所持金の維持、初回180分の販売を確認します。
 
 `storybook-ui.cjs` は景色のボタン／ホイール／実ピンチ、UI寸法固定、焦点と足元、パンと全体表示、資産維持、全ウインドウと小画面を確認します。
+
+`doors.cjs` は扉3種類×4方向の透明開口・敷居登録・壁に応じた方向選択・保存・低い壁での選択・欠損時の代替を確認します。画面と結果は `docs/art/doors/review/`。
