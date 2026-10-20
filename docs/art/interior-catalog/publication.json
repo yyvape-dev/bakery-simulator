@@ -1,0 +1,43 @@
+{
+  "publicFilesCompared": 59,
+  "byteIdentical": true,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "directHTTPS": true,
+      "floors": 30,
+      "walls": 30,
+      "images": 60,
+      "filters": true,
+      "selection": true,
+      "errors": []
+    },
+    {
+      "mode": "demo",
+      "directHTTPS": true,
+      "floors": 30,
+      "walls": 30,
+      "images": 60,
+      "filters": true,
+      "selection": true,
+      "errors": []
+    }
+  ],
+  "galleryCanvases": 60,
+  "coordinationImages": 2,
+  "mergeCommit": "2e7fc19c36833cf0fe6e7e03ca32bc7335ebadce",
+  "pullRequest": 15,
+  "approval": "User explicitly approved main merge, publication, and handoff update.",
+  "localRegression": {
+    "catalogFloors": 30,
+    "catalogWalls": 30,
+    "newImages": 54,
+    "interiorCases": 23,
+    "interiorExperienceCases": 16,
+    "legacyRenderCases": 48,
+    "workflowCases": 20,
+    "workflowDays": 3,
+    "herringbonePhaseAfterDepthExpansion": true,
+    "missingArtPreservesSave": true
+  }
+}

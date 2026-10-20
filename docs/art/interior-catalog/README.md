@@ -2,7 +2,7 @@
 
 2026-10-20。日本の実在メーカーの公式カタログで柄分類・素材感を調べ、絵本のパン屋に合わせた独自の油彩素材として制作。メーカーの実商品・品番の再現ではなく、一般的な木目・織物・花柄・石目などを取り入れたゲーム内コレクション。
 
-[60種類の見本と店内コーディネート](review/index.html)。[PR #15](https://github.com/yyvape-dev/bakery-simulator/pull/15) に実装・検証済み、main未反映・未公開。床・壁とも既存3種類を残して合計30種類（追加27種類ずつ、生成素材54枚）。既存の内装・人物・動物客・扉・木の独立描画を維持する。
+[60種類の見本と店内コーディネート](review/index.html)。[PR #15](https://github.com/yyvape-dev/bakery-simulator/pull/15) をmainへ取り込み（`2e7fc19`）、公開済み。床・壁とも既存3種類を残して合計30種類（追加27種類ずつ、生成素材54枚）。既存の内装・人物・動物客・扉・木の独立描画を維持する。
 
 ## 参考にした公式資料
 
@@ -60,3 +60,5 @@ node tools/art/pack_interior_catalog.cjs
 `node tools/tests/interior-catalog.cjs`：54枚の非空・重複なし、60見本、柄の絞り込み、選択時非課金、全30床・30壁を実際の費用処理で施工、保存、再課金防止、状態非変更、3画面、コーディネート、180分営業、60見本の一覧、欠損時の保存維持を確認。
 
 既存の `interior.cjs` は23項目・増築後3日間、`interior-experience.cjs` は16項目が成功。`interior-art.cjs` は60画像の読込と旧素材の48描画条件・欠損時代替、`workflow.cjs` は20項目／3日間が成功。記録は `review/validation.json` と公開時の `publication.json`。
+
+公開確認：変更59ファイルがmainと一致。通常／デモへChromiumで直接HTTPS接続し、内装60画像・6群の絞り込みと素材選択、公開一覧60見本・コーディネート2画像、エラーなしを確認。`node tools/tests/interior-catalog-public.cjs` で再現できる。記録は `publication.json`。

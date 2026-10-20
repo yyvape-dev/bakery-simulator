@@ -49,3 +49,5 @@ node tools/tests/startup.cjs
 `tree-scenery.cjs` は床より後の木の描画、実際の横／奥の増築、範囲内の木の除去・残る木の固定位置、保存・営業を確認します。画面は `docs/art/tree-scenery/review/`。外観テストは `BAKERY_EXTERIOR_OUT` で出力先を変更できます。
 
 `interior-catalog.cjs` は壁紙30・床材30の画像、選択と料金、全材質の施工・保存、柄の絞り込み、3画面、欠損時代替、コーディネートと営業を確認します。画面は `docs/art/interior-catalog/review/`。
+
+公開確認は `node tools/tests/interior-catalog-public.cjs`。変更59ファイルのバイト一致、通常／デモの60画像・選択・絞り込み、60種類の公開一覧を直接HTTPSで確認します。レポートは `/tmp/bakery-catalog-public.json`。
