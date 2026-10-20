@@ -1,6 +1,6 @@
 // Pack generated oil-painted atlases. Mirrored terrain edges repeat without seams.
 const sharp=require('sharp'),path=require('path');
-const root=path.resolve(__dirname,'../..'),doc=path.join(root,'docs/art/landscape'),out=path.join(root,'assets/exterior');
+const root=path.resolve(__dirname,'../..'),doc=path.resolve(root,process.argv[2]||'docs/art/landscape'),out=path.join(root,'assets/exterior');
 (async()=>{
  const source=path.join(doc,'terrain-atlas.png'),{width,height}=await sharp(source).metadata();
  for(const [i,name] of ['meadow','sand','road'].entries()){
@@ -10,7 +10,7 @@ const root=path.resolve(__dirname,'../..'),doc=path.join(root,'docs/art/landscap
  }
  const sprites=path.join(doc,'scenery-atlas.png');
  const {width:sw,height:sh}=await sharp(sprites).metadata();
- for(const [name,x,y,w,h] of [['apple-tree',0,0,.5,.62],['birch-tree',.5,0,.5,.62],['flowers',0,.62,.5,.38],['moss-stones',.5,.62,.5,.38]]){
+ for(const [name,x,y,w,h] of [['apple-tree',0,0,.5,.62],[process.argv[3]||'birch-tree',.5,0,.5,.62],['flowers',0,.62,.5,.38],['moss-stones',.5,.62,.5,.38]]){
   const cell=await sharp(sprites).extract({left:Math.round(x*sw),top:Math.round(y*sh),width:Math.round(w*sw),height:sh-Math.round(y*sh)<Math.round(h*sh)?sh-Math.round(y*sh):Math.round(h*sh)}).png().toBuffer();
   await sharp(cell).trim({threshold:12}).resize({width:512}).webp({quality:88,alphaQuality:100}).toFile(path.join(out,name+'.webp'));
  }
