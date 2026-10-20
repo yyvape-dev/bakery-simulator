@@ -15,3 +15,5 @@ node tools/art/pack_landscape.cjs docs/art/fancy-landscape blossom-tree
 実行時は `assets/exterior/`。`birch-tree.webp` は旧版の資料との互換用に残すが、現行ゲームでは読み込まない。描画の位置は `exterior.js` で店舗寸法に追従する。
 
 [変更前後と画面一覧](review/index.html)。検証：`node tools/tests/exterior.cjs`（新規開始・3扉・保存・配置／資金維持・3画面・45/300%ズーム・180分営業）。
+
+PR #13をmainへ取り込み（`7e0a3cd`）、公開済み。変更した実行時9ファイルがmainとバイト一致。通常／デモの直接HTTPS接続で花木の表示、白樺非使用、扉12画像、エラーなしを確認。比較ページ5画像も確認済み。検証記録は `review/validation.json` と `publication.json`。

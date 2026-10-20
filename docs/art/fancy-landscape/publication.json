@@ -1,0 +1,40 @@
+{
+  "changedPublicFiles": 9,
+  "byteIdentical": true,
+  "publicBrowser": [
+    {
+      "mode": "normal",
+      "directHTTPS": true,
+      "blossomTree": true,
+      "birchTree": false,
+      "doorImages": 12,
+      "errors": []
+    },
+    {
+      "mode": "demo",
+      "directHTTPS": true,
+      "blossomTree": true,
+      "birchTree": false,
+      "doorImages": 12,
+      "errors": []
+    }
+  ],
+  "reviewImages": 5,
+  "mergeCommit": "7e0a3cd504ab3f3465cda23885b742070899cfaf",
+  "pullRequest": 13,
+  "localRegression": {
+    "exteriorImages": 10,
+    "doorStyles": 3,
+    "soldIn180Minutes": 6,
+    "screenSizes": [
+      "390x844",
+      "320x568",
+      "844x390"
+    ],
+    "zoom": [
+      0.45,
+      3
+    ],
+    "savedLayoutAndMoneyPreserved": true
+  }
+}
