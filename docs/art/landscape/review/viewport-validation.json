@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "scene buttons zoom and recenter while HUD, text and all DOM controls retain the same dimensions",
+    "wheel zoom preserves the world point under the cursor and saves only the scene magnification",
+    "real two-finger pinch enlarges scenery without purchasing, moving furniture or resizing UI",
+    "dragging empty land pans the scene, and whole-view restores magnification and position",
+    "painted HUD, menu, staff, products, settings, reports and interior palettes fit portrait and landscape with reachable actions"
+  ]
+}
