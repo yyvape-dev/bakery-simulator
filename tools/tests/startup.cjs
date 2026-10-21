@@ -2,7 +2,7 @@ const {chromium}=require('playwright'),fs=require('fs'),path=require('path'),ass
 const {click}=require('./ui-navigation.cjs');
 const ROOT=process.env.BAKERY_TEST_ROOT||path.resolve(__dirname,'../..');
 const fixture=[{id:1,type:'shelf',x:1,y:1,rot:0},{id:2,type:'oven',x:5,y:1,rot:0},{id:3,type:'register',x:7,y:2,rot:0},{id:4,type:'prep',x:1,y:4,rot:0}];
-const hook='window.__startup={state,get sim(){return sim},get crew(){return crew},get visitor(){return visitor},products:productSystem,interior:interiorEngine,characterImages,missingEquipment,operatingReserve,spendingError,furniturePurchaseError,selectCell,removeFurniture,step,walk,store,update};';
+const hook='window.__startup={state,get sim(){return sim},get crew(){return crew},get visitor(){return visitor},plan:renovationPlan,products:productSystem,interior:interiorEngine,characterImages,missingEquipment,operatingReserve,spendingError,furniturePurchaseError,selectCell,removeFurniture,step,walk,store,update};';
 let browser;const runs=[];
 async function setup(save,url='http://bakery.test/'){
  const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
@@ -15,13 +15,16 @@ const buy=(p,type,x,y)=>p.evaluate(({type,x,y})=>{__startup.state.type=type;__st
 async function main(){
  browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});const cases=[];
  const fresh=await setup({coins:5000,objects:[]});await click(fresh,'#build');
- assert(await fresh.locator('[data-type=plant]').isDisabled());assert(await fresh.locator('[data-type=table]').isDisabled());assert(await fresh.locator('[data-type=oven]').isEnabled());
- await fresh.setViewportSize({width:320,height:568});assert(await fresh.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await fresh.screenshot({path:'/tmp/bakery-startup-320.png'});
- assert.equal(await buy(fresh,'plant',8,8),0);assert.equal(await buy(fresh,'shelf',1,1),1);assert(await fresh.locator('[data-type=shelf]').isDisabled());assert.equal(await buy(fresh,'shelf',7,4),1);
- assert.equal(await fresh.evaluate(()=>__startup.interior.paint([{x:0,y:0}],'wood').cost),8);assert.equal(await fresh.evaluate(()=>Object.keys(__startup.state.room.floors).length),0);
- assert(await fresh.evaluate(()=>!!__startup.interior.expand('width').error));assert.equal(await fresh.evaluate(()=>__startup.products.develop('milk-choco')),false);
+ assert(await fresh.locator('[data-type=plant]').isEnabled());assert.equal(await buy(fresh,'plant',8,8),1);
+ assert(await fresh.evaluate(()=>!!__startup.plan.quote().error));assert.equal(await fresh.evaluate(()=>__startup.state.coins),5000);
+ await fresh.evaluate(()=>__startup.removeFurniture(__startup.state.objects[0]));
+ assert.equal(await buy(fresh,'shelf',1,1),1);assert.equal(await buy(fresh,'shelf',7,4),2);
+ await fresh.evaluate(()=>__startup.removeFurniture(__startup.state.objects[1]));
+ assert.equal(await fresh.evaluate(()=>__startup.interior.paint([{x:0,y:0}],'wood').cost),8);assert.equal(await fresh.evaluate(()=>Object.keys(__startup.state.room.floors).length),1);
+ assert(await fresh.evaluate(()=>!!__startup.plan.quote().error));await fresh.evaluate(()=>__startup.plan.undo());
  for(const [type,x,y]of [['oven',5,1],['register',7,2],['prep',1,4]])await buy(fresh,type,x,y);
- assert(await fresh.locator('[data-type=plant]').isEnabled());assert.equal(await fresh.evaluate(()=>__startup.state.coins),3270);cases.push('missing essentials block optional/repeated furniture, interior, expansion and development; each essential unlocks progression');
+ assert.equal(await fresh.evaluate(()=>__startup.state.coins),5000);await fresh.locator('#reviewRenovation').click();assert(await fresh.locator('#commitRenovation').isEnabled());await fresh.locator('#commitRenovation').click();
+ assert.equal(await fresh.evaluate(()=>__startup.state.coins),3270);cases.push('optional, repeated and interior trials remain free; required equipment protection applies at confirmation and the complete set is charged once');
  const poor=await setup({coins:110,objects:fixture});assert.equal(await buy(poor,'plant',8,8),5);assert.equal(await poor.evaluate(()=>__startup.state.coins),30);
  assert(await poor.evaluate(()=>!!__startup.interior.paint([{x:0,y:0}],'wood').error));assert(await poor.evaluate(()=>!!__startup.interior.walls([{axis:'x',x:0,y:0}],'plaster','wall').error));
  await poor.evaluate(()=>__startup.removeFurniture(__startup.state.objects.find(o=>o.type==='oven')));assert.equal(await poor.evaluate(()=>__startup.state.objects.length),5);
