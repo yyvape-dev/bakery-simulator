@@ -51,3 +51,7 @@ node tools/tests/startup.cjs
 `interior-catalog.cjs` は壁紙30・床材30の画像、選択と料金、全材質の施工・保存、柄の絞り込み、3画面、欠損時代替、コーディネートと営業を確認します。画面は `docs/art/interior-catalog/review/`。
 
 公開確認は `node tools/tests/interior-catalog-public.cjs`。変更59ファイルのバイト一致、通常／デモの60画像・選択・絞り込み、60種類の公開一覧を直接HTTPSで確認します。レポートは `/tmp/bakery-catalog-public.json`。
+
+## 改装案と一括精算
+
+`node tools/tests/renovation.cjs` は仮適用・同じ範囲での柄変更・履歴・比較・破棄・資金不足・編集中再読み込み・案の保存／再開・最終差分の一括精算・家具／壁の仮置き撤去・増築移設・3画面・営業再開を確認します。`interior-experience.cjs` も同じ新UIテストを実行します。`interior.cjs` は基礎エンジンの即時処理を直接指定して従来の経路・保存・増築・長期営業を確認します。旧来の「候補を選んで施工すると即時支払い」というUI期待値は新仕様へ更新しています。[操作・設計・実画面](../renovation/README.md)。
