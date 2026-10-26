@@ -9,3 +9,5 @@
 検証：`node tools/tests/wall-renovation.cjs`。入口側の塗替え／撤去／再読込、実壁の方向自動判定と塗替え、家具近くの回転、描画上限を確認。DPR3・4倍CPU低速化のローカルChromiumで、キャッシュ生成後の連続ズーム12回の最大は約6.6ms、描画は561,015ピクセル。スマホ実機のFPS保証ではない。
 
 既存の `renovation.cjs`（13項目）、`experience.cjs`（9項目）、`interior.cjs`（23項目・増築後3営業日）も確認。営業回帰は `workflow.cjs` を使用。
+
+公開済み：[PR #17](https://github.com/yyvape-dev/bakery-simulator/pull/17)。[公開確認](publication.json)では実行時6ファイル・画像6枚の一致と、通常／デモの直接HTTPS操作、入口側の壁の塗り替え・精算・保存を確認。営業20項目・3営業日も成功。[最終の壁テストと計測](validation.json)。

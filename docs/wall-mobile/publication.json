@@ -1,0 +1,24 @@
+{
+  "verifiedAt": "2026-10-26T15:07:14.262Z",
+  "files": 12,
+  "views": [
+    {
+      "mode": "normal",
+      "directHTTPS": true,
+      "trial": true,
+      "replace": true,
+      "undoRedo": true,
+      "normalSaveProtected": true,
+      "errors": []
+    },
+    {
+      "mode": "demo",
+      "directHTTPS": true,
+      "trial": true,
+      "replace": true,
+      "undoRedo": true,
+      "normalSaveProtected": true,
+      "errors": []
+    }
+  ]
+}

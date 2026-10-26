@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "formerly decorative front wall repaints directly, charges once and reloads",
+    "removed front wall stays removed after reload",
+    "auto direction and direct body repaint work on existing walls",
+    "rotation is shown next to furniture placement",
+    "render area obeys calculated pixel budget"
+  ],
+  "performanceResult": {
+    "zoomWorstMs": 2.900000000023283,
+    "pixels": 561015
+  }
+}
