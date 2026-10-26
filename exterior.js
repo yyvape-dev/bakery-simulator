@@ -6,13 +6,16 @@ if(typeof Image!=='undefined')for(const name of ['meadow','sand','road','door-ti
 function done(){if(--pending===0)for(const fn of listeners.splice(0))fn()}
 function ready(fn){if(pending===0)fn();else listeners.push(fn)}
 function poly(c,pts,color,stroke){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.closePath();if(color){c.fillStyle=color;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=.7;c.stroke()}}
-function quad(c,p,x,y,w,h,color,texture){const a=p(x,y),b=p(x+w,y),d=p(x,y+h);poly(c,[a,b,p(x+w,y+h),d],color);const im=textures[texture];if(im){c.save();c.transform((b.x-a.x)/w,(b.y-a.y)/w,(d.x-a.x)/h,(d.y-a.y)/h,a.x,a.y);c.globalAlpha=texture==='meadow'?.6:.94;const pattern=c.createPattern(im,'repeat');const density=texture==='meadow'?40:64;c.scale(1/density,1/density);c.fillStyle=pattern;c.fillRect(0,0,w*density,h*density);c.restore()}}
+function quad(c,p,x,y,w,h,color,texture){const a=p(x,y),b=p(x+w,y),d=p(x,y+h);poly(c,[a,b,p(x+w,y+h),d],color);const im=textures[texture];if(im){c.save();c.transform((b.x-a.x)/w,(b.y-a.y)/w,(d.x-a.x)/h,(d.y-a.y)/h,a.x,a.y);c.globalAlpha=texture==='meadow'?.6:.94;const pattern=c.createPattern(im,'repeat');const density=texture==='meadow'?40:64;pattern.setTransform(new DOMMatrix().translate(-x*density,-y*density));c.scale(1/density,1/density);c.fillStyle=pattern;c.fillRect(0,0,w*density,h*density);c.restore()}}
 function stroke(c,pts,color,width){c.strokeStyle=color;c.lineWidth=width;c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p.x,p.y):c.moveTo(p.x,p.y));c.stroke()}
 let terrainCache=null;
 function background(c,p,w,h,entry,tx){
- const origin=p(0,0),unit=p(1,0),key=[c.canvas.width,c.canvas.height,origin.x,origin.y,unit.x,unit.y,w,h,entry.x,pending].join(',');
- if(terrainCache?.key!==key){const canvas=document.createElement('canvas');canvas.width=c.canvas.width;canvas.height=c.canvas.height;const layer=canvas.getContext('2d');layer.setTransform(c.getTransform());paintBackground(layer,p,w,h,entry,tx);terrainCache={key,canvas}}
- c.save();c.resetTransform();c.drawImage(terrainCache.canvas,0,0);c.restore();
+ const origin=p(0,0),t=c.getTransform(),vw=c.canvas.width/t.a,vh=c.canvas.height/t.d;
+ const bounds={left:-origin.x/tx,right:(vw-origin.x)/tx,top:-origin.y/tx,bottom:(vh-origin.y)/tx},key=[w,h,entry.x,pending].join(','),old=terrainCache;
+ if(!old||old.key!==key||bounds.left<old.left||bounds.right>old.right||bounds.top<old.top||bounds.bottom>old.bottom){
+ const left=Math.floor(bounds.left)-5,right=Math.ceil(bounds.right)+5,top=Math.floor(bounds.top)-5,bottom=Math.ceil(bounds.bottom)+5,limit=matchMedia('(pointer:coarse)').matches?600000:1200000,scale=Math.min(32,Math.sqrt(limit/((right-left)*(bottom-top))));
+ const canvas=document.createElement('canvas');canvas.width=Math.floor((right-left)*scale);canvas.height=Math.floor((bottom-top)*scale);const local=(x,y)=>({x:(x-y-left)*scale,y:((x+y)*.54-top)*scale});paintBackground(canvas.getContext('2d'),local,w,h,entry,scale);terrainCache={key,canvas,left,right,top,bottom,scale};
+ }const layer=terrainCache;c.drawImage(layer.canvas,origin.x+layer.left*tx,origin.y+layer.top*tx,layer.canvas.width*tx/layer.scale,layer.canvas.height*tx/layer.scale);
 }
 // Stable brush dabs and sprite positions are scenery, never simulation state.
 function dab(c,p,x,y,tx,i){
@@ -25,13 +28,13 @@ function scenerySprite(c,p,name,x,y,width,tx){
  c.drawImage(im,a.x-sw/2,a.y-sh,sw,sh);
 }
 function paintBackground(c,p,w,h,entry,tx){
- quad(c,p,-100,-100,w+200,h+220,'#71bd58','meadow');
+ const o=p(0,0),v=[[-o.x/tx,-o.y/tx],[(c.canvas.width-o.x)/tx,-o.y/tx],[-o.x/tx,(c.canvas.height-o.y)/tx],[(c.canvas.width-o.x)/tx,(c.canvas.height-o.y)/tx]],a=v.map(([x,y])=>({x:(x+y/.54)/2,y:(y/.54-x)/2})),left=Math.floor(Math.min(...a.map(p=>p.x)))-1,right=Math.ceil(Math.max(...a.map(p=>p.x)))+1,top=Math.floor(Math.min(...a.map(p=>p.y)))-1,bottom=Math.ceil(Math.max(...a.map(p=>p.y)))+1;quad(c,p,left,top,right-left,bottom-top,'#71bd58','meadow');
  // Broken brushwork softens the edge of the earth instead of a rectangular apron.
  for(let i=0;i<480;i++){const x=-26+(i*137%601)/10,y=-24+(i*193%631)/10;dab(c,p,x,y,tx,i)}
  quad(c,p,-.65,-.65,w+1.3,h+1.3,'#efd095','sand');
  const front=h+3.2;
- quad(c,p,-40,front-.35,w+80,4.15,'#efd4a3','sand');
- quad(c,p,-40,front,w+80,3.5,'#e8ca9b','road');
+ quad(c,p,left,front-.35,right-left,4.15,'#efd4a3','sand');
+ quad(c,p,left,front,right-left,3.5,'#e8ca9b','road');
  quad(c,p,entry.x-.2,h+.05,1.4,front-h-.05,'#f3d296','sand');
  // Paint a soft, ragged verge along both sides of the old village lane.
  for(let i=0;i<180;i++){const x=-25+i*.38;for(const y of [front-.4,front+3.9])dab(c,p,x,y+(i%5)*.055,tx,i)}
@@ -76,7 +79,7 @@ function roadside(c,p,w,h,entry,tx){const y=h+7.1;
  c.restore();
 }
 function entrance(c,p,w,h,entry,tx,style='timber'){
- for(let x=0;x<w;x++)if(x!==entry.x&&x!==entry.x+1)BakeryInterior.drawWall(c,p,{axis:'y',x,y:h,material:'plaster',type:'wall'},tx,{low:true});
+ // Entrance-side walls belong to the editable depth-sorted scene.
  const s=styles[style]||styles.timber,x=entry.x-.15,y=h+.04,a=p(x,y),b=p(x+1.3,y),height=tx*2.9;
  const at=(u,v)=>({x:a.x+(b.x-a.x)*u,y:a.y+(b.y-a.y)*u-height*v});
  const image=textures['door-'+style];
