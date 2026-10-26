@@ -18,13 +18,13 @@ root.createBakeryRenovation=function(api){
  function travel(delta){if(!base||cursor+delta<0||cursor+delta>=history.length)return;api.cancel();cursor+=delta;apply(history[cursor]);persist();api.update()}
  function baseline(){const b=copy(base),dy=api.state().room.height-base.room.height,dw=api.state().room.width-base.room.width;
   b.room.floors=Object.fromEntries(Object.entries(base.room.floors).map(([k,v])=>{const [x,y]=k.split(',').map(Number);return[x+','+(y+dy),v]}));
-  b.room.walls=base.room.walls.map(w=>({...w,x:w.axis==='x'&&w.x===base.room.width?w.x+dw:w.x,y:w.axis==='y'&&w.y===0?0:w.y+dy}));
+  b.room.walls=BakeryInterior.visibleWalls(base.room).map(w=>({...w,x:w.axis==='x'&&w.x===base.room.width?w.x+dw:w.x,y:w.axis==='y'&&w.y===0?0:w.y+dy}));
   b.objects=base.objects.map(o=>({...o,y:o.y+dy}));return b;
  }
  function quote(){const q={floor:0,wall:0,equipment:0,expansion:0,refund:0,floors:0,walls:0,added:0,removed:0,moved:0,cost:0,payment:0,error:'',changed:false};if(!base)return q;
-  const s=api.state(),b=baseline(),wallKey=BakeryInterior.key,oldWalls=new Map(b.room.walls.map(w=>[wallKey(w),w])),newWalls=new Map(s.room.walls.map(w=>[wallKey(w),w]));
+  const s=api.state(),b=baseline(),wallKey=BakeryInterior.key,oldWalls=new Map(b.room.walls.map(w=>[wallKey(w),w])),newWalls=new Map(BakeryInterior.visibleWalls(s.room).map(w=>[wallKey(w),w]));
   for(let x=0;x<s.room.width;x++)for(let y=0;y<s.room.height;y++){const k=x+','+y,m=s.room.floors[k]||'cream';if(m!==(b.room.floors[k]||'cream')){q.floor+=BakeryInterior.floors[m].cost;q.floors++}}
-  for(const [k,w] of newWalls){const old=oldWalls.get(k);if(!old||old.type!==w.type||old.material!==w.material){q.wall+=BakeryInterior.materials[w.material].cost;q.walls++}}
+  for(const [k,w] of newWalls){const old=oldWalls.get(k);if(!old||old.type!==w.type||old.material!==w.material){if(!w.virtual){q.wall+=BakeryInterior.materials[w.material].cost;q.walls++}}}
   for(const [k,w] of oldWalls)if(!newWalls.has(k)){q.refund+=Math.floor(BakeryInterior.materials[w.material].cost/2);q.walls++}
   const oldObjects=new Map(b.objects.map(o=>[o.id,o])),newObjects=new Map(s.objects.map(o=>[o.id,o]));
   for(const o of s.objects){const old=oldObjects.get(o.id);if(!old){q.equipment+=api.furniture[o.type][4];q.added++}else if(!same(o,old))q.moved++}
